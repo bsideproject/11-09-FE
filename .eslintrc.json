@@ -48,7 +48,7 @@
     ],
 
     // https://eslint.org/docs/latest/rules/object-curly-newline
-    "object-curly-newline": ["error", { "ObjectExpression": "always", "ObjectPattern": "never" }],
+    "object-curly-newline": ["error", { "multiline": true }],
 
     // https://github.com/lydell/eslint-plugin-simple-import-sort
     "simple-import-sort/imports": "error",
@@ -88,6 +88,12 @@
       "rules": {
         "import/no-anonymous-default-export": "off",
         "react/function-component-definition": "off"
+      }
+    },
+    {
+      "files": ["*.ts"],
+      "rules": {
+        "import/prefer-default-export": "off"
       }
     }
   ],

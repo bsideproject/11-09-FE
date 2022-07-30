@@ -1,7 +1,6 @@
-export interface ButtonProps {
-  primary?: boolean;
-  backgroundColor?: string;
+type ButtonAttributes = JSX.IntrinsicElements['button'];
+
+export interface ButtonProps extends ButtonAttributes {
   size?: 'small' | 'medium' | 'large';
   label: string;
-  onClick?: () => void;
 }

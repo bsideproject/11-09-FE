@@ -1,0 +1,18 @@
+@font-face {
+  font-family: 'PyeongChangPeace';
+  src:
+    url('../assets/fonts/PyeongChangPeace-Bold.ttf') format('truetype'),
+    url('../assets/fonts/PyeongChangPeace-Bold.otf') format('opentype');
+}
+
+@font-face {
+  font-family: 'Pretendard';
+  src: url('../assets/fonts/PretendardStd-Regular.woff2') format("woff2");
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: 'Pretendard';
+  src: url('../assets/fonts/PretendardStd-Bold.woff2') format("woff2");
+  font-weight: 600;
+}

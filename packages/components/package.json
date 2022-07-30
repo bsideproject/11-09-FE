@@ -12,8 +12,8 @@
     "lint": "eslint --ext .ts,.tsx src/ --cache",
     "lint:fix": "eslint --fix --ext .ts,.tsx src/",
     "format": "prettier --write src/ --config",
-    "storybook": "start-storybook -p 9009 -s public",
-    "build-storybook": "build-storybook -s public"
+    "storybook": "start-storybook -p 9009",
+    "build-storybook": "build-storybook"
   },
   "dependencies": {
     "@craco/craco": "^6.4.5",
@@ -22,6 +22,13 @@
     "@testing-library/jest-dom": "^5.16.4",
     "@testing-library/react": "^13.3.0",
     "@testing-library/user-event": "^13.5.0",
+    "@vanilla-extract/babel-plugin": "^1.1.7",
+    "@vanilla-extract/css": "^1.7.2",
+    "@vanilla-extract/recipes": "^0.2.5",
+    "@vanilla-extract/sprinkles": "^1.4.1",
+    "@vanilla-extract/webpack-plugin": "^2.1.11",
+    "classnames": "^2.3.1",
+    "file-loader": "^6.2.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-scripts": "5.0.1",
@@ -48,8 +55,10 @@
     "@types/testing-library__jest-dom": "^5",
     "babel-plugin-named-exports-order": "^0.0.2",
     "craco-alias": "^3.0.1",
+    "mini-css-extract-plugin": "^2.6.1",
     "prop-types": "^15.8.1",
     "ts-jest": "^28.0.5",
+    "tsconfig-paths-webpack-plugin": "^4.0.0",
     "webpack": "^5.73.0"
   }
 }

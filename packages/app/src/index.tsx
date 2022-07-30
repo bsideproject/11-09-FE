@@ -5,6 +5,7 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import * as serviceWorkerRegistration from './serviceWorkerRegistration';
 
+import '~components/styles/localFonts.css';
 import './index.css';
 
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement);

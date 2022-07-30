@@ -1,21 +1,17 @@
+import classNames from 'classnames';
+
 import { ButtonProps } from './Button.types';
 
-import './button.css';
+import { buttonClassName } from './Button.css';
 
-function Button({ primary = false,
-  size = 'medium',
-  backgroundColor,
-  label,
-  ...props }: ButtonProps) {
-  const mode = primary ? 'storybook-button--primary' : 'storybook-button--secondary';
+function Button(props: ButtonProps) {
+  const { size = 'large', label, ...rest } = props;
+
   return (
     <button
+      {...rest}
       type="button"
-      className={['storybook-button', `storybook-button--${size}`, mode].join(' ')}
-      style={{
-        backgroundColor,
-      }}
-      {...props}
+      className={classNames(buttonClassName({ size }), rest.className)}
     >
       {label}
     </button>
