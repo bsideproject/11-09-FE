@@ -9990,6 +9990,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@types/react", "npm:18.0.15"],\
             ["@types/react-dom", "npm:18.0.6"],\
             ["@types/source-map-support", "npm:0.5.4"],\
+            ["@types/svgo", "npm:2.6.3"],\
             ["@types/testing-library__jest-dom", "npm:5.14.5"],\
             ["@vanilla-extract/babel-plugin", "npm:1.1.7"],\
             ["@vanilla-extract/css", "npm:1.7.2"],\
@@ -10005,6 +10006,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["react", "npm:18.2.0"],\
             ["react-dom", "virtual:d7474fbff71ffdb94b6c248e7215bbc030cd24f64bf47fd1c4986c5e38c67a0e96a83bda3f62761c90d5dd7c8576cee2f1b73d45bd48b9158a3c837ffd2bc4d2#npm:18.2.0"],\
             ["react-scripts", "virtual:d7474fbff71ffdb94b6c248e7215bbc030cd24f64bf47fd1c4986c5e38c67a0e96a83bda3f62761c90d5dd7c8576cee2f1b73d45bd48b9158a3c837ffd2bc4d2#npm:5.0.1"],\
+            ["svgo", "npm:2.8.0"],\
             ["ts-jest", "virtual:d7474fbff71ffdb94b6c248e7215bbc030cd24f64bf47fd1c4986c5e38c67a0e96a83bda3f62761c90d5dd7c8576cee2f1b73d45bd48b9158a3c837ffd2bc4d2#npm:28.0.7"],\
             ["tsconfig-paths-webpack-plugin", "npm:4.0.0"],\
             ["typescript", "patch:typescript@npm%3A4.7.4#~builtin<compat/typescript>::version=4.7.4&hash=7ad353"],\
@@ -10643,6 +10645,16 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/cache/@types-stack-utils-npm-2.0.1-867718ab70-205fdbe332.zip/node_modules/@types/stack-utils/",\
           "packageDependencies": [\
             ["@types/stack-utils", "npm:2.0.1"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
+      ["@types/svgo", [\
+        ["npm:2.6.3", {\
+          "packageLocation": "./.yarn/cache/@types-svgo-npm-2.6.3-4686f3b65b-d72714e565.zip/node_modules/@types/svgo/",\
+          "packageDependencies": [\
+            ["@types/svgo", "npm:2.6.3"],\
+            ["@types/node", "npm:18.0.5"]\
           ],\
           "linkType": "HARD"\
         }]\

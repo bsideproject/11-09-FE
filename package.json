@@ -22,6 +22,9 @@
     "packages/**/src/**/*.{ts,tsx}": [
       "prettier --write",
       "eslint --cache --fix"
+    ],
+    "packages/components/src/assets/icons": [
+      "yarn components svgo"
     ]
   },
   "prepush-if-changed": {

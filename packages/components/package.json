@@ -12,6 +12,7 @@
     "lint": "eslint --ext .ts,.tsx src/ --cache",
     "lint:fix": "eslint --fix --ext .ts,.tsx src/",
     "format": "prettier --write src/ --config",
+    "svgo": "svgo -f src/assets/icons",
     "storybook": "start-storybook -p 9009",
     "build-storybook": "build-storybook"
   },
@@ -32,6 +33,7 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-scripts": "5.0.1",
+    "svgo": "^2.8.0",
     "typescript": "^4.7.4",
     "web-vitals": "^2.1.4"
   },
@@ -52,6 +54,7 @@
     "@types/react": "^18.0.14",
     "@types/react-dom": "^18.0.5",
     "@types/source-map-support": "^0",
+    "@types/svgo": "^2",
     "@types/testing-library__jest-dom": "^5",
     "babel-plugin-named-exports-order": "^0.0.2",
     "craco-alias": "^3.0.1",
