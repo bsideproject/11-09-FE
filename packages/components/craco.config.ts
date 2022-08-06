@@ -1,19 +1,8 @@
 // @ts-nocheck
 import { VanillaExtractPlugin } from '@vanilla-extract/webpack-plugin';
-import CracoAlias from 'craco-alias';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 
 export default {
-  plugins: [
-    {
-      plugin: CracoAlias,
-      options: {
-        source: 'tsconfig',
-        baseUrl: './src',
-        tsConfigPath: 'tsconfig.paths.json',
-      },
-    },
-  ],
   webpack: {
     plugins: [new VanillaExtractPlugin(), new MiniCssExtractPlugin()],
     module: {

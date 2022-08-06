@@ -1,6 +1,6 @@
 import { recipe } from '@vanilla-extract/recipes';
 
-import { vars } from '~styles/global.css';
+import { vars } from '../styles/global.css';
 
 export const headingClassName = recipe({
   base: {

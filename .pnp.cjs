@@ -9999,7 +9999,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@vanilla-extract/webpack-plugin", "virtual:d7474fbff71ffdb94b6c248e7215bbc030cd24f64bf47fd1c4986c5e38c67a0e96a83bda3f62761c90d5dd7c8576cee2f1b73d45bd48b9158a3c837ffd2bc4d2#npm:2.1.11"],\
             ["babel-plugin-named-exports-order", "npm:0.0.2"],\
             ["classnames", "npm:2.3.1"],\
-            ["craco-alias", "npm:3.0.1"],\
             ["file-loader", "virtual:d7474fbff71ffdb94b6c248e7215bbc030cd24f64bf47fd1c4986c5e38c67a0e96a83bda3f62761c90d5dd7c8576cee2f1b73d45bd48b9158a3c837ffd2bc4d2#npm:6.2.0"],\
             ["mini-css-extract-plugin", "virtual:d7474fbff71ffdb94b6c248e7215bbc030cd24f64bf47fd1c4986c5e38c67a0e96a83bda3f62761c90d5dd7c8576cee2f1b73d45bd48b9158a3c837ffd2bc4d2#npm:2.6.1"],\
             ["prop-types", "npm:15.8.1"],\
