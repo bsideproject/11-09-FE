@@ -27,6 +27,8 @@
     "react/jsx-props-no-spreading": "off",
     // https://github.com/jsx-eslint/eslint-plugin-react/blob/master/docs/rules/require-default-props.md
     "react/require-default-props": "off",
+    //https://github.com/jsx-eslint/eslint-plugin-react/blob/master/docs/rules/button-has-type.md
+    "react/button-has-type": "off",
 
     // https://github.com/import-js/eslint-plugin-import/blob/main/docs/rules/extensions.md
     "import/extensions": [
@@ -103,7 +105,7 @@
     },
     "import/resolver": {
       "typescript": {
-        "project": ["tsconfig.json", "packages/**/tsconfig.json"]
+        "project": ["tsconfig.json", "./packages/**/tsconfig.json"]
       }
     }
   }

@@ -9,7 +9,7 @@ function App() {
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
-        <Button label="Shared Button" backgroundColor="white" />
+        <Button label="Shared Button" background="transparent" />
         <p>
           Edit
           <code>src/App.tsx</code>
