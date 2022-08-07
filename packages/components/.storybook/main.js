@@ -2,7 +2,7 @@ const { VanillaExtractPlugin } = require('@vanilla-extract/webpack-plugin');
 const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
 
 module.exports = {
-  stories: ['../src/**/*.stories.mdx', '../src/**/*.stories.@(ts|tsx)'],
+  stories: [{ directory: '../src', titlePrefix: 'Components' }],
   addons: [
     '@storybook/addon-links',
     '@storybook/addon-essentials',

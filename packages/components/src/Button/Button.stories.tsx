@@ -5,7 +5,7 @@ import { ReactComponent as CancelIcon } from '../assets/icons/cancel.svg';
 import Button from './Button';
 
 export default {
-  title: 'UI/Button',
+  title: 'Inputs/Button',
   component: Button,
   argTypes: { background: { control: 'select' } },
 } as ComponentMeta<typeof Button>;

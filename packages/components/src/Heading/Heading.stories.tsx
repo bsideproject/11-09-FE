@@ -3,7 +3,7 @@ import { ComponentMeta, ComponentStory } from '@storybook/react';
 import Heading from './Heading';
 
 export default {
-  title: 'UI/Heading',
+  title: 'Typography/Heading',
   component: Heading,
   argTypes: { as: { control: 'select' } },
 } as ComponentMeta<typeof Heading>;

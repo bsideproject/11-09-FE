@@ -64,7 +64,7 @@ import { ComponentMeta, ComponentStory } from '@storybook/react';
 import Button from './Button';
 
 export default {
-  title: 'UI/Button', // UI와 관련되어 있는 컴포넌트들은 타이틀의 시작을 `UI/`로 사용해 주세요.
+  title: 'Inputs/Button', // 타이틀의 시작을 컴포넌트 기능 성격에 맞게 적절한 이름을 지어 주세요.
   component: Button,
 } as ComponentMeta<typeof Button>;
 
