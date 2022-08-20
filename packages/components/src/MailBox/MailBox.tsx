@@ -18,7 +18,6 @@ import { MailBoxProps } from './MailBox.type';
 
 function MailBox(props: MailBoxProps) {
   const { id, sendName, title, sendDate, wrtieDate, img } = props;
-  console.log(img);
   return (
     <div className={mailBox}>
       <div className={messageLine}>
