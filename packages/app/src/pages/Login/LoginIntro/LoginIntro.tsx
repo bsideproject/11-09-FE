@@ -21,10 +21,11 @@ export const introValue = (nickName = '우영우님') => ({
 
 function LoginIntro() {
   const handleClick = () => undefined;
+
   return (
     <div className={introBodyStyle}>
       <IntroText>
-        {introValue('우영우님').welcome.map((reactNode, index) => (
+        {introValue('우영우').welcome.map((reactNode, index) => (
           <div key={index}>{reactNode}</div>
         ))}
       </IntroText>
