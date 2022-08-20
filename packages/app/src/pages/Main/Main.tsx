@@ -1,5 +1,5 @@
-import mainSend from '@/assets/icons/main_mailbox.svg';
-import mainWrite from '@/assets/icons/main_writeLetter.svg';
+import mainSend from '~components/assets/images/main_mailbox.svg';
+import mainWrite from '~components/assets/images/main_writeLetter.svg';
 
 import Sidebar from '../Sidebar/Sidebar';
 

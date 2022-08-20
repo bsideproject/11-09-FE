@@ -1,5 +1,4 @@
 /* eslint-disable */
-import axios from 'axios';
 import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
@@ -9,21 +8,20 @@ import KakaoLoginBtn from '@/assets/icons/login_btn.svg';
 import { kakaoApi } from '../../config';
 import { setCookie } from '../../cookie';
 
-import { loginUser } from './Login.type';
 import LoginTimer from './TimerComponents/TimerComponents';
 
 import { bottomNav, bottomNav2, kakaoLogin, loginBody } from './Login.css';
 
 function Login() {
-  const codes = new URL(window.location.href).searchParams.get('code');
+  const codes = new URL(window.location.href).searchParams.get('code') || '';
   useEffect(() => {
     const loginApiCall = async () => {
       try {
         // const response = await axios.post<loginUser>('https://api.timeletter.net/oauth/kakao', { code: codes });
-        const response = await axios.get<loginUser>('https://jsonplaceholder.typicode.com/posts');
+        // const response = await axios.get<loginUser>('https://jsonplaceholder.typicode.com/posts');
         const expires = new Date();
         expires.setMonth(expires.getMonth() + 1)
-        setCookie('token', response.data.token, { path: '/', expires });
+        setCookie('token', codes, { path: '/', expires });
         // window.localStorage.setItem('nickNmae', `${response.data.nickname}`);
         window.sessionStorage.setItem('nickNmae', '우영우님');
         window.location.href = '/loginIntro';
