@@ -10216,6 +10216,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["react-scripts", "virtual:d7474fbff71ffdb94b6c248e7215bbc030cd24f64bf47fd1c4986c5e38c67a0e96a83bda3f62761c90d5dd7c8576cee2f1b73d45bd48b9158a3c837ffd2bc4d2#npm:5.0.1"],\
             ["ts-jest", "virtual:d7474fbff71ffdb94b6c248e7215bbc030cd24f64bf47fd1c4986c5e38c67a0e96a83bda3f62761c90d5dd7c8576cee2f1b73d45bd48b9158a3c837ffd2bc4d2#npm:28.0.7"],\
             ["typescript", "patch:typescript@npm%3A4.7.4#~builtin<compat/typescript>::version=4.7.4&hash=7ad353"],\
+            ["universal-cookie", "npm:4.0.4"],\
             ["web-vitals", "npm:2.1.4"],\
             ["workbox-background-sync", "npm:6.5.3"],\
             ["workbox-broadcast-update", "npm:6.5.3"],\
@@ -10437,6 +10438,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@types/connect-history-api-fallback", "npm:1.3.5"],\
             ["@types/express-serve-static-core", "npm:4.17.29"],\
             ["@types/node", "npm:18.0.5"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
+      ["@types/cookie", [\
+        ["npm:0.3.3", {\
+          "packageLocation": "./.yarn/cache/@types-cookie-npm-0.3.3-a5ddc16db3-450c930d79.zip/node_modules/@types/cookie/",\
+          "packageDependencies": [\
+            ["@types/cookie", "npm:0.3.3"]\
           ],\
           "linkType": "HARD"\
         }]\
@@ -14815,6 +14825,13 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]\
       ]],\
       ["cookie", [\
+        ["npm:0.4.2", {\
+          "packageLocation": "./.yarn/cache/cookie-npm-0.4.2-7761894d5f-a00833c998.zip/node_modules/cookie/",\
+          "packageDependencies": [\
+            ["cookie", "npm:0.4.2"]\
+          ],\
+          "linkType": "HARD"\
+        }],\
         ["npm:0.5.0", {\
           "packageLocation": "./.yarn/cache/cookie-npm-0.5.0-e2d58a161a-1f4bd2ca57.zip/node_modules/cookie/",\
           "packageDependencies": [\
@@ -30203,6 +30220,17 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["unist-util-visit-parents", "npm:3.1.1"],\
             ["@types/unist", "npm:2.0.6"],\
             ["unist-util-is", "npm:4.1.0"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
+      ["universal-cookie", [\
+        ["npm:4.0.4", {\
+          "packageLocation": "./.yarn/cache/universal-cookie-npm-4.0.4-aa9b4bcfbf-bb2bafa7eb.zip/node_modules/universal-cookie/",\
+          "packageDependencies": [\
+            ["universal-cookie", "npm:4.0.4"],\
+            ["@types/cookie", "npm:0.3.3"],\
+            ["cookie", "npm:0.4.2"]\
           ],\
           "linkType": "HARD"\
         }]\
