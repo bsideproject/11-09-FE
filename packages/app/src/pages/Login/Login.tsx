@@ -21,12 +21,9 @@ function Login() {
       try {
         // const response = await axios.post<loginUser>('https://api.timeletter.net/oauth/kakao', { code: codes });
         const response = await axios.get<loginUser>('https://jsonplaceholder.typicode.com/posts');
-        window.localStorage.setItem('token', response.data.token);
-
         const expires = new Date();
         expires.setMonth(expires.getMonth() + 1)
         setCookie('token', response.data.token, { path: '/', expires });
-        
         // window.localStorage.setItem('nickNmae', `${response.data.nickname}`);
         window.sessionStorage.setItem('nickNmae', '우영우님');
         window.location.href = '/loginIntro';
