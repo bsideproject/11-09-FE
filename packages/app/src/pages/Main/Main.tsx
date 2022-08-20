@@ -9,7 +9,7 @@ import { mainBody } from './Main.css';
 
 function Main() {
   return (
-    <div style={{ all: 'unset' }}>
+  <div>
       <Sidebar titleName="타임레터" menu={1} />
       <div className={mainBody}>
         <MainBox value="편지쓰기" img={mainWrite} path="/" />

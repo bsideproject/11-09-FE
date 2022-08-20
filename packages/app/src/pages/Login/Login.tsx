@@ -19,7 +19,6 @@ function Login() {
     const loginApiCall = async () => {
       try {
         // const response = await axios.post<loginUser>('https://api.timeletter.net/oauth/kakao', { code: codes });
-        // const response = await axios.get<loginUser>('https://jsonplaceholder.typicode.com/posts');
         console.log('oeuouoeuouo');
         const expires = new Date();
         expires.setMonth(expires.getMonth() + 1)
@@ -27,7 +26,6 @@ function Login() {
         // window.localStorage.setItem('nickNmae', `${response.data.nickname}`);
         window.sessionStorage.setItem('nickNmae', '우영우님');
         navigate('/intro', { replace: true });
-        // window.location.href = '/loginIntro';
       } catch (e) {
         console.log(e);
       }

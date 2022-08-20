@@ -4,6 +4,8 @@ import { Link } from 'react-router-dom';
 
 import arrowLargImg from '@/assets/icons/main_arrowLarge.svg';
 
+import box from '@/assets/icons/main_box.svg';
+
 import { Heading } from '~components/index';
 
 import { mainBoxProps } from './MainBox.type';
@@ -13,10 +15,10 @@ import { arrowLarge, mainBox, oneTag, spanTag } from './MainBox.css';
 function MainBox(props: mainBoxProps) {
   const [viewHober, hover] = useState(true);
   const { path, img, value } = props;
-
   return (
     <div
       style={{
+        background : `url('${box}')`,
         backgroundSize: 'auto',
         backgroundRepeat: 'no-repeat',
       }}
