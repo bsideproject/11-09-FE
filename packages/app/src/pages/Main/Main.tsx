@@ -1,5 +1,5 @@
-import mainSend from '~components/assets/images/main_mailbox.svg';
-import mainWrite from '~components/assets/images/main_writeLetter.svg';
+import mainWrite from '@/assets/icons//main_writeLetter.svg';
+import mainSend from '@/assets/icons/main_mailbox.svg';
 
 import Sidebar from '../Sidebar/Sidebar';
 
@@ -9,7 +9,7 @@ import { mainBody } from './Main.css';
 
 function Main() {
   return (
-    <div>
+    <div style={{ all: 'unset' }}>
       <Sidebar titleName="타임레터" menu={1} />
       <div className={mainBody}>
         <MainBox value="편지쓰기" img={mainWrite} path="/" />

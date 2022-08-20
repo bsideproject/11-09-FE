@@ -10,11 +10,11 @@ import Reminder from './Reminder/Reminder';
 function Routers() {
   return (
     <Switch>
-      <Route path="/" element={<Login />} />
-      <Route path="/main" element={<Main />} />
+      <Route path="/login" element={<Login />} />
+      <Route path="/" element={<Main />} />
       <Route path="/reminder" element={<Reminder />} />
       <Route path="/myPage" element={<MyPage />} />
-      <Route path="/loginIntro" element={<LoginIntro />} />
+      <Route path="/intro" element={<LoginIntro />} />
       <Route path="/letterBox" element={<LetterBox />} />
     </Switch>
   );

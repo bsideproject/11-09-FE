@@ -6,9 +6,9 @@ function IntroText(props: IntroTextProps) {
   const { children } = props;
 
   return (
-    <p className={introTextStyle}>
+    <div className={introTextStyle}>
       {children}
-    </p>
+    </div>
   );
 }
 

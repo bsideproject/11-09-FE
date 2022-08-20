@@ -1,6 +1,6 @@
 /* eslint-disable */
 import { useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 import { ReactComponent as LoginBg } from '@/assets/icons/login_bg.svg';
 import KakaoLoginBtn from '@/assets/icons/login_btn.svg';
@@ -14,17 +14,20 @@ import { bottomNav, bottomNav2, kakaoLogin, loginBody } from './Login.css';
 
 function Login() {
   const codes = new URL(window.location.href).searchParams.get('code') || '';
+  const navigate = useNavigate();
   useEffect(() => {
     const loginApiCall = async () => {
       try {
         // const response = await axios.post<loginUser>('https://api.timeletter.net/oauth/kakao', { code: codes });
         // const response = await axios.get<loginUser>('https://jsonplaceholder.typicode.com/posts');
+        console.log('oeuouoeuouo');
         const expires = new Date();
         expires.setMonth(expires.getMonth() + 1)
         setCookie('token', codes, { path: '/', expires });
         // window.localStorage.setItem('nickNmae', `${response.data.nickname}`);
         window.sessionStorage.setItem('nickNmae', '우영우님');
-        window.location.href = '/loginIntro';
+        navigate('/intro', { replace: true });
+        // window.location.href = '/loginIntro';
       } catch (e) {
         console.log(e);
       }
