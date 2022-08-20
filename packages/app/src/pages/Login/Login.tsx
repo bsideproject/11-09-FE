@@ -3,10 +3,11 @@ import axios from 'axios';
 import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
-import loginBg from '@/assets/icons/login_bg.svg';
+import { ReactComponent as LoginBg } from '@/assets/icons/login_bg.svg';
 import KakaoLoginBtn from '@/assets/icons/login_btn.svg';
 
 import { kakaoApi } from '../../config';
+import { setCookie } from '../../cookie';
 
 import { loginUser } from './Login.type';
 import LoginTimer from './TimerComponents/TimerComponents';
@@ -18,9 +19,14 @@ function Login() {
   useEffect(() => {
     const loginApiCall = async () => {
       try {
-        const response = await axios.post<loginUser>('https://api.timeletter.net/oauth/kakao', { code: codes });
-        // const response = await axios.get<loginUser>('https://jsonplaceholder.typicode.com/posts');
+        // const response = await axios.post<loginUser>('https://api.timeletter.net/oauth/kakao', { code: codes });
+        const response = await axios.get<loginUser>('https://jsonplaceholder.typicode.com/posts');
         window.localStorage.setItem('token', response.data.token);
+
+        const expires = new Date();
+        expires.setMonth(expires.getMonth() + 1)
+        setCookie('token', response.data.token, { path: '/', expires });
+        
         // window.localStorage.setItem('nickNmae', `${response.data.nickname}`);
         window.sessionStorage.setItem('nickNmae', '우영우님');
         window.location.href = '/loginIntro';
@@ -34,16 +40,17 @@ function Login() {
   }, []);
 
   return (
-    <div
-      style={{
-        background: `url(${loginBg})`,
-        backgroundSize: 'auto',
-        backgroundRepeat: 'no-repeat',
-      }}
-      className={loginBody}
-    >
+    <div className={loginBody}>
+      <LoginBg />
       <LoginTimer />
       <a className={kakaoLogin} href={kakaoApi.kakaoLogin}>
+        {/* <Button
+          style={{ color: vars.colors.black, background: vars.colors.yello }}
+          label="카카오로 시작하기"
+          size="small"
+          variant="solid"
+          iconPosition="left"
+        ><KakaoIcon style={{ right: 10 }} /></Button> */}
         <img src={KakaoLoginBtn} alt="login" />
       </a>
       <span className={bottomNav}>

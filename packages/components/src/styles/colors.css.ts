@@ -6,6 +6,7 @@ export const colorSystem = {
   secondary: '#84FDD1',
   black: '#26242E',
   white: '#FFF',
+  yello: '#FEE500',
   gray900: '#444249',
   gray700: '#828187',
   gray500: '#C1C1C1',

@@ -12,15 +12,15 @@ import {
   messageLine,
   titleSpan
 } from './MailBox.css';
+
 import { MailBoxProps } from './MailBox.type';
 
 function MailBox(props: MailBoxProps) {
-  const { id, sendName, title, content, sendDate, wrtieDate, img } = props;
-  console.log(img)
+  const { id, sendName, title, sendDate, wrtieDate, img } = props;
   return (
-    <div className={mailBox}>
+    <div className={mailBox} id={id}>
       <div className={messageLine}>
-        <img className={mailIcon} src={img != '' ? img : Sample} alt="icon" />
+        <img className={mailIcon} src={img !== '' ? img : Sample} alt="icon" />
         <span className={contentSpan}>
           <span className={titleSpan}>TO. {sendName}</span>
           <br />
@@ -29,11 +29,17 @@ function MailBox(props: MailBoxProps) {
       </div>
       <div className={dateLine}>
         <img className={dateIcon} src={Send} alt="dateIcon" />
-        <span className={dateSpan}>편지 보낸 날 : {sendDate}</span>
+        <span className={dateSpan}>
+          편지 보낸 날 : 
+          {sendDate}
+        </span>
       </div>
       <div className={dateLine}>
         <img className={dateIcon} src={LetterOpen} alt="dateIcon" />
-        <span className={dateSpan}> 편지 열 수 있는 날 : {wrtieDate}</span>
+        <span className={dateSpan}> 
+          편지 열 수 있는 날 : 
+          {wrtieDate}
+        </span>
       </div>
     </div>
   );

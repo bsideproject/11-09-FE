@@ -28,7 +28,6 @@ function LetterBox() {
       {/* Nav를 컴포넌트로 빼는게 맞는건지.. */}
       <div className={letterBody}>
         <MailBox
-          content=""
           id=""
           img={Sample}
           sendDate="2022년 10월 16일 오후 11:25"
