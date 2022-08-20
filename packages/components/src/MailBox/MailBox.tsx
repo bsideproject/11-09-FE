@@ -1,3 +1,4 @@
+/* eslint-disable */
 import Sample from '../assets/icons/letter-sample.svg';
 import LetterOpen from '../assets/icons/letter_open.svg';
 import Send from '../assets/icons/letter_send.svg';
@@ -16,8 +17,8 @@ import {
 import { MailBoxProps } from './MailBox.type';
 
 function MailBox(props: MailBoxProps) {
-  const { id, sendName, title,sendDate, wrtieDate, img } = props;
-  console.log(img)
+  const { id, sendName, title, sendDate, wrtieDate, img } = props;
+  console.log(img);
   return (
     <div className={mailBox}>
       <div className={messageLine}>
