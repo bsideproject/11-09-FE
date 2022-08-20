@@ -9,7 +9,7 @@
     "lint:fix": "eslint --fix --ext .ts,.tsx src/",
     "format": "prettier --write src/ --config",
     "svgo": "svgo -f src/assets/icons",
-    "storybook": "start-storybook -p 9009",
+    "start": "start-storybook -p 9009",
     "build": "build-storybook"
   },
   "dependencies": {

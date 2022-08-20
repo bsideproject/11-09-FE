@@ -9,7 +9,8 @@
   "scripts": {
     "app": "yarn workspace @timeletter_fe/app",
     "components": "yarn workspace @timeletter_fe/components",
-    "start:all": "concurrently --kill-others \"yarn app start\" \"yarn components storybook\"",
+    "docker-start:all": "yarn workspaces foreach --parallel -i run start",
+    "start:all": "concurrently --kill-others \"yarn app start\" \"yarn components start\"",
     "test:all": "yarn workspaces foreach --parallel run test",
     "lint:all": "yarn workspaces foreach --parallel run lint",
     "format:all": "yarn workspaces foreach --parallel run format",
