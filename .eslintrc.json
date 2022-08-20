@@ -29,6 +29,8 @@
     "react/require-default-props": "off",
     //https://github.com/jsx-eslint/eslint-plugin-react/blob/master/docs/rules/button-has-type.md
     "react/button-has-type": "off",
+    // https://github.com/jsx-eslint/eslint-plugin-react/blob/master/docs/rules/no-array-index-key.md
+    "react/no-array-index-key": "off",
 
     // https://github.com/import-js/eslint-plugin-import/blob/main/docs/rules/extensions.md
     "import/extensions": [
