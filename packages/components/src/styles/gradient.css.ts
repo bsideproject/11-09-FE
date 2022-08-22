@@ -1,9 +1,8 @@
 import { createVar } from '@vanilla-extract/css';
 import { recipe } from '@vanilla-extract/recipes';
 
-import { createOutlineGradientBackgroundImage, important } from './tools';
-
 import { vars } from './global.css';
+import { createOutlineGradientBackgroundImage, important } from './tools';
 
 export const outlineLinearGradientVar = createVar();
 

@@ -3,9 +3,8 @@ import classNames from 'classnames';
 
 import { ProgressBar as BProgressBar } from '@blueprintjs/core';
 
-import { ProgressBarProps } from './ProgressBar.types';
-
 import { progressBarStyle } from './ProgressBar.css';
+import { ProgressBarProps } from './ProgressBar.types';
 
 const fullValue = 1;
 function ProgressBar(props: ProgressBarProps) {

@@ -2,12 +2,11 @@ import classNames from 'classnames';
 
 import { ReactComponent as ArrowGradientPrev } from '../../assets/images/arrow-gradient-back.svg';
 import { ReactComponent as ArrowGradientNext } from '../../assets/images/arrow-gradient-front.svg';
+import { gradientOutlineRecipe } from '../../styles/gradient.css';
 import Button from '../Button';
 
-import { ButtonNextProps } from './ButtonPrevNext.types';
-
-import { gradientOutlineRecipe } from '../../styles/gradient.css';
 import { buttonNextStyle, buttonPrevStyle } from './ButtonPrevNext.css';
+import { ButtonNextProps } from './ButtonPrevNext.types';
 
 export function ButtonPrev(props: ButtonNextProps) {
   const { className, ...rest } = props;
@@ -15,7 +14,11 @@ export function ButtonPrev(props: ButtonNextProps) {
   return (
     <Button
       {...rest}
-      className={classNames(buttonPrevStyle, gradientOutlineRecipe({ background: 'black' }), className)}
+      className={classNames(
+        buttonPrevStyle,
+        gradientOutlineRecipe({ background: 'black' }),
+        className,
+      )}
       borderColor="gradient"
     >
       <ArrowGradientPrev />
@@ -28,7 +31,11 @@ export function ButtonNext(props: ButtonNextProps) {
   return (
     <Button
       {...rest}
-      className={classNames(buttonNextStyle, gradientOutlineRecipe({ background: 'black' }), className)}
+      className={classNames(
+        buttonNextStyle,
+        gradientOutlineRecipe({ background: 'black' }),
+        className,
+      )}
       borderColor="gradient"
     >
       <ArrowGradientNext />

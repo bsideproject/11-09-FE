@@ -1,14 +1,13 @@
-/* eslint-disable simple-import-sort/imports */
-/* eslint-disable import/order */
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+
 import { Button } from '~components/index';
+import { fontSprinkles } from '~components/styles/fonts.css';
 
 import IntroText from '../IntroText/IntroText';
-import { LoginIntroType } from './LoginIntro.types';
 
-import { fontSprinkles } from '~components/styles/fonts.css';
 import { introBodyStyle } from './LoginIntro.css';
+import { LoginIntroType } from './LoginIntro.types';
 
 // TODO: api 통신 후 mock 데이터 제거하기
 export const introValue = (nickName = '우영우님') => ({

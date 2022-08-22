@@ -1,10 +1,9 @@
 import classNames from 'classnames';
 
 import { ButtonNext, ButtonPrev } from './ButtonPrevNext/ButtonPrevNext';
+import { buttonRecipe, buttonSprinkles, buttonStyle } from './Button.css';
 import { ButtonProps, IconOnlyProps, WithIconProps } from './Button.types';
 import { getBackground } from './Button.utils';
-
-import { buttonRecipe, buttonSprinkles, buttonStyle } from './Button.css';
 
 function Button(props: IconOnlyProps): JSX.Element;
 function Button(props: WithIconProps): JSX.Element;

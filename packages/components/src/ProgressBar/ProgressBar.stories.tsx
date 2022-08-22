@@ -1,8 +1,8 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 
-import ProgressBar from './ProgressBar';
-
 import { vars } from '../styles/global.css';
+
+import ProgressBar from './ProgressBar';
 
 export default {
   title: 'Feedback/ProgressBar',
