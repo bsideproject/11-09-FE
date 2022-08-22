@@ -4908,6 +4908,7 @@ __metadata:
     "@types/testing-library__jest-dom": ^5
     "@vanilla-extract/babel-plugin": ^1.1.7
     "@vanilla-extract/css": ^1.7.2
+    "@vanilla-extract/css-utils": ^0.1.2
     "@vanilla-extract/recipes": ^0.2.5
     "@vanilla-extract/sprinkles": ^1.4.1
     "@vanilla-extract/webpack-plugin": ^2.1.11
@@ -4917,6 +4918,7 @@ __metadata:
     prop-types: ^15.8.1
     react: ^18.2.0
     react-dom: ^18.2.0
+    react-number-format: ^4.9.3
     react-scripts: 5.0.1
     svgo: ^2.8.0
     ts-jest: ^28.0.5
@@ -5806,6 +5808,13 @@ __metadata:
     "@babel/template": ^7.12.13
     "@vanilla-extract/integration": ^5.0.0
   checksum: 0fd00a1190c9413320d82ef797ef3149ba89e64eaa18d0d09d0235c025d6ab41b453718654e390c84aca322b883d663e3300d672bae9d74157838f73244ba94b
+  languageName: node
+  linkType: hard
+
+"@vanilla-extract/css-utils@npm:^0.1.2":
+  version: 0.1.2
+  resolution: "@vanilla-extract/css-utils@npm:0.1.2"
+  checksum: 002c65889910c5a1f6672f2f0451e9667aa2a5e17eeb58cf14f4eda1869c6eed9a6a25951ffa444650a65919ecb61831c05380707ab787568be10927653ed53c
   languageName: node
   linkType: hard
 
@@ -17810,6 +17819,18 @@ __metadata:
   version: 1.1.0
   resolution: "react-merge-refs@npm:1.1.0"
   checksum: 90884352999002d868ab9f1bcfe3222fb0f2178ed629f1da7e98e5a9b02a2c96b4aa72800db92aabd69d2483211b4be57a2088e89a11a0b660e7ada744d4ddf7
+  languageName: node
+  linkType: hard
+
+"react-number-format@npm:^4.9.3":
+  version: 4.9.3
+  resolution: "react-number-format@npm:4.9.3"
+  dependencies:
+    prop-types: ^15.7.2
+  peerDependencies:
+    react: ^0.14 || ^15.0.0 || ^16.0.0 || ^17.0.0 || ^18.0.0
+    react-dom: ^0.14 || ^15.0.0 || ^16.0.0 || ^17.0.0 || ^18.0.0
+  checksum: 74460ee813284b78d37e4459891d63b49e3276e1e506ffe85057696b9b4793e0fc9b8a77222e50cdc4ecefddb764774a20d2cfc92dce26aed13316b3f2e3b9c9
   languageName: node
   linkType: hard
 
