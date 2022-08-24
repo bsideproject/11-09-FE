@@ -1,16 +1,13 @@
-/* eslint-disable */
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 
 import arrowLargImg from '@/assets/icons/main_arrowLarge.svg';
-
 import box from '@/assets/icons/main_box.svg';
 
 import { Heading } from '~components/index';
 
-import { mainBoxProps } from './MainBox.type';
-
 import { arrowLarge, mainBox, oneTag, spanTag } from './MainBox.css';
+import { mainBoxProps } from './MainBox.type';
 
 function MainBox(props: mainBoxProps) {
   const [viewHober, hover] = useState(true);
@@ -18,7 +15,7 @@ function MainBox(props: mainBoxProps) {
   return (
     <div
       style={{
-        background : `url('${box}')`,
+        background: `url('${box}')`,
         backgroundSize: 'auto',
         backgroundRepeat: 'no-repeat',
       }}

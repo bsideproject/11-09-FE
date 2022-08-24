@@ -1,8 +1,7 @@
-/* eslint-disable */
 import { useLayoutEffect, useState } from 'react';
-
 import moment from 'moment';
-import { time } from '../Login.css';
+
+import { timeStyle } from './TimeComponent.css';
 
 function LoginTimer() {
   let timeState = '';
@@ -17,7 +16,7 @@ function LoginTimer() {
     return () => clearInterval(timer);
   }, []);
 
-  return <p className={time}>{runningTime}</p>;
+  return <p className={timeStyle}>{runningTime}</p>;
 }
 
 export default LoginTimer;
