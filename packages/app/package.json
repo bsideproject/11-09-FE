@@ -57,5 +57,6 @@
     "css-loader": "^6.7.1",
     "mini-css-extract-plugin": "^2.6.1",
     "ts-jest": "^28.0.5"
-  }
+  },
+  "proxy": "https://api.timeletter.net"
 }

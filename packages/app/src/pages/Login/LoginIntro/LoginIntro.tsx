@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 import { Button, Heading, Text } from '~components/index';
 
@@ -14,12 +14,13 @@ export const introValue = (nickName = '우영우님') => ({
     <Heading size={2} color="white">
       <Text as="span" size={4} color="secondary" asHeadingFont>
         {nickName}
+        님
       </Text>
-      &nbsp;만나서 반가워요.
+      ,&nbsp;&nbsp;만나서 반가워요.
       {'\n'}
       타임캡슐 편지 서비스 타임레터는
       {'\n'}
-      편지 보내기 전
+      편지 보내기 전&nbsp;&nbsp;
       <Text as="span" size={4} color="secondary" asHeadingFont>
         상대방이 편지 읽을 수
       </Text>
@@ -62,7 +63,8 @@ function LoginIntro() {
   const handleClick = () => {
     setIntroStep((prev) => prev + 1);
   };
-
+  const location = useLocation();
+  const nickName = location.state as { nickName: string};
   const navigate = useNavigate();
   useEffect(() => {
     if (introStep > 3) {
@@ -76,7 +78,7 @@ function LoginIntro() {
 
   return (
     <div className={introBodyStyle}>
-      <IntroText>{introValue()[intro]}</IntroText>
+      <IntroText>{introValue(nickName.nickName)[intro]}</IntroText>
 
       <Button
         style={{ background: '#8055FA', width: '200px' }}

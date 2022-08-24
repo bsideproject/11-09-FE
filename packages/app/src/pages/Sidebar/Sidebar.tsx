@@ -1,12 +1,9 @@
-/* eslint-disable */
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 
 import Back from '@/assets/icons/sidebar_back.svg';
 import Cansel from '@/assets/icons/sidebar_cansel.svg';
 import Open from '@/assets/icons/sidebar_menu.svg';
-
-import { SidebarData, SidebarProps } from './Sidebar.type';
 
 import {
   backIcon, barColor,
@@ -16,8 +13,9 @@ import {
   openIcon,
   sideBar,
   titleText,
-  ulstyle
+  ulstyle,
 } from './Sidebar.css';
+import { SidebarData, SidebarProps } from './Sidebar.type';
 
 function Sidebar(props: SidebarProps) {
   const [sidebar, setSidebar] = useState(false);
