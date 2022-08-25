@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 import { kakaoApi, localApi } from '@/config';
-import { setCookie } from '@/cookie';
+import { setCookie } from '@/utils/cookies';
 
 const expires = new Date();
 expires.setMonth(expires.getMonth() + 1);

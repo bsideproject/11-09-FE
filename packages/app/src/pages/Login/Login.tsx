@@ -9,18 +9,13 @@ import { fontSystem } from '@timeletter_fe/components/src/styles/fonts.css';
 import LoginBg from '~components/assets/icons/login_bg.svg';
 import { ReactComponent as Logo } from '~components/assets/icons/login_logo.svg';
 import { ReactComponent as KaKaoIcon } from '~components/assets/images/kakao_icon.svg';
- import LoginBorder from '~components/assets/images/login_bg_one.png';
+import LoginBorder from '~components/assets/images/login_bg_one.png';
 import { Button } from '~components/index';
+import { getCookie } from '@/utils/cookies';
 
 import LoginTimer from './TimerComponents/TimerComponents';
-import {
-  kakaoLoginStyle,
-  linkBottomStyle,
-  loginBodyStyle,
-  txtBottomStyle,
-} from './Login.css';
+import { kakaoLoginStyle, linkBottomStyle, loginBodyStyle, txtBottomStyle } from './Login.css';
 import { kakaoAccessToken } from './Login.utils';
-import { getCookie } from '@/cookie';
 
 function Login() {
   const codes = new URL(window.location.href).searchParams.get('code') || '';
@@ -66,7 +61,7 @@ function Login() {
             color: colorSystem.black,
             fontSize: fontSystem.body.size[3],
             gap: 10,
-            marginTop: '60%'
+            marginTop: '60%',
           }}
           className={kakaoLoginStyle}
           label="카카오로 5초만에 시작하기"

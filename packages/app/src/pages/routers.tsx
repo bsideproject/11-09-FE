@@ -1,4 +1,7 @@
-import { Route, Routes as Switch } from 'react-router-dom';
+import { useEffect } from 'react';
+import { Route, Routes as Switch, useNavigate } from 'react-router-dom';
+
+import { getCookie } from '@/utils/cookies';
 
 import LetterBox from './LetterBox/LetterBox';
 import Login from './Login/Login';
@@ -8,6 +11,14 @@ import MyPage from './MyPage/MyPage';
 import Reminder from './Reminder/Reminder';
 
 function Routers() {
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (!getCookie('token') && navigate.name !== '/login') {
+      navigate('/login', { replace: true });
+    }
+  }, []);
+
   return (
     <Switch>
       <Route path="/login" element={<Login />} />
