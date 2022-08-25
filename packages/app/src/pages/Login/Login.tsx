@@ -2,7 +2,7 @@
 import { useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 
-import { kakaoApi } from '@/config';
+import env from '@/config';
 import { colorSystem } from '@timeletter_fe/components/src/styles/colors.css';
 import { fontSystem } from '@timeletter_fe/components/src/styles/fonts.css';
 
@@ -54,7 +54,7 @@ function Login() {
       <img style={{ position: 'absolute', width: '100%' }} src={LoginBorder} />
       <LoginTimer />
       <Logo style={{ position: 'absolute' }} />
-      <a href={`${kakaoApi.kakaoLogin}`}>
+      <a href={env.kakaoLogin}>
         <Button
           style={{
             background: colorSystem.yellow,
