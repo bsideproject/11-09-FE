@@ -6,9 +6,10 @@ import { Button, Heading, Text } from '~components/index';
 import IntroText from '../IntroText/IntroText';
 
 import { introBodyStyle } from './LoginIntro.css';
-import { LoginIntroType } from './LoginIntro.types';
+import { LoginIntroPorps, LoginIntroType } from './LoginIntro.types';
 
 // TODO: api 통신 후 mock 데이터 제거하기
+// TODO: 뛰어씌 필요한 부분 {} 수정 --> nbsp -> {' '} 변경시 코드 복잡성 증가
 export const introValue = (nickName = '우영우님') => ({
   intro1: (
     <Heading size={2} color="white">
@@ -16,17 +17,15 @@ export const introValue = (nickName = '우영우님') => ({
         {nickName}
         님
       </Text>
-      ,&nbsp;&nbsp;만나서 반가워요.
-      {'\n'}
-      타임캡슐 편지 서비스 타임레터는
-      {'\n'}
-      편지 보내기 전&nbsp;&nbsp;
+      {', 만나서 반가워요. \n'}
+      {'타임캡슐 편지 서비스 타임레터는 \n'}
+      {'편지 보내기 전 '}
       <Text as="span" size={4} color="secondary" asHeadingFont>
         상대방이 편지 읽을 수
       </Text>
       {'\n'}
       <Text as="span" size={4} color="secondary" asHeadingFont>
-        있는 시간 선택
+        있는 시간을 선택
       </Text>
       할 수 있어요.
     </Heading>
@@ -49,11 +48,16 @@ export const introValue = (nickName = '우영우님') => ({
       <Text as="span" size={4} color="secondary" asHeadingFont>
         이 순간의 애정
       </Text>
-      을
-      {'\n'}
+      {'을 \n'}
       고스란히 보내볼까요?💌
     </Heading>
   ),
+});
+
+export const buttonValue = () => ({
+  intro1: '신기해요 😮',
+  intro2: '그렇군요 🤔',
+  intro3: '좋아요 🥰',
 });
 
 function LoginIntro() {
@@ -63,8 +67,9 @@ function LoginIntro() {
   const handleClick = () => {
     setIntroStep((prev) => prev + 1);
   };
+  // TODO : useLocation 에 Type설정 router-v6부터 불가
   const location = useLocation();
-  const nickName = location.state as { nickName: string};
+  const nickName = location.state as LoginIntroPorps;
   const navigate = useNavigate();
   useEffect(() => {
     if (introStep > 3) {
@@ -82,7 +87,7 @@ function LoginIntro() {
 
       <Button
         style={{ background: '#8055FA', width: '200px' }}
-        label="네!"
+        label={buttonValue()[intro]}
         size="small"
         variant="solid"
         onClick={handleClick}

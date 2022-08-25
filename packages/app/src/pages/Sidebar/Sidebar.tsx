@@ -6,8 +6,9 @@ import Cansel from '@/assets/icons/sidebar_cansel.svg';
 import Open from '@/assets/icons/sidebar_menu.svg';
 
 import {
-  backIcon, barColor,
-  canSelIcon,
+  backIcon,
+  barColor,
+  cancelIcon,
   liStyle,
   Nav,
   openIcon,
@@ -37,7 +38,7 @@ function Sidebar(props: SidebarProps) {
       <div className={barColor({ open: sidebar })}>
         <div className={sideBar({ open: sidebar })}>
           <div>
-            <button type="submit" className={canSelIcon} onClick={showSidebar}>
+            <button type="submit" className={cancelIcon} onClick={showSidebar}>
               <img alt="canSel" src={Cansel} />
             </button>
           </div>

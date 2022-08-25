@@ -3,14 +3,15 @@ import { style } from '@vanilla-extract/css';
 import { vars } from '~components/styles/global.css';
 
 export const loginBodyStyle = style({
-  position: 'absolute',
+  position: 'relative',
   top: '0',
-  left: '50%',
-  transform: 'translateX(-50%)',
   width: '360px',
   height: '100vh',
   display: 'flex',
   flexDirection: 'column',
+  alignItems: 'center',
+  margin: 'auto',
+  justifyContent: 'center',
 });
 
 export const iconOneStyle = style({
@@ -39,6 +40,7 @@ export const txtBottomStyle = style({
   height: '40px',
   lineHeight: '20px',
   textAlign: 'center',
+  marginTop: '5%',
   color: '#FFFFFF',
 });
 
@@ -48,7 +50,9 @@ export const linkBottomStyle = style({
   fontWeight: '700',
   fontSize: vars.fonts.body.size[1],
   lineHeight: '18px',
-  display: 'flex',
+  display: 'inline-flex',
+  gap: 10,
   textAlign: 'center',
   color: '#FFFFFF',
+  marginTop: '5%',
 });

@@ -4,11 +4,9 @@ import Routers from './pages/routers';
 
 function App() {
   return (
-    <div>
-      <BrowserRouter>
-        <Routers />
-      </BrowserRouter>
-    </div>
+    <BrowserRouter>
+      <Routers />
+    </BrowserRouter>
   );
 }
 

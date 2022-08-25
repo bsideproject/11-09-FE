@@ -108,7 +108,7 @@ export const sideBar = recipe({
   },
 });
 
-export const canSelIcon = style({
+export const cancelIcon = style({
   display: 'flex',
   flexFlow: 'row nowrap',
   position: 'fixed',
