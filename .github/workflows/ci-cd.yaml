@@ -22,6 +22,7 @@ jobs:
           echo REACT_APP_KAKAO_API_LOGIN_URL=${{ secrets.REACT_APP_KAKAO_API_LOGIN_URL }} >> .env.production
           echo REACT_APP_KAKAO_API_ACCESS_TOKEN=${{ secrets.REACT_APP_KAKAO_API_ACCESS_TOKEN }} >> .env.production
           echo REACT_APP_KAKAO_API_MESSAGE_URL=${{ secrets.REACT_APP_KAKAO_API_MESSAGE_URL }} >> .env.production
+          echo REACT_APP_LOCAL=${{ secrets.REACT_APP_LOCAL }} >> .env.production
           cat .env.production
 
 
@@ -52,7 +53,7 @@ jobs:
             sudo docker pull ${{ secrets.DOCKER_USERNAME }}/${{ secrets.DOCKER_IMAGE_NAME }}
             sudo docker stop ${{ secrets.DOCKER_IMAGE_NAME }}
             sudo docker rm ${{ secrets.DOCKER_IMAGE_NAME }}
-            sudo docker run --name ${{ secrets.DOCKER_IMAGE_NAME }} -d -p 9009:9009 -p 9090:9090 ${{ secrets.DOCKER_USERNAME }}/${{ secrets.DOCKER_IMAGE_NAME }}
+            sudo docker run --name ${{ secrets.DOCKER_IMAGE_NAME }} -d --network="host" ${{ secrets.DOCKER_USERNAME }}/${{ secrets.DOCKER_IMAGE_NAME }}
             sudo docker rmi $(sudo docker images --filter "dangling=true" -q --no-trunc)
       
       - name: slack-action-success
