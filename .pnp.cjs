@@ -10206,6 +10206,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["craco-alias", "npm:3.0.1"],\
             ["craco-babel-loader", "virtual:6a76ec3121eb9de82dd4e890cf40b05eedeeb0200342c83534875b34309a39ee505770c9a33083c3008153bf65404d15587393000d7508463cf72575bcb28bb1#npm:1.0.3"],\
             ["css-loader", "virtual:6a76ec3121eb9de82dd4e890cf40b05eedeeb0200342c83534875b34309a39ee505770c9a33083c3008153bf65404d15587393000d7508463cf72575bcb28bb1#npm:6.7.1"],\
+            ["dotenv-cli", "npm:6.0.0"],\
             ["file-loader", "virtual:6a76ec3121eb9de82dd4e890cf40b05eedeeb0200342c83534875b34309a39ee505770c9a33083c3008153bf65404d15587393000d7508463cf72575bcb28bb1#npm:6.2.0"],\
             ["mini-css-extract-plugin", "virtual:6a76ec3121eb9de82dd4e890cf40b05eedeeb0200342c83534875b34309a39ee505770c9a33083c3008153bf65404d15587393000d7508463cf72575bcb28bb1#npm:2.6.1"],\
             ["moment", "npm:2.29.4"],\
@@ -16340,10 +16341,30 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           ],\
           "linkType": "HARD"\
         }],\
+        ["npm:16.0.1", {\
+          "packageLocation": "./.yarn/cache/dotenv-npm-16.0.1-d99e72bb95-f459ffce07.zip/node_modules/dotenv/",\
+          "packageDependencies": [\
+            ["dotenv", "npm:16.0.1"]\
+          ],\
+          "linkType": "HARD"\
+        }],\
         ["npm:8.6.0", {\
           "packageLocation": "./.yarn/cache/dotenv-npm-8.6.0-2ce3e9f7bb-38e902c80b.zip/node_modules/dotenv/",\
           "packageDependencies": [\
             ["dotenv", "npm:8.6.0"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
+      ["dotenv-cli", [\
+        ["npm:6.0.0", {\
+          "packageLocation": "./.yarn/cache/dotenv-cli-npm-6.0.0-a5881469d0-3db5a363ee.zip/node_modules/dotenv-cli/",\
+          "packageDependencies": [\
+            ["dotenv-cli", "npm:6.0.0"],\
+            ["cross-spawn", "npm:7.0.3"],\
+            ["dotenv", "npm:16.0.1"],\
+            ["dotenv-expand", "npm:8.0.3"],\
+            ["minimist", "npm:1.2.6"]\
           ],\
           "linkType": "HARD"\
         }]\
@@ -16353,6 +16374,13 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/cache/dotenv-expand-npm-5.1.0-c3fff50eb5-8017675b7f.zip/node_modules/dotenv-expand/",\
           "packageDependencies": [\
             ["dotenv-expand", "npm:5.1.0"]\
+          ],\
+          "linkType": "HARD"\
+        }],\
+        ["npm:8.0.3", {\
+          "packageLocation": "./.yarn/cache/dotenv-expand-npm-8.0.3-3f30d1947a-128ce90ac8.zip/node_modules/dotenv-expand/",\
+          "packageDependencies": [\
+            ["dotenv-expand", "npm:8.0.3"]\
           ],\
           "linkType": "HARD"\
         }]\

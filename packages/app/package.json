@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "scripts": {
     "start": "PORT=9090 craco start",
-    "build": "craco build",
+    "build": "dotenv -e .env.production craco build",
     "test": "craco test",
     "eject": "craco eject",
     "lint": "eslint --ext .ts,.tsx src/ --cache",
@@ -55,6 +55,7 @@
     "@types/testing-library__jest-dom": "^5",
     "craco-alias": "^3.0.1",
     "css-loader": "^6.7.1",
+    "dotenv-cli": "^6.0.0",
     "mini-css-extract-plugin": "^2.6.1",
     "ts-jest": "^28.0.5"
   }
