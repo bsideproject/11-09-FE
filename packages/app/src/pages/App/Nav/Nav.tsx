@@ -14,17 +14,17 @@ function Nav() {
   const handleMenuIconClick = () => setShowSideBar(!showSideBar);
 
   return (
-    <>
-      <div className={navStyle}>
+    <header>
+      <nav className={navStyle}>
         <Heading size={3} color="white">
           타임레터
         </Heading>
         <Button className={navMenuStyle} onClick={handleMenuIconClick} iconOnly>
           <MenuIcon />
         </Button>
-      </div>
+      </nav>
       <SideBar open={showSideBar} onClose={handleMenuIconClick} />
-    </>
+    </header>
   );
 }
 

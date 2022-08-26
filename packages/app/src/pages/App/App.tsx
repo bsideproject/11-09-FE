@@ -1,20 +1,20 @@
-import { BrowserRouter, Routes as Switch } from 'react-router-dom';
-
-import Routes from '../Routes';
+import { useMemo } from 'react';
+import { Outlet, useLocation } from 'react-router-dom';
 
 import Nav from './Nav/Nav';
 
 function App() {
-  return (
-    <BrowserRouter>
-      <Switch>
-        <header>
-          <Nav />
-        </header>
+  const location = useLocation();
+  const showNav = useMemo(
+    () => location.pathname !== '/login' && location.pathname !== '/intro',
+    [location],
+  );
 
-        <Routes />
-      </Switch>
-    </BrowserRouter>
+  return (
+    <>
+      {showNav && <Nav />}
+      <Outlet />
+    </>
   );
 }
 

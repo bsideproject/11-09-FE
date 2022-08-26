@@ -1,12 +1,12 @@
 import { useEffect, useState } from 'react';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 import { Button, Heading, Text } from '~components/index';
 
 import IntroText from '../IntroText/IntroText';
 
 import { introBodyStyle } from './LoginIntro.css';
-import { LoginIntroPorps, LoginIntroType } from './LoginIntro.types';
+import { LoginIntroType } from './LoginIntro.types';
 
 // TODO: api 통신 후 mock 데이터 제거하기
 // TODO: 뛰어씌 필요한 부분 {} 수정 --> nbsp -> {' '} 변경시 코드 복잡성 증가
@@ -67,9 +67,9 @@ function LoginIntro() {
   const handleClick = () => {
     setIntroStep((prev) => prev + 1);
   };
-  // TODO : useLocation 에 Type설정 router-v6부터 불가
-  const location = useLocation();
-  const nickName = location.state as LoginIntroPorps;
+
+  // TODO nickName 을 컴포넌트 props 로 전달 받는 방법 or 상태 관리 툴 사용
+  // const nickName = location.state?.nickName;
   const navigate = useNavigate();
   useEffect(() => {
     if (introStep > 3) {
@@ -83,7 +83,7 @@ function LoginIntro() {
 
   return (
     <div className={introBodyStyle}>
-      <IntroText>{introValue(nickName.nickName)[intro]}</IntroText>
+      <IntroText>{introValue()[intro]}</IntroText>
 
       <Button
         style={{ background: '#8055FA', width: '200px' }}
