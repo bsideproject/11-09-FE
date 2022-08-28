@@ -1,31 +1,15 @@
 import { style } from '@vanilla-extract/css';
 import { recipe } from '@vanilla-extract/recipes';
 
-export const oneTag = style({
-  position: 'absolute',
-  left: '22px',
-  right: '0%',
-  top: '40px',
-  bottom: '0%',
-  width: '68px',
-  height: '68px',
-  background:
-    'radial-gradient(50% 50% at 50% 50%, rgba(255, 255, 255, 0) 47.92%, rgba(255, 255, 255, 0.405) 100%)',
-  backdropFilter: 'blur(4px)',
-  borderRadius: '34px',
-});
-
-export const mainBox = recipe({
+export const mainBoxRecipe = recipe({
   base: {
-    width: '312px',
-    height: '200px',
-    left: '65px',
-    color: '#FFFFFF',
-    pointerEvents: 'all',
-    background: 'linear-gradient(239.91deg, #7848FF -8.78%, #E28EFF 74.55%)',
+    width: '340px',
+    height: '228px',
     filter: 'drop-shadow(0px 4px 14px #2E1168)',
-    borderRadius: '16px',
-    marginTop: '25px',
+    margin: '10px auto',
+    alignContent: 'center',
+    display: 'Flex',
+    flexWrap: 'wrap',
   },
   variants: {
     value: {
@@ -35,18 +19,20 @@ export const mainBox = recipe({
   },
 });
 
-export const spanTag = style({
-  position: 'absolute',
-  width: '150px',
-  height: '36px',
-  left: '22px',
-  top: '120px',
+export const oneTagStyle = style({
+  background:
+    'radial-gradient(50% 50% at 50% 50%, rgba(255, 255, 255, 0) 47.92%, rgba(255, 255, 255, 0.405) 100%)',
+  backdropFilter: 'blur(4px)',
+  borderRadius: '34px',
 });
 
-export const arrowLarge = style({
-  position: 'absolute',
+export const menuTextStyle = style({
+  paddingLeft: '9%',
+  marginBottom: '5%',
+});
+
+export const arrowLargeStyle = style({
   width: '80px',
-  height: '80px',
-  left: '200px',
-  top: '55px',
+  height: '82px',
+  transform: 'translateY(25%)',
 });

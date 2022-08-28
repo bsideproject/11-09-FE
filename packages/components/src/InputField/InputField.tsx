@@ -13,16 +13,14 @@ function InputField(props: PropsWithChildren<InputFieldProps>) {
   return (
     <div className={classNames(inputFieldStyle, className)}>
       {label && <label htmlFor={label}>{label}</label>}
-      {isValidElement(children)
-        && cloneElement(children, {
+      {isValidElement(children) &&
+        cloneElement(children, {
           className: inputFieldContentRecipe({ error: !!errorMessage }),
           name: label,
         })}
       {errorMessage && (
         <Text className={inputFieldErrorStyle} as="span" color="error" size={1}>
-          <CautionIcon />
-          {' '}
-          {errorMessage}
+          <CautionIcon /> {errorMessage}
         </Text>
       )}
     </div>

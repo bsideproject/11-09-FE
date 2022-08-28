@@ -2,7 +2,8 @@ import { createSprinkles, defineProperties } from '@vanilla-extract/sprinkles';
 
 import { colorSystem } from './colors.css';
 
-const baseFontFamily = '-apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif';
+const baseFontFamily =
+  '-apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif';
 
 export const fontSystem = {
   display: {

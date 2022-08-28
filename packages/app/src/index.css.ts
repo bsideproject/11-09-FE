@@ -24,7 +24,7 @@ globalStyle('li', { listStyle: 'none' });
 
 globalStyle('#root', {
   width: '100%',
-  minHeight: '100vh',
+  height: '100vh',
   overflow: 'hidden',
   margin: '0 auto',
   backgroundColor: vars.colors.black,

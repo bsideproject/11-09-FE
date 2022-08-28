@@ -1,6 +1,7 @@
 import { cloneElement, isValidElement } from 'react';
 import classNames from 'classnames';
-import { gradientOutlineRecipe } from 'styles/gradient.css';
+
+import { gradientOutlineRecipe } from '../styles/gradient.css';
 
 import { ButtonNext, ButtonPrev } from './ButtonPrevNext/ButtonPrevNext';
 import { buttonRecipe, buttonSprinkles, buttonStackOrderStyle, buttonStyle } from './Button.css';

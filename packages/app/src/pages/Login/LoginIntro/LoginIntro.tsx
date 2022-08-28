@@ -14,8 +14,7 @@ export const introValue = (nickName = '우영우님') => ({
   intro1: (
     <Heading size={2} color="white">
       <Text as="span" size={4} color="secondary" asHeadingFont>
-        {nickName}
-        님
+        {nickName}님
       </Text>
       {', 만나서 반가워요. \n'}
       {'타임캡슐 편지 서비스 타임레터는 \n'}

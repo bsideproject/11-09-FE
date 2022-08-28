@@ -1,12 +1,10 @@
 import { style } from '@vanilla-extract/css';
 
-export const mainBody = style({
+export const mainBodyStyle = style({
   width: '100%',
-  top: '50%',
-  left: '50%',
-  position: 'absolute',
-  flexDirection: 'column',
+  height: '90%',
+  margin: '0 auto',
   display: 'flex',
-  alignItems: 'center',
-  transform: 'translate(-50%, -50%)',
+  flexDirection: 'column',
+  justifyContent: 'center',
 });

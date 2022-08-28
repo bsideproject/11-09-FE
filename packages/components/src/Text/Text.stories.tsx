@@ -14,8 +14,7 @@ const Templates: ComponentStory<typeof Text> = (args) => (
     <Text {...args}>텍스트</Text>
     <div style={{ background: 'black' }}>
       <Heading size={1} color="white">
-        안녕하세요,
-        {' '}
+        안녕하세요,{' '}
         <Text as="span" color="secondary" asHeadingFont>
           우영우
         </Text>
