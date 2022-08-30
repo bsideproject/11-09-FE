@@ -1,8 +1,8 @@
 /* eslint-disable */
 import { useEffect } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, Navigate, useNavigate, useRoutes } from 'react-router-dom';
 
-import env from '@/config';
+// import env from '@/config';
 import { colorSystem } from '@timeletter_fe/components/src/styles/colors.css';
 import { fontSystem } from '@timeletter_fe/components/src/styles/fonts.css';
 import { getCookie } from '@/utils/cookies';
@@ -16,10 +16,15 @@ import { Button } from '~components/index';
 import LoginTimer from './TimerComponents/TimerComponents';
 import { kakaoLoginStyle, linkBottomStyle, loginBodyStyle, txtBottomStyle } from './Login.css';
 import { kakaoAccessToken } from './Login.utils';
+import env from '@/config';
 
 function Login() {
   const codes = new URL(window.location.href).searchParams.get('code') || '';
   const navigate = useNavigate();
+
+  const handleClick = () => {
+     window.location.href = `${env.kakaoLogin}`
+  };
 
   // 페이지 접속시 토큰값있는지 확인 후 페이지 넘기기
   useEffect(() => {
@@ -54,24 +59,23 @@ function Login() {
       <img style={{ position: 'absolute', maxWidth: '100%' }} src={LoginBorder} />
       <LoginTimer />
       <Logo style={{ position: 'absolute' }} />
-      <a href={env.kakaoLogin}>
-        <Button
-          style={{
-            color: colorSystem.black,
-            fontSize: fontSystem.body.size[3],
-            gap: 10,
-            marginTop: '60%',
-          }}
-          className={kakaoLoginStyle}
-          label="카카오로 5초만에 시작하기"
-          size="small"
-          iconPosition="left"
-          background="yello"
-          color={colorSystem.black}
-        >
-          <KaKaoIcon />
-        </Button>
-      </a>
+      <Button
+        style={{
+          color: colorSystem.black,
+          fontSize: fontSystem.body.size[3],
+          gap: 10,
+          marginTop: '60%',
+        }}
+        className={kakaoLoginStyle}
+        label="카카오로 5초만에 시작하기"
+        size="small"
+        iconPosition="left"
+        background="yello"
+        color={colorSystem.black}
+        onClick={handleClick}
+      >
+        <KaKaoIcon />
+      </Button>
       <span className={txtBottomStyle}>
         시작할 경우, 타임레터의 서비스 이용약관과
         <br />
