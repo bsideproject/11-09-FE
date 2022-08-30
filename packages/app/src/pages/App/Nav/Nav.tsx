@@ -1,8 +1,8 @@
 import { useState } from 'react';
 
-import { ReactComponent as MenuIcon } from '@/assets/icons/sidebar_menu.svg';
-
-import { Button, Heading } from '~components/index';
+import { ReactComponent as Logo } from '~components/assets/icons/gnb_log.svg';
+import { ReactComponent as MenuIcon } from '~components/assets/icons/sidebar_menu.svg';
+import { Button } from '~components/index';
 
 import SideBar from '../SideBar/SideBar';
 
@@ -17,9 +17,7 @@ function Nav() {
   return (
     <header className={navWrapperStyle}>
       <nav className={navStyle}>
-        <Heading size={3} color="white">
-          타임레터
-        </Heading>
+        <Logo />
         <Button
           className={navButtonStyle}
           variant="transparent"

@@ -19,11 +19,15 @@ export const mainBoxRecipe = recipe({
   },
 });
 
+export const boxImgStyle = style({
+  borderRadius: '16px',
+  position: 'absolute',
+  zIndex: -1,
+});
+
 export const oneTagStyle = style({
-  background:
-    'radial-gradient(50% 50% at 50% 50%, rgba(255, 255, 255, 0) 47.92%, rgba(255, 255, 255, 0.405) 100%)',
-  backdropFilter: 'blur(4px)',
-  borderRadius: '34px',
+  flexBasis: '35%',
+  paddingLeft: '8%',
 });
 
 export const menuTextStyle = style({
@@ -34,5 +38,7 @@ export const menuTextStyle = style({
 export const arrowLargeStyle = style({
   width: '80px',
   height: '82px',
+  flexBasis: '65%',
+  paddingLeft: '80px',
   transform: 'translateY(25%)',
 });
