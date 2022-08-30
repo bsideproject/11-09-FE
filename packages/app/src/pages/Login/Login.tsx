@@ -1,11 +1,10 @@
-/* eslint-disable */
 import { useEffect } from 'react';
-import { Link, Navigate, useNavigate, useRoutes } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
-// import env from '@/config';
+import env from '@/config';
+import { getCookie } from '@/utils/cookies';
 import { colorSystem } from '@timeletter_fe/components/src/styles/colors.css';
 import { fontSystem } from '@timeletter_fe/components/src/styles/fonts.css';
-import { getCookie } from '@/utils/cookies';
 
 import LoginBg from '~components/assets/icons/login_bg.svg';
 import { ReactComponent as Logo } from '~components/assets/icons/login_logo.svg';
@@ -16,14 +15,13 @@ import { Button } from '~components/index';
 import LoginTimer from './TimerComponents/TimerComponents';
 import { kakaoLoginStyle, linkBottomStyle, loginBodyStyle, txtBottomStyle } from './Login.css';
 import { kakaoAccessToken } from './Login.utils';
-import env from '@/config';
 
 function Login() {
   const codes = new URL(window.location.href).searchParams.get('code') || '';
   const navigate = useNavigate();
 
   const handleClick = () => {
-     window.location.href = `${env.kakaoLogin}`
+    window.location.href = env.kakaoLogin;
   };
 
   // 페이지 접속시 토큰값있는지 확인 후 페이지 넘기기
@@ -46,7 +44,6 @@ function Login() {
       });
     }
   }, []);
-
   return (
     <div
       style={{
@@ -56,7 +53,7 @@ function Login() {
       }}
       className={loginBodyStyle}
     >
-      <img style={{ position: 'absolute', maxWidth: '100%' }} src={LoginBorder} />
+      <img style={{ position: 'absolute', maxWidth: '100%' }} src={LoginBorder} alt="img" />
       <LoginTimer />
       <Logo style={{ position: 'absolute' }} />
       <Button
