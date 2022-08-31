@@ -28,6 +28,7 @@ function SideBar(props: SideBarProps) {
           tabIndex={tabIndex}
           className={cancelIconStyle}
           onClick={onClose}
+          label=""
           variant="transparent"
         >
           <CancelIcon />

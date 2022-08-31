@@ -21,6 +21,7 @@ const buttonVariantColors = defineProperties({
       transparent: 'transparent',
       black: vars.colors.black,
       white: vars.colors.white,
+      yellow: vars.colors.yellow,
     },
     borderColor: {
       gradient: 'transparent',

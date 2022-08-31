@@ -31,7 +31,7 @@ export const sideBarRecipe = recipe({
     position: 'absolute',
     display: 'flex',
     flexDirection: 'column',
-    padding: `56px ${spacing(20)} 0`,
+    padding: `8px ${spacing(20)} 0`,
     zIndex: 1,
     right: '0',
     backgroundColor: vars.colors.primary,
@@ -60,7 +60,7 @@ export const sideBarMenuListStyle = style({
   display: 'flex',
   flexDirection: 'column',
   gap: 24,
-  marginTop: 52,
+  marginTop: 70,
   fontWeight: 700,
 });
 
