@@ -67,7 +67,7 @@ function Login() {
         label="카카오로 5초만에 시작하기"
         size="small"
         iconPosition="left"
-        background="yello"
+        background="yellow"
         color={colorSystem.black}
         onClick={handleClick}
       >
