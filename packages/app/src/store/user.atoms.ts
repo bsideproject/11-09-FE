@@ -35,7 +35,3 @@ export const userState = atom<UserState>({
     },
   ],
 });
-
-export const removeUserState = async () => {
-  persistStore.dropInstance({ name: 'persistState' });
-};

@@ -1,7 +1,6 @@
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
-import env from '~/config';
-import { removeUserState } from '~/store/user.atoms';
+import persistStore from '~/store/persistStore';
 import { ReactComponent as CancelIcon } from '~components/assets/icons/cancel.svg';
 import Dialog from '~components/Dialog/Dialog';
 import { useDialog } from '~components/Dialog/Dialog.hooks';
@@ -23,13 +22,12 @@ function SideBar(props: SideBarProps) {
   const { open, onClose } = props;
   const { isOpen, handleOpenDialog, handleCloseDialog } = useDialog();
 
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
 
   const handleLogOut = () => {
-    handleCloseDialog();
     removeCookie('token');
-    removeUserState();
-    window.location.href = env.kakaoLogOut;
+    persistStore.dropInstance({ name: 'persistState' });
+    navigate('/login', { replace: true });
   };
 
   const tabIndex = open ? 0 : -1;
