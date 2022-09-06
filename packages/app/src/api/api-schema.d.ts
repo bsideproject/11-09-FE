@@ -27,4 +27,10 @@ declare namespace APISchema {
     password?: string;
     phoneNumber?: string;
   }
+
+  interface ReminderType {
+    erro: string;
+    data: Letter[];
+  }
+  
 }

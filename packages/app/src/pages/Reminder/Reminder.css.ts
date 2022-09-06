@@ -1,30 +1,49 @@
+import { vars } from '@timeletter_fe/components/src/styles/global.css';
 import { style } from '@vanilla-extract/css';
 
-export const reminderTimer = style({
-  position: 'absolute',
-  width: '320px',
-  height: '114px',
-  top: '118px',
-  left: '14%',
-  background: 'linear-gradient(90deg, #7848FF 0%, #DA74E3 100%)',
-  borderRadius: '12px',
+export const reminderBodyStyle = style({
+  width: '100%',
+  height: '100%',
+  display: 'flex',
+  flexDirection: 'column',
+  overflowY: 'auto',
 });
 
-export const textSpan = style({
-  top: '30px',
-  height: '52px',
-  position: 'absolute',
-  textAlign: 'center',
+export const reminderContentStyle = style({
+  flex: '1 1 auto',
+  padding: '10px calc((20 / 360) * 100%)',
+  display: 'flex',
+  flexDirection: 'column',
+});
+
+
+export const reminderBottomStyle = style({
+  padding: '10px calc((20 / 360) * 100%)',
+  display: 'flex',
+  justifyContent: 'space-around',
+});
+
+export const reminderImgStyle = style({
+  display: 'flex',
+  width: '100%',
+  margin: '10% auto',
   alignItems: 'center',
-  verticalAlign: 'middle',
-  float: 'left',
+  justifyContent: 'center',
 });
 
-export const textTimer = style({
-  position: 'absolute',
-  width: '60px',
-  height: '52px',
-  background: '#F2E6FF',
-  borderRadius: '0px 0px 4px 4px',
-  color: '#FFFFFF',
+export const reminderTwoButtonStyle = style({
+  textAlign: 'center',
+  color: vars.colors.white,
+  backgroundColor: 'unset',
+  margin: '0 8px',
+  fontWeight: 700,
+  fontSize: vars.fonts.body.size[3],
+  lineHeight: vars.fonts.body.lineHeight[3],
+});
+
+
+export const reminderOneButtonStyle = style({
+  fontWeight: 700,
+  fontSize: vars.fonts.body.size[3],
+  lineHeight: vars.fonts.body.lineHeight[3],
 });

@@ -17,12 +17,18 @@ function Routes() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (!getCookie('token') && location.pathname !== '/login') {
+
+    if (
+      !getCookie('token') &&
+      location.pathname !== '/login' &&
+      location.pathname.indexOf('reminder/') === -1
+    ) {
       navigate('/login', { replace: true });
     }
     if (getCookie('token') && location.pathname === '/login') {
       navigate('/', { replace: true });
     }
+    
   }, [location]);
 
   return (
@@ -32,7 +38,7 @@ function Routes() {
 
       <Route path="/" element={<App />}>
         <Route path="/" element={<Main />} />
-        <Route path="reminder" element={<Reminder />} />
+        <Route path="reminder/:id" element={<Reminder />} />
         <Route path="myPage" element={<MyPage />} />
 
         <Route path="letter">
