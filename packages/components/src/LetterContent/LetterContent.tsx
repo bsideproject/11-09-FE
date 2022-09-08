@@ -1,14 +1,21 @@
-/* eslint-disable */
-// 이미지 호출 부분 sort 에러나는 이유 찾아보기 
+import classNames from 'classnames';
+
 import { gradientOutlineRecipe } from '../styles/gradient.css';
 import Text from '../Text/Text';
+
 import { letterBoxStyle, letterContentStyle, letterFromTextStyle } from './LetterContent.css';
 import { LetterBoxProps } from "./LetterContent.type";
 
 function LetterBox(props: LetterBoxProps) {
-  const { sendName, receiverName, content } = props;
+  const { sendName, receiverName, content, ...rest } = props;
   return (
-    <div className={`${letterBoxStyle} ${gradientOutlineRecipe({ background: 'black' })}`}>
+    <div
+      {...rest}
+      className={classNames(
+        letterBoxStyle,
+        gradientOutlineRecipe({ background: 'black' }),
+      )}
+    >
       <Text as="span" size={4} color="secondary" asHeadingFont>
         TO. {receiverName}
       </Text>

@@ -2,7 +2,7 @@ import { vars } from '@timeletter_fe/components/src/styles/global.css';
 import { style } from '@vanilla-extract/css';
 
 export const reminderTimer = style({
-  width: '100%',
+  width: '90%',
   height: '114px',
   margin: '20px auto',
   background: 'linear-gradient(90deg, #7848FF 0%, #DA74E3 100%)',
