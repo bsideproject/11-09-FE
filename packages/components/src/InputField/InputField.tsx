@@ -8,10 +8,10 @@ import { inputFieldContentRecipe, inputFieldErrorStyle, inputFieldStyle } from '
 import { InputFieldProps } from './InputField.types';
 
 function InputField(props: PropsWithChildren<InputFieldProps>) {
-  const { className, label, errorMessage, children } = props;
+  const { className, label, errorMessage, children, ...rest } = props;
 
   return (
-    <div className={classNames(inputFieldStyle, className)}>
+    <div {...rest} className={classNames(inputFieldStyle, className)}>
       {label && <label htmlFor={label}>{label}</label>}
       {isValidElement(children) &&
         cloneElement(children, {

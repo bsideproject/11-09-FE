@@ -117,6 +117,16 @@ export const createHexWithOpacity = (color: string, value: keyof typeof opacityH
 export const spacing = (px: number) => calc(px).divide(360).multiply('100%');
 
 // z-index
-const stackOrderType = { default: 0, dialog: 20, interaction: 30 };
-export type StackOrderType = 'default' | 'dialog' | 'interaction';
-export const setStackOrder = (type: StackOrderType = 'default') => stackOrderType[type];
+const stackOrderType = {
+  default: 0,
+  dialog: 20,
+  interaction: 30,
+  custom: (order: number) => order,
+};
+export type StackOrderType = 'default' | 'dialog' | 'interaction' | 'custom';
+export const setStackOrder = (type: StackOrderType, order?: number) => {
+  if (type === 'custom') {
+    return stackOrderType[type](order ?? 0);
+  }
+  return stackOrderType[type];
+};

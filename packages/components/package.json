@@ -15,6 +15,7 @@
   },
   "dependencies": {
     "@blueprintjs/core": "^4.7.0",
+    "@blueprintjs/datetime": "^4.3.10",
     "@storybook/react": "^6.5.10",
     "@storybook/testing-library": "^0.0.13",
     "@testing-library/jest-dom": "^5.16.4",
@@ -27,6 +28,7 @@
     "@vanilla-extract/sprinkles": "^1.4.1",
     "@vanilla-extract/webpack-plugin": "^2.1.11",
     "classnames": "^2.3.1",
+    "moment": "^2.29.4",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-number-format": "^4.9.3",

@@ -1,4 +1,4 @@
-import { ReactElement } from 'react';
+import { ReactElement, ReactNode } from 'react';
 
 import { buttonSprinkles } from './Button.css';
 
@@ -13,7 +13,7 @@ type ButtonAttributes = JSX.IntrinsicElements['button'];
 interface ButtonCommonProps extends Omit<ButtonAttributes, 'children'> {
   size?: ButtonSize;
   label: string;
-  children?: ReactElement;
+  children?: ReactElement | ReactNode | ReactNode[] | string;
 }
 
 export type OutlineVariantProps = ButtonCommonProps & {
@@ -39,12 +39,22 @@ export type IconOnlyProps = Omit<ButtonVariantProps, 'label'> & {
   children: ReactElement;
   label?: undefined;
 };
+export type WithChildrenProps = Omit<ButtonVariantProps, 'label'> & {
+  label?: string;
+  children: ReactNode | ReactNode[] | string;
+  childrenClassName?: string;
+  childrenStyle?: ButtonCommonProps['style'];
+};
 export type WithIconProps = ButtonVariantProps & {
   iconOnly?: undefined;
   iconPosition?: IconPosition;
+  iconOnlySize?: number;
 };
 export type ButtonProps = Omit<ButtonVariantProps, 'label'> & {
   iconOnly?: unknown;
   iconPosition?: unknown;
+  iconOnlySize?: unknown;
   label?: string;
+  childrenClassName?: string;
+  childrenStyle?: ButtonCommonProps['style'];
 };

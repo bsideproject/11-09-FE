@@ -1,11 +1,11 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 export function useDialog(id?: string) {
   const [isOpen, setIsOpen] = useState<boolean>(false);
 
-  const handleOpenDialog = () => {
+  useEffect(() => {
     setIsOpen(true);
-  };
+  }, []);
 
   const handleCloseDialog = () => {
     setIsOpen(false);
@@ -15,7 +15,6 @@ export function useDialog(id?: string) {
     id,
     isOpen,
     setIsOpen,
-    handleOpenDialog,
-    handleCloseDialog,
+    onClose: handleCloseDialog,
   };
 }

@@ -1,11 +1,11 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { useRecoilState, useRecoilValue } from 'recoil';
 
 import { userState } from '~/store/user.atoms';
 import { Button, ProgressBar } from '~components/index';
 
 import LetterFormContent from './LetterFormContent/LetterFormContent';
-import { letterFormState } from './LetterForm.atoms';
+import { letterFormState, letterFormStepState, letterImageState } from './LetterForm.atoms';
 import {
   letterFormActionButtonStyle,
   letterFormActionsStyle,
@@ -19,8 +19,9 @@ const totalSteps = 5;
 function LetterForm() {
   const user = useRecoilValue(userState);
   const [letterForm, setLetterForm] = useRecoilState(letterFormState);
+  const letterImage = useRecoilValue(letterImageState);
 
-  const [step, setStep] = useState<number>(1);
+  const [step, setStep] = useRecoilState(letterFormStepState);
 
   useEffect(() => {
     if (!user) {
@@ -34,14 +35,15 @@ function LetterForm() {
   }, [user.name, user.id]);
 
   const validateLetterForm = useValidateLetterForm(step);
-  const addLetter = useAddLetter();
+  const addLetter = useAddLetter(letterForm);
   const handleNextClick = async () => {
     if (!validateLetterForm()) {
       return;
     }
 
     if (!letterForm.id) {
-      await addLetter();
+      const { data } = await addLetter();
+      setLetterForm({ ...letterForm, id: data[0]?.id });
     }
     setStep((prev) => prev + 1);
   };
@@ -56,16 +58,23 @@ function LetterForm() {
       <div className={letterFormContentStyle}>
         <LetterFormContent activeStep={step} />
       </div>
-      <div className={letterFormActionsStyle}>
-        {step > 1 && (
-          <Button.Prev className={letterFormActionButtonStyle} onClick={handlePrevClick} />
-        )}
-        <Button.Next
-          className={letterFormActionButtonStyle}
-          style={{ marginLeft: 'auto' }}
-          onClick={handleNextClick}
-        />
-      </div>
+      {!(step === 5 || step === 6) && (
+        <div className={letterFormActionsStyle}>
+          <Button.Next
+            className={letterFormActionButtonStyle}
+            style={{ marginLeft: 'auto' }}
+            onClick={handleNextClick}
+            disabled={letterImage?.isLoading}
+          />
+          {step > 1 && (
+            <Button.Prev
+              className={letterFormActionButtonStyle}
+              onClick={handlePrevClick}
+              disabled={letterImage?.isLoading}
+            />
+          )}
+        </div>
+      )}
     </div>
   );
 }

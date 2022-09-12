@@ -14,6 +14,20 @@ declare namespace APISchema {
     title?: string;
   }
 
+  interface LetterPutReq extends Pick<Letter, 'imageId'> {
+    userID: Letter['userID'];
+    id: Letter['id'];
+    senderName: Letter['senderName'];
+    receiverName: Letter['senderName'];
+    receivedDate: Letter['senderName'];
+    content: Letter['senderName'];
+  }
+
+  interface LetterImagePostReq {
+    letterId: string;
+    file: File;
+  }
+
   interface User {
     id: string;
     username: string;

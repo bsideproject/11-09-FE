@@ -12,5 +12,5 @@ export const inputStyle = style({
   borderRadius: 13,
   backgroundColor: vars.colors.gray900,
   color: vars.colors.white,
-  '::placeholder': { opacity: 0.4 },
+  '::placeholder': { opacity: 0.7 },
 });

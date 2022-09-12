@@ -1,4 +1,5 @@
 import { StrictMode } from 'react';
+import moment from 'moment';
 import ReactDOM from 'react-dom/client';
 import { BrowserRouter } from 'react-router-dom';
 import { RecoilRoot } from 'recoil';
@@ -12,7 +13,10 @@ import queryClient from './queryClient';
 import reportWebVitals from './reportWebVitals';
 import * as serviceWorkerRegistration from './serviceWorkerRegistration';
 
+import 'moment/locale/ko';
 import './index.css';
+
+moment.locale('ko');
 
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement);
 root.render(

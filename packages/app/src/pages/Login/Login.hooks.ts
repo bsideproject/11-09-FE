@@ -2,6 +2,7 @@ import { useCallback } from 'react';
 import axios from 'axios';
 
 import env from '~/config';
+import { NotificationToaster } from '~components/index';
 
 export const useGetKakaoAccessToken = () =>
   useCallback(async (code: string) => {
@@ -20,6 +21,6 @@ export const useGetKakaoAccessToken = () =>
       // eslint-disable-next-line consistent-return
       return data;
     } catch (error) {
-      console.error(error);
+      NotificationToaster.show('로그인에 실패했습니다. 잠시 후 다시 시도 해주세요.');
     }
   }, []);

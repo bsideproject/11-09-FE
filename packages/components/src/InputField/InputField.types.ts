@@ -1,9 +1,6 @@
-import { ReactElement } from 'react';
+type InputFieldAttributes = JSX.IntrinsicElements['div'];
 
-export interface InputFieldProps {
-  className?: string;
+export interface InputFieldProps extends InputFieldAttributes {
   label?: string;
-  leftElement?: ReactElement;
-  rightElement?: ReactElement;
   errorMessage?: string;
 }

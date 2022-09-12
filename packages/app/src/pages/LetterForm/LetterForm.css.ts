@@ -17,12 +17,13 @@ export const letterFormContentStyle = style({
   flex: '1 1 auto',
   display: 'flex',
   flexDirection: 'column',
-  padding: `40px ${letterFormPaddingX}`,
+  padding: `40px ${letterFormPaddingX} 32px`,
 });
 
 export const letterFormActionsStyle = style({
   display: 'flex',
-  padding: `${letterFormPaddingX}`,
+  flexDirection: 'row-reverse',
+  padding: `0 ${letterFormPaddingX}`,
   marginBottom: 20,
 });
 

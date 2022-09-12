@@ -3,6 +3,7 @@ import { createSprinkles, defineProperties } from '@vanilla-extract/sprinkles';
 export const colorSystem = {
   primary: '#8055FA',
   primaryLight: '#EBE4FF',
+  primaryDark: '#3F2F6D',
   secondary: '#84FDD1',
   black: '#26242E',
   white: '#FFFFFF',

@@ -76,21 +76,20 @@ function Login() {
       <LoginTimer />
       <Logo style={{ position: 'absolute' }} />
       <Button
-        style={{
+        childrenStyle={{
           color: colorSystem.black,
           fontSize: fontSystem.body.size[3],
           gap: 10,
-          marginTop: '60%',
         }}
         className={kakaoLoginStyle}
-        label="카카오로 5초만에 시작하기"
+        style={{ marginTop: '60%' }}
         size="small"
-        iconPosition="left"
         background="yellow"
         color={colorSystem.black}
         onClick={handleClick}
       >
         <KaKaoIcon />
+        카카오로 5초만에 시작하기
       </Button>
       <span className={txtBottomStyle}>
         시작할 경우, 타임레터의 서비스 이용약관과

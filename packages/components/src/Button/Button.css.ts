@@ -36,19 +36,30 @@ const buttonVariantColors = defineProperties({
 });
 export const buttonSprinkles = createSprinkles(buttonVariantColors);
 
-export const hoverBackground = createVar();
+export const hoverBackgroundVar = createVar();
 
 export const buttonStyle = style({
-  vars: { [hoverBackground]: vars.colors.gradientDark },
+  vars: { [hoverBackgroundVar]: vars.colors.gradientDark },
   display: 'inline-flex',
   alignItems: 'center',
   justifyContent: 'center',
   fontWeight: 600,
-  cursor: 'pointer',
+  fontSize: vars.fonts.body.size[3],
   color: vars.colors.white,
+  cursor: 'pointer',
 });
 
-export const buttonStackOrderStyle = style({ zIndex: setStackOrder('interaction') });
+export const buttonChildrenStyle = style({
+  display: 'inline-flex',
+  justifyContent: 'center',
+  alignItems: 'center',
+});
+
+export const buttonStackOrderVar = createVar();
+export const buttonStackOrderStyle = style({
+  vars: { [buttonStackOrderVar]: `${setStackOrder('custom', 3)}` },
+  zIndex: buttonStackOrderVar,
+});
 
 export const buttonRecipe = recipe({
   base: { borderWidth: 0 },
@@ -68,9 +79,9 @@ export const buttonRecipe = recipe({
         color: vars.colors.primary,
         background: 'transparent',
         transition: `background ${vars.transitions.duration.fast} ${vars.transitions.timing.easeOut}`,
-        vars: { [hoverBackground]: vars.colors.primaryLight },
-        ':hover': { background: hoverBackground },
-        ':active': { background: hoverBackground },
+        vars: { [hoverBackgroundVar]: vars.colors.primaryLight },
+        ':hover': { background: hoverBackgroundVar },
+        ':active': { background: hoverBackgroundVar },
       },
       solid: {
         position: 'relative',
@@ -83,24 +94,30 @@ export const buttonRecipe = recipe({
           height: 'inherit',
           background: vars.colors.primary,
           borderRadius: 'inherit',
-          zIndex: setStackOrder('interaction') - 2,
+          zIndex: `calc(${buttonStackOrderVar} - 2)`,
         },
         '::after': {
           content: '',
           position: 'absolute',
-          top: 0,
-          left: 0,
-          right: 0,
-          bottom: 0,
+          width: 'inherit',
+          height: 'inherit',
           background: vars.colors.gradientDark,
           transition: `opacity ${vars.transitions.duration.fast} ${vars.transitions.timing.easeOut}`,
           borderRadius: 'inherit',
-          zIndex: setStackOrder('interaction') - 1,
+          zIndex: `calc(${buttonStackOrderVar} - 1)`,
           opacity: 0,
         },
         selectors: { '&:hover:after': { opacity: 1 } },
       },
       transparent: { background: 'transparent' },
+    },
+    disabled: {
+      true: {
+        cursor: 'not-allowed',
+      },
+      false: {
+        cursor: 'pointer',
+      },
     },
   },
 });
