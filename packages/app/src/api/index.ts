@@ -20,4 +20,6 @@ export const letterAPI = {
 export const reminderAPI = {
   reminderLetter: (uuid: string) =>
     instance.get<void, APISchema.ReminderType>(`/v1/letter/receive/${uuid}`),
+  reminderUpdate: (data?: APISchema.ReminderUpDateType) =>
+    instance.put<void, APISchema.ReminderType>('/v1/letter/updateReceiver', data),
 };

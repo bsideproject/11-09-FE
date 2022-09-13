@@ -1,5 +1,4 @@
 export interface ReminderDialogProps {
-  dialogOpen: boolean;
-  dialogType: string;
+  dialogType: 'reminder' | 'reminderSuccess' | 'goMain' | 'idNull';
   dialogClose: () => void;
 }

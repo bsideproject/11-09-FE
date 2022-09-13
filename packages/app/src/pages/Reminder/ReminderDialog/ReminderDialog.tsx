@@ -5,33 +5,66 @@ import Dialog from '~components/Dialog/Dialog';
 
 import { ReminderDialogProps } from './ReminderDialog.type';
 
+export const dialogContextValue = () => ({
+  idNull: (
+    <Text as="p">
+      존재하지 않는 페이지 입니다.
+      <br />
+      로그인 화면으로 이동합니다.
+    </Text>
+  ),
+  reminderSuccess: (
+    <Text as="p">
+      리마인더가 신청되었어요 💜
+      <br />
+      메인화면으로 이동합니다.
+    </Text>
+  ),
+  goMain: (
+    <Text as="p">
+      로그인이 필요한 서비스에요.
+      <br />
+      타임레터에 로그인하시겠어요?
+    </Text>
+  ),
+  reminder: (
+    <Text as="p">
+      로그인이 필요한 서비스에요.
+      <br />
+      타임레터에 로그인하시겠어요?
+    </Text>
+  ),
+});
 function ReminderDialog(props: ReminderDialogProps) {
-  const { dialogOpen, dialogType, dialogClose } = props;
-  const { handleCloseDialog } = useDialog();
+  const { dialogType, dialogClose } = props;
+  const { isOpen,onClose } = useDialog();
+
+  const handleReturn = () => {
+    onClose();
+    dialogClose();
+  };
+
+  const handleConfirmClick = () => {
+    onClose();
+  };
 
   return (
-    <Dialog isOpen={dialogOpen} style={{ width: 350 }} type="caution">
-      <Dialog.Content>
-        <Text as="p">
-          {dialogType !== 'empty'
-            ? '  로그인이 필요한 서비스에요. <br></br> 타임레터에 로그인 하시겠어요?'
-            : '  존재하지 않는 페이지 입니다. <br></br> 로그인 페이지로 이동합니다.'}
-        </Text>
-      </Dialog.Content>
+    <Dialog isOpen={isOpen} style={{ width: 300 }} type="caution">
+      <Dialog.Content>{dialogContextValue()[dialogType]}</Dialog.Content>
       <Dialog.Actions>
         <Button
-          label={dialogType !== 'empty' ? '로그인하기' : '확인'}
+          label={dialogType === 'goMain' || dialogType === 'reminder' ? '로그인하기' : '확인'}
           background="gradient"
-          onClick={dialogClose}
+          onClick={handleReturn}
         />
       </Dialog.Actions>
-      {dialogType !== 'empty' && (
+      {(dialogType === 'goMain' || dialogType === 'reminder') && (
         <Dialog.Actions style={{ marginTop: 10 }}>
           <Button
             label="돌아가기"
             variant="outline"
             borderColor="gradient"
-            onClick={handleCloseDialog}
+            onClick={handleConfirmClick}
           />
         </Dialog.Actions>
       )}
@@ -39,4 +72,6 @@ function ReminderDialog(props: ReminderDialogProps) {
   );
 }
 
-export default ReminderDialog;
+export default Object.assign(ReminderDialog, {
+  show: (props: ReminderDialogProps) => Dialog.create(ReminderDialog, props),
+});

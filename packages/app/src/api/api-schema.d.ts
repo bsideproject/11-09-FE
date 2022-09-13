@@ -46,5 +46,9 @@ declare namespace APISchema {
     erro: string;
     data: Letter[];
   }
-  
+ 
+  interface ReminderUpDateType {
+    id?: string;
+    receivedPhoneNumber?: string;
+  }
 }
