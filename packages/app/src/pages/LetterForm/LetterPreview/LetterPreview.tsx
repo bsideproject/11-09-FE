@@ -3,6 +3,7 @@ import { useRecoilValue, useSetRecoilState } from 'recoil';
 import { useMutation } from '@tanstack/react-query';
 
 import { letterAPI } from '~/api';
+import env from '~/config';
 import LetterSendConfirm from '~/pages/LetterForm/LetterSendConfirm/LetterSendConfirm';
 import { Button, LetterTemplate, NotificationToaster, Text } from '~components/index';
 import { layoutSprinkles } from '~components/styles/layout.css';
@@ -11,10 +12,29 @@ import { letterFormState, letterFormStepState, letterImageState } from '../Lette
 
 function LetterPreview() {
   const letterForm = useRecoilValue(letterFormState);
-  const letterImage = useRecoilValue(letterImageState);
+  const letterImage = useRecoilValue(letterImageState)
   const { userID, id, receivedDate, senderName, receiverName, content, imageId } = letterForm;
 
+  // TODO: 카카오 타입 any 설정 필요
+  // eslint-disable-next-line
+  const kakao = (window as any).Kakao;
+
   const setStep = useSetRecoilState(letterFormStepState);
+  
+  const kakaoShare = () => {
+    if (!kakao.isInitialized()) {
+      kakao.init(env.kakaoShareKey);
+    }
+    kakao.Share.sendCustom({
+      templateId: 80393,
+      templateArgs: {
+        name: `\nFrom. ${receiverName}`,
+        day: `${receivedDate}\n`,
+        linkUrl: `reminder/${id}`,
+      },
+      callback: () => setStep(6),
+    });
+  };
 
   const updateLetter = useMutation(
     (letterPutReq: APISchema.LetterPutReq) => letterAPI.updateLetter(letterPutReq),
@@ -38,9 +58,7 @@ function LetterPreview() {
       return;
     }
     await updateLetter({ userID, id, receivedDate, senderName, receiverName, content, imageId });
-    // TODO 카카오톡으로 편지 보내는 로직 추가
-
-    setStep(6);
+    kakaoShare()
   };
 
   const handleSendClick = () => {
