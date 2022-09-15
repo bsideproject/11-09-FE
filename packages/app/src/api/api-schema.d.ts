@@ -42,10 +42,7 @@ declare namespace APISchema {
     phoneNumber?: string;
   }
 
-  interface ReminderType {
-    erro: string;
-    data: Letter[];
-  }
+  interface ReminderType { data: Letter[]; }
  
   interface ReminderUpDateType {
     id?: string;

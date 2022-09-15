@@ -1,9 +1,9 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { useRecoilValue, useSetRecoilState } from 'recoil';
 
 import { useQuery } from '@tanstack/react-query';
-import { Button, LetterContent } from '@timeletter_fe/components/src';
+import { Button, LetterTemplate } from '@timeletter_fe/components/src';
 import { vars } from '@timeletter_fe/components/src/styles/global.css';
 
 import { reminderAPI } from '~/api';
@@ -11,7 +11,7 @@ import { reminderID } from '~/store';
 import { userState } from '~/store/user.atoms';
 import { getCookie } from '~/utils/cookies';
 import { ReactComponent as ReminderOpen } from '~components/assets/images/reminder_open.svg';
-import ReminerAni from '~components/assets/misc/reminder_ani_2.gif';
+import ReminerAni from '~components/assets/misc/reminder_ani.gif';
 
 import ReminderContent from './ReminderContent/ReminderContent';
 import ReminderDialog from './ReminderDialog/ReminderDialog';
@@ -26,34 +26,35 @@ import {
   reminderTwoButtonStyle,
 } from './Reminder.css';
 
-let values = '';
 function Reminder() {
   const { id } = useParams();
   const navigate = useNavigate();
+  const dialogTypeRef = useRef<ReminderDialogProps['dialogType'] | null>(null);
 
   const user = useRecoilValue(userState);
   const setID = useSetRecoilState(reminderID.reminder);
-  const [uuid, setUuid] = useState<string>('');
+  const [uuid, setUuid] = useState<string>(''); 
   const [phoneNumber, setPhoneNumber] = useState<APISchema.ReminderUpDateType>();
   const [letter, setLetter] = useState<APISchema.Letter>();
   const [openTime, setOpenTime] = useState<boolean>(false);
 
   const handleCloseEvent = () => {
-    if (values === 'reminder') {
+    if (dialogTypeRef.current && dialogTypeRef.current === 'reminder') {
       setID({ id: letter?.id, receivedPhoneNumber: letter?.receivedPhoneNumber });
     }
     navigate('/login', { replace: true });
   };
 
-  const openDialog = (value: ReminderDialogProps['dialogType']) => {
-    values = value;
+  const openDialog = () => {
+    if (!dialogTypeRef.current) return;
     ReminderDialog.show({
-      dialogType: value,
+      dialogType: dialogTypeRef.current,
       dialogClose: handleCloseEvent,
     });
   };
 
   const handelOpenEventType = (value: ReminderDialogProps['dialogType']) => {
+    dialogTypeRef.current = value;
     if (getCookie('token')) {
       switch (value) {
         case 'reminder':
@@ -63,10 +64,10 @@ function Reminder() {
           navigate('/', { replace: true });
           break;
         default:
-          openDialog(value);
+          openDialog();
       }
     } else {
-      openDialog(value);
+      openDialog();
     }
   };
 
@@ -101,7 +102,7 @@ function Reminder() {
     if (!reminderSet) {
       return;
     }
-    openDialog('reminderSuccess');
+    handelOpenEventType('reminderSuccess');
   }, [reminderSet]);
 
   return (
@@ -123,15 +124,19 @@ function Reminder() {
               )}
             </div>
             <ReminderContent
-              sendName={letter?.senderName}
-              reciveName={letter?.receiverName}
+              sendName={letter.senderName || ''}
+              receiverName={letter.receiverName || ''}
               openType={openTime}
             />
             {openTime && (
-              <LetterContent
-                receiverName={letter.receiverName}
-                sendName={letter?.senderName}
-                content={letter?.content}
+              <LetterTemplate
+                letterProps={{
+                  senderName: letter.senderName || '',
+                  receiverName: letter.receiverName || '',
+                  content: letter.content || '',
+                  imageDataURL:undefined,
+                }}
+                style={{ marginTop: 20 }}
               />
             )}
           </div>

@@ -1,5 +1,5 @@
 export interface ReminderContentProps {
-  sendName?: string;
-  reciveName?: string;
+  sendName: string;
+  receiverName: string;
   openType: boolean;
 }

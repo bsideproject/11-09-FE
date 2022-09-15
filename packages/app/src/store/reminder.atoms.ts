@@ -17,7 +17,7 @@ const getInitialReminder = async (): Promise<reminderState> => {
       ...value
     };
   } catch (error) {
-    throw Error(`[Persist State] user: ${error}`);
+    throw Error(`[Persist State] reminderId: ${error}`);
   }
 };
 

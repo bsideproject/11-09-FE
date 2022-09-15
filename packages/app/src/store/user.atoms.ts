@@ -4,7 +4,6 @@ import persistStore from './persistStore';
 
 interface UserState extends APISchema.User {
   name?: string; // nickname || username
-  phoneNumber?: string;
 }
 
 const getInitialUser = async (): Promise<UserState> => {
@@ -13,7 +12,7 @@ const getInitialUser = async (): Promise<UserState> => {
     if (!value) {
       return {} as APISchema.User & { name: string };
     }
-    return { ...value, name: value.name || value.nickname || value.username, phoneNumber: value.phoneNumber };
+    return { ...value, name: value.name || value.nickname || value.username };
   } catch (error) {
     throw Error(`[Persist State] user: ${error}`);
   }

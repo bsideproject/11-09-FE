@@ -14,7 +14,7 @@ import { MainDialogProps } from './MainDialog/MainDialog.type';
 import { mainBodyStyle } from './Main.css';
 
 function Main() {
-  const setUUid1 = useResetRecoilState(reminderID.reminder);
+  const resetUuid = useResetRecoilState(reminderID.reminder);
   const user = useRecoilValue(userState);
   const uuid = useRecoilValue(reminderID.reminder);
   const [phoneNumber, setPhoneNumber] = useState<APISchema.ReminderUpDateType>();
@@ -41,7 +41,7 @@ function Main() {
     if (uuid.receivedPhoneNumber === user.phoneNumber) {
       openDialog('fail');
       persistStore.removeItem('reminder');
-      setUUid1();
+      resetUuid();
     } else {
       setPhoneNumber({ id: uuid.id, receivedPhoneNumber: user.phoneNumber });
     }
@@ -52,7 +52,7 @@ function Main() {
       return;
     }
     persistStore.removeItem('reminder');
-    setUUid1();
+    resetUuid();
     openDialog('success');
   }, [reminderSet]);
 

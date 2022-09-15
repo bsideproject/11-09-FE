@@ -17,7 +17,6 @@ export const reminderContentStyle = style({
   flexDirection: 'column',
 });
 
-
 export const reminderBottomStyle = style({
   padding: '10px calc((20 / 360) * 100%)',
   display: 'flex',
@@ -41,7 +40,6 @@ export const reminderTwoButtonStyle = style({
   fontSize: vars.fonts.body.size[3],
   lineHeight: vars.fonts.body.lineHeight[3],
 });
-
 
 export const reminderOneButtonStyle = style({
   fontWeight: 700,

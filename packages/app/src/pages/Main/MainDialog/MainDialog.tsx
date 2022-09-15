@@ -5,10 +5,11 @@ import Dialog from '~components/Dialog/Dialog';
 
 import { MainDialogProps } from './MainDialog.type';
 
-export const dialogContextValue = () => ({
-  success: <Text as="p">리마인더가 신청되었어요 💜</Text>,
-  fail: <Text as="p">이미 이 편지의 리마인더를 신청했어요.</Text>,
+const dialogContextValue = ({
+  success: '리마인더가 신청되었어요 💜',
+  fail: '이미 이 편지의 리마인더를 신청했어요.',
 });
+
 function MainDialog(props: MainDialogProps) {
   const { dialogType } = props;
   const { isOpen, onClose } = useDialog();
@@ -19,7 +20,11 @@ function MainDialog(props: MainDialogProps) {
 
   return (
     <Dialog isOpen={isOpen} style={{ width: 300 }} type="caution">
-      <Dialog.Content>{dialogContextValue()[dialogType]}</Dialog.Content>
+      <Dialog.Content>  
+        <Text as="p">
+          {dialogContextValue[dialogType]}
+        </Text>
+      </Dialog.Content>
       <Dialog.Actions>
         <Button
           label={dialogType === 'success' ? '좋아요!' : '확인'}
