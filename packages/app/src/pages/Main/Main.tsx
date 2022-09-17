@@ -6,7 +6,6 @@ import { useQuery } from '@tanstack/react-query';
 import { reminderAPI } from '~/api';
 import { reminderID } from '~/store';
 import persistStore from '~/store/persistStore';
-import { userState } from '~/store/user.atoms';
 
 import MainBox from './Components/MainBox';
 import MainDialog from './MainDialog/MainDialog';
@@ -15,7 +14,6 @@ import { mainBodyStyle } from './Main.css';
 
 function Main() {
   const resetUuid = useResetRecoilState(reminderID.reminder);
-  const user = useRecoilValue(userState);
   const uuid = useRecoilValue(reminderID.reminder);
   const [phoneNumber, setPhoneNumber] = useState<APISchema.ReminderUpDateType>();
 
@@ -37,14 +35,7 @@ function Main() {
     if (!uuid.id) {
       return;
     }
-
-    if (uuid.receivedPhoneNumber === user.phoneNumber) {
-      openDialog('fail');
-      persistStore.removeItem('reminder');
-      resetUuid();
-    } else {
-      setPhoneNumber({ id: uuid.id, receivedPhoneNumber: user.phoneNumber });
-    }
+   setPhoneNumber({ letterId: uuid.id });
   }, [uuid]);
 
   useEffect(() => {
@@ -53,7 +44,13 @@ function Main() {
     }
     persistStore.removeItem('reminder');
     resetUuid();
-    openDialog('success');
+
+    if (reminderSet.isSended) {
+      openDialog('success');
+    } else {
+      openDialog('fail');
+    }
+    
   }, [reminderSet]);
 
   return (
