@@ -61,7 +61,7 @@ function LetterField() {
   const addLetterImage = useMutation(
     (letterImagePostReq: APISchema.LetterImagePostReq) => letterAPI.addImage(letterImagePostReq),
     {
-      onSuccess: ({ data }) => {
+      onSuccess: (data) => {
         setLetterForm({ ...letterForm, imageId: data[0].imageId });
       },
       onError: () => {

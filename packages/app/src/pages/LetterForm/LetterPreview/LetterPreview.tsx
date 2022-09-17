@@ -57,7 +57,7 @@ function LetterPreview() {
     if (!userID || !id || !receivedDate || !senderName || !receiverName || !content) {
       return;
     }
-    await updateLetter({ userID, id, receivedDate, senderName, receiverName, content, imageId });
+    await updateLetter({ userID, id, receivedDate, senderName, receiverName, content, imageId, letterStatus: 'DONE' });
     kakaoShare()
   };
 

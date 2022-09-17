@@ -42,7 +42,7 @@ function LetterForm() {
     }
 
     if (!letterForm.id) {
-      const { data } = await addLetter();
+      const data = await addLetter();
       setLetterForm({ ...letterForm, id: data[0]?.id });
     }
     setStep((prev) => prev + 1);

@@ -1,5 +1,5 @@
 declare namespace APISchema {
-  type LetterFormType = 'DRAFT' | 'DONE';
+  type LetterStatus = 'DRAFT' | 'DONE';
 
   interface Letter {
     userID?: string;
@@ -9,7 +9,7 @@ declare namespace APISchema {
     content?: string;
     id?: string;
     imageId?: string;
-    letterStatus?: LetterFormType;
+    letterStatus?: LetterStatus;
     receivedPhoneNumber?: string;
     title?: string;
   }
@@ -21,6 +21,7 @@ declare namespace APISchema {
     receiverName: Letter['senderName'];
     receivedDate: Letter['senderName'];
     content: Letter['senderName'];
+    letterStatus: Letter['letterStatus'];
   }
 
   interface LetterImagePostReq {
