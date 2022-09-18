@@ -1,4 +1,8 @@
-import { Dispatch, SetStateAction, useEffect, useState } from 'react';
+import { Dispatch, SetStateAction, useEffect, useRef, useState } from 'react';
+
+import { useQuery } from '@tanstack/react-query';
+
+import { letterAPI } from '~/api';
 
 export const useImageDataURLState = (
   fileReader: FileReader,
@@ -20,4 +24,28 @@ export const useImageDataURLState = (
   }, [fileReader]);
 
   return [imageDataURL, setImageDataURL];
+};
+
+export const useGetImageByImageId = (imageId?: string, enabled = false) =>
+  useQuery(['letterImage', imageId], () => letterAPI.getImageByImageId(imageId!), {
+    enabled: !!imageId && enabled,
+  });
+
+export const useBeforeunload = (handler: (event: BeforeUnloadEvent) => void) => {
+  const eventListenerRef = useRef<(event: BeforeUnloadEvent) => void>();
+
+  useEffect(() => {
+    eventListenerRef.current = (event) => {
+      // eslint-disable-next-line no-param-reassign
+      event.returnValue = handler?.(event);
+    };
+  }, [handler]);
+
+  useEffect(() => {
+    const eventListener = (event: BeforeUnloadEvent) => eventListenerRef.current?.(event);
+    window.addEventListener('beforeunload', eventListener);
+    return () => {
+      window.removeEventListener('beforeunload', eventListener);
+    };
+  }, []);
 };

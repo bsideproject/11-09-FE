@@ -56,7 +56,7 @@ const TimePickerDialogFn = Object.assign(TimePickerDialog, {
 });
 
 function TimePicker(props: TimePickerProps) {
-  const { value: valueFromParent, onChange } = props;
+  const { value: valueFromParent, onChange, errorMessage } = props;
 
   const [value, setValue] = useState<{ date: Date; time: string }>();
 
@@ -81,7 +81,7 @@ function TimePicker(props: TimePickerProps) {
   };
 
   return (
-    <InputField>
+    <InputField errorMessage={errorMessage}>
       <TextInput
         type="text"
         leftIcon={<ClockIcon />}

@@ -3,7 +3,7 @@ import { globalStyle, style } from '@vanilla-extract/css';
 import { recipe } from '@vanilla-extract/recipes';
 
 import { vars } from '~components/styles/global.css';
-import { spacing } from '~components/styles/tools';
+import { setStackOrder, spacing } from '~components/styles/tools';
 
 export const sideBarStyle = style({
   position: 'absolute',
@@ -11,6 +11,7 @@ export const sideBarStyle = style({
   width: '100%',
   height: '100vh',
   pointerEvents: 'none',
+  zIndex: setStackOrder('dialog') - 1,
 });
 
 export const backdropRecipe = recipe({

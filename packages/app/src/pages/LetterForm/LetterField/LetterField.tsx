@@ -1,10 +1,10 @@
 import { ChangeEvent, useEffect, useRef, useState } from 'react';
 import { useRecoilState } from 'recoil';
 
-import { useMutation, useQuery } from '@tanstack/react-query';
+import { useMutation } from '@tanstack/react-query';
 
 import { letterAPI } from '~/api';
-import { useImageDataURLState } from '~/hooks';
+import { useGetImageByImageId, useImageDataURLState } from '~/hooks';
 import { ReactComponent as CameraIcon } from '~components/assets/icons/camera.svg';
 import { Button, NotificationToaster, Text } from '~components/index';
 
@@ -39,11 +39,7 @@ function LetterField() {
 
   const [letterImage, setLetterImage] = useRecoilState(letterImageState);
   const imageReaderRef = useRef(new FileReader());
-  const { data: imageArrayBuffer } = useQuery(
-    ['letter', letterImage, letterForm.imageId],
-    () => letterAPI.getImageByImageId(letterForm.imageId ?? ''),
-    { enabled: !!letterForm.imageId && !letterImage },
-  );
+  const { data: imageArrayBuffer } = useGetImageByImageId(letterForm.imageId);
   useEffect(() => {
     if (!imageArrayBuffer) {
       return;

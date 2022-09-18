@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import { useRecoilState, useRecoilValue } from 'recoil';
 
+import { useBeforeunload } from '~/hooks';
 import { userState } from '~/store/user.atoms';
 import { Button, ProgressBar } from '~components/index';
 
@@ -12,7 +13,7 @@ import {
   letterFormContentStyle,
   letterFormStyle,
 } from './LetterForm.css';
-import { useAddLetter, useValidateLetterForm } from './LetterForm.hooks';
+import { useAddLetter, useUpdateLetter, useValidateLetterForm } from './LetterForm.hooks';
 
 const totalSteps = 5;
 
@@ -41,7 +42,7 @@ function LetterForm() {
       return;
     }
 
-    if (!letterForm.id) {
+    if (step === 2 && !letterForm.id) {
       const data = await addLetter();
       setLetterForm({ ...letterForm, id: data[0]?.id });
     }
@@ -51,6 +52,16 @@ function LetterForm() {
   const handlePrevClick = () => {
     setStep((prev) => prev - 1);
   };
+
+  const updateLetter = useUpdateLetter();
+  useBeforeunload(async (event) => {
+    if (!letterForm.id || step > 1) {
+      event.preventDefault();
+      await updateLetter(letterForm);
+      return false;
+    }
+    return true;
+  });
 
   return (
     <div className={letterFormStyle}>

@@ -1,25 +1,41 @@
-import Sample from '~/assets/icons/letter-sample.svg';
-import { MailBox, ProgressBar } from '~components/index';
+import { useState } from 'react';
+import classNames from 'classnames';
 
-import { letterBody } from './LetterBox.css';
+import { LetterStatus } from '~/const';
+import { letterBoxLabelByType } from '~/pages/LetterBox/LetterBox.const';
+import { Button, Text } from '~components/index';
+import { layoutSprinkles } from '~components/styles/layout.css';
+
+import LetterBoxContent from './LetterBoxContent/LetterBoxContent';
+import { letterContentStyle, tabRecipe, tabStyle } from './LetterBox.css';
 
 function LetterBox() {
+  const [tab, setTab] = useState<APISchema.LetterStatus>(LetterStatus.DONE);
+
+  const handleTabClickBy = (type: APISchema.LetterStatus) => () => {
+    setTab(type);
+  };
+
   return (
-    <div>
-      <div style={{ width: '100%', backgroundColor: 'var(--colors-black__15swe8nd)' }}>
-        <ProgressBar activeStep={3} steps={5} />
+    <>
+      <div className={layoutSprinkles({ display: 'flex' })}>
+        {(Object.keys(letterBoxLabelByType) as APISchema.LetterStatus[]).map((letterStatus) => (
+          <Button
+            key={letterStatus}
+            className={classNames(tabStyle, tabRecipe({ active: tab === letterStatus }))}
+            variant="transparent"
+            onClick={handleTabClickBy(letterStatus)}
+          >
+            <Text as="span" asHeadingFont color="white">
+              {letterBoxLabelByType[letterStatus]}
+            </Text>
+          </Button>
+        ))}
       </div>
-      <div className={letterBody}>
-        <MailBox
-          id=""
-          img={Sample}
-          sendDate="2022년 10월 16일 오후 11:25"
-          sendName="우영우님"
-          title="영우야 안녕 너는 봄날의 햇살이야"
-          wrtieDate="2022년 10월 29일 오후 11:25"
-        />
+      <div className={letterContentStyle}>
+        <LetterBoxContent letterStatus={tab} />
       </div>
-    </div>
+    </>
   );
 }
 

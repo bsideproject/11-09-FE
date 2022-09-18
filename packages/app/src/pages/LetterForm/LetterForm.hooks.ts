@@ -39,3 +39,13 @@ export const useAddLetter = (letterForm: APISchema.Letter) =>
       NotificationToaster.show('편지 저장에 실패했습니다.');
     },
   }).mutateAsync;
+
+export const useUpdateLetter = () =>
+  useMutation((letterPutReq: APISchema.Letter) => letterAPI.updateLetter(letterPutReq), {
+    onSuccess: () => {
+      NotificationToaster.show('임시저장이 되었습니다.');
+    },
+    onError: () => {
+      NotificationToaster.show('편지 저장에 실패했습니다.');
+    },
+  }).mutateAsync;

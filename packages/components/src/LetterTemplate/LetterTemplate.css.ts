@@ -1,9 +1,10 @@
 import { style } from '@vanilla-extract/css';
+import { recipe } from '@vanilla-extract/recipes';
 
 import { vars } from '../styles/global.css';
 import { gradientOutlineRecipe, outlineLinearGradientVar } from '../styles/gradient.css';
 import { layoutSprinkles } from '../styles/layout.css';
-import { spacing } from '../styles/tools';
+import { important, spacing } from '../styles/tools';
 
 const borderRadius = 12;
 const flexColumn = layoutSprinkles({ display: 'flex', flex: 'column' });
@@ -21,16 +22,18 @@ export const letterContentStyle = style([
   gradientOutlineRecipe({ background: 'black' }),
 ]);
 
-export const letterImageWrapperStyle = style({
-  aspectRatio: '12 / 9',
-  overflow: 'hidden',
-  display: 'inline-flex',
-  justifyContent: 'center',
-  alignItems: 'center',
-  borderRadius,
-});
-
-export const letterImageStyle = style({
-  width: 'auto',
-  height: '100%',
+export const letterContentRecipe = recipe({
+  variants: {
+    border: {
+      false: {
+        border: important(0),
+      },
+    },
+    theme: {
+      light: {
+        backgroundImage: important('none'),
+      },
+      dark: {},
+    },
+  },
 });

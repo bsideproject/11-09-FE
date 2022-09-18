@@ -4942,6 +4942,7 @@ __metadata:
     "@vanilla-extract/recipes": ^0.2.5
     "@vanilla-extract/webpack-plugin": ^2.1.11
     axios: ^0.27.2
+    classnames: ^2.3.2
     craco-alias: ^3.0.1
     craco-babel-loader: ^1.0.3
     css-loader: ^6.7.1
@@ -4952,6 +4953,7 @@ __metadata:
     react: ^18.2.0
     react-dom: ^18.2.0
     react-image-file-resizer: ^0.4.8
+    react-intersection-observer: ^9.4.0
     react-router: ^6.3.0
     react-router-dom: ^6.3.0
     react-scripts: 5.0.1
@@ -8195,6 +8197,13 @@ __metadata:
   version: 2.3.1
   resolution: "classnames@npm:2.3.1"
   checksum: 14db8889d56c267a591f08b0834989fe542d47fac659af5a539e110cc4266694e8de86e4e3bbd271157dbd831361310a8293e0167141e80b0f03a0f175c80960
+  languageName: node
+  linkType: hard
+
+"classnames@npm:^2.3.2":
+  version: 2.3.2
+  resolution: "classnames@npm:2.3.2"
+  checksum: 2c62199789618d95545c872787137262e741f9db13328e216b093eea91c85ef2bfb152c1f9e63027204e2559a006a92eb74147d46c800a9f96297ae1d9f96f4e
   languageName: node
   linkType: hard
 
@@ -17947,6 +17956,15 @@ __metadata:
   peerDependencies:
     react: ^16.8.4 || ^17.0.0
   checksum: ca9e4c1fedb94e4e956dd3142838c5a25a9d61375aee5e8a74dd623bae09a263098a93f220e8d84c7fd39e569e1fa4297d363ddbc91b15bca91baeb7281d7f4f
+  languageName: node
+  linkType: hard
+
+"react-intersection-observer@npm:^9.4.0":
+  version: 9.4.0
+  resolution: "react-intersection-observer@npm:9.4.0"
+  peerDependencies:
+    react: ^15.0.0 || ^16.0.0 || ^17.0.0|| ^18.0.0
+  checksum: 6b9caff424c27ffac81bd7275f0d97512366d24434ebe15718f5e106e7198448a7027b1586ecbbb3eff81ac1348362320b7f740ac3d6cd505d62222fd251d718
   languageName: node
   linkType: hard
 
