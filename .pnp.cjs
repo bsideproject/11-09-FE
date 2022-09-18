@@ -10328,6 +10328,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@vanilla-extract/recipes", "virtual:d7474fbff71ffdb94b6c248e7215bbc030cd24f64bf47fd1c4986c5e38c67a0e96a83bda3f62761c90d5dd7c8576cee2f1b73d45bd48b9158a3c837ffd2bc4d2#npm:0.2.5"],\
             ["@vanilla-extract/webpack-plugin", "virtual:6a76ec3121eb9de82dd4e890cf40b05eedeeb0200342c83534875b34309a39ee505770c9a33083c3008153bf65404d15587393000d7508463cf72575bcb28bb1#npm:2.1.11"],\
             ["axios", "npm:0.27.2"],\
+            ["classnames", "npm:2.3.2"],\
             ["craco-alias", "npm:3.0.1"],\
             ["craco-babel-loader", "virtual:6a76ec3121eb9de82dd4e890cf40b05eedeeb0200342c83534875b34309a39ee505770c9a33083c3008153bf65404d15587393000d7508463cf72575bcb28bb1#npm:1.0.3"],\
             ["css-loader", "virtual:6a76ec3121eb9de82dd4e890cf40b05eedeeb0200342c83534875b34309a39ee505770c9a33083c3008153bf65404d15587393000d7508463cf72575bcb28bb1#npm:6.7.1"],\
@@ -10338,6 +10339,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["react", "npm:18.2.0"],\
             ["react-dom", "virtual:d7474fbff71ffdb94b6c248e7215bbc030cd24f64bf47fd1c4986c5e38c67a0e96a83bda3f62761c90d5dd7c8576cee2f1b73d45bd48b9158a3c837ffd2bc4d2#npm:18.2.0"],\
             ["react-image-file-resizer", "npm:0.4.8"],\
+            ["react-intersection-observer", "virtual:6a76ec3121eb9de82dd4e890cf40b05eedeeb0200342c83534875b34309a39ee505770c9a33083c3008153bf65404d15587393000d7508463cf72575bcb28bb1#npm:9.4.0"],\
             ["react-router", "virtual:6a76ec3121eb9de82dd4e890cf40b05eedeeb0200342c83534875b34309a39ee505770c9a33083c3008153bf65404d15587393000d7508463cf72575bcb28bb1#npm:6.3.0"],\
             ["react-router-dom", "virtual:6a76ec3121eb9de82dd4e890cf40b05eedeeb0200342c83534875b34309a39ee505770c9a33083c3008153bf65404d15587393000d7508463cf72575bcb28bb1#npm:6.3.0"],\
             ["react-scripts", "virtual:d7474fbff71ffdb94b6c248e7215bbc030cd24f64bf47fd1c4986c5e38c67a0e96a83bda3f62761c90d5dd7c8576cee2f1b73d45bd48b9158a3c837ffd2bc4d2#npm:5.0.1"],\
@@ -14484,6 +14486,13 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/cache/classnames-npm-2.3.1-f2ae0a8d3c-14db8889d5.zip/node_modules/classnames/",\
           "packageDependencies": [\
             ["classnames", "npm:2.3.1"]\
+          ],\
+          "linkType": "HARD"\
+        }],\
+        ["npm:2.3.2", {\
+          "packageLocation": "./.yarn/cache/classnames-npm-2.3.2-d2fdae468d-2c62199789.zip/node_modules/classnames/",\
+          "packageDependencies": [\
+            ["classnames", "npm:2.3.2"]\
           ],\
           "linkType": "HARD"\
         }]\
@@ -26825,6 +26834,28 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@types/react", "npm:18.0.15"],\
             ["is-dom", "npm:1.1.0"],\
             ["prop-types", "npm:15.8.1"],\
+            ["react", "npm:18.2.0"]\
+          ],\
+          "packagePeers": [\
+            "@types/react",\
+            "react"\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
+      ["react-intersection-observer", [\
+        ["npm:9.4.0", {\
+          "packageLocation": "./.yarn/cache/react-intersection-observer-npm-9.4.0-2bda5dca9e-6b9caff424.zip/node_modules/react-intersection-observer/",\
+          "packageDependencies": [\
+            ["react-intersection-observer", "npm:9.4.0"]\
+          ],\
+          "linkType": "SOFT"\
+        }],\
+        ["virtual:6a76ec3121eb9de82dd4e890cf40b05eedeeb0200342c83534875b34309a39ee505770c9a33083c3008153bf65404d15587393000d7508463cf72575bcb28bb1#npm:9.4.0", {\
+          "packageLocation": "./.yarn/__virtual__/react-intersection-observer-virtual-ec48338d09/0/cache/react-intersection-observer-npm-9.4.0-2bda5dca9e-6b9caff424.zip/node_modules/react-intersection-observer/",\
+          "packageDependencies": [\
+            ["react-intersection-observer", "virtual:6a76ec3121eb9de82dd4e890cf40b05eedeeb0200342c83534875b34309a39ee505770c9a33083c3008153bf65404d15587393000d7508463cf72575bcb28bb1#npm:9.4.0"],\
+            ["@types/react", "npm:18.0.15"],\
             ["react", "npm:18.2.0"]\
           ],\
           "packagePeers": [\

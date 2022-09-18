@@ -2,7 +2,7 @@ import { globalStyle, style } from '@vanilla-extract/css';
 
 import { colorSystem } from '../styles/colors.css';
 import { vars } from '../styles/global.css';
-import { hideStyle } from '../styles/layout.css';
+import { hideProperties } from '../styles/layout.css';
 import { createHexWithOpacity } from '../styles/tools';
 
 export const notificationToasterStyle = style({
@@ -17,4 +17,4 @@ globalStyle(`${notificationToasterStyle} .bp4-toast`, {
   boxShadow: 'none',
 });
 
-globalStyle(`${notificationToasterStyle} .bp4-button-group`, hideStyle);
+globalStyle(`${notificationToasterStyle} .bp4-button-group`, hideProperties);

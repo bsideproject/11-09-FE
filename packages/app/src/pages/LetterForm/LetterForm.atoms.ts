@@ -1,8 +1,10 @@
 import { atom } from 'recoil';
 
+import { LetterStatus } from '~/const';
+
 export const letterFormState = atom<APISchema.Letter>({
   key: 'letterForm',
-  default: {},
+  default: { letterStatus: LetterStatus.DRAFT },
 });
 
 export const letterFormStepState = atom<number>({

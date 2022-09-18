@@ -8,10 +8,18 @@ import Tooltip from '~components/Tooltip/Tooltip';
 
 import { letterFormState } from '../LetterForm.atoms';
 
+const errorMessage =
+  '설정한 시간이 벌써 과거가 됐어요. 편지 보내기 전에 다시 한번 시간을 선택해 주세요.';
+
 function ReceiveDateField() {
   const [letterForm, setLetterForm] = useRecoilState(letterFormState);
-  const [date, setDate] = useState<Date>(moment().add(1, 'd').toDate());
-  const [time, setTime] = useState<string>(moment().format('HH:mm'));
+  const [date, setDate] = useState<Date>(
+    moment(letterForm.receivedDate).toDate() ?? moment().add(1, 'd').toDate(),
+  );
+  const [time, setTime] = useState<string>(
+    moment(letterForm.receivedDate).format('HH:mm') ?? moment().format('HH:mm'),
+  );
+  const [error, setError] = useState<string>();
 
   const handleDateChange = (value: Date) => {
     setDate(value);
@@ -26,6 +34,20 @@ function ReceiveDateField() {
       ...letterForm,
       receivedDate: `${moment(date).format('YYYY-MM-DD')} ${time}:00`,
     });
+  }, []);
+
+  useEffect(() => {
+    const newDate = `${moment(date).format('YYYY-MM-DD')} ${time}:00`;
+    setLetterForm({
+      ...letterForm,
+      receivedDate: newDate,
+    });
+
+    if (moment(newDate).diff(moment().add(1, 'd')) < 1) {
+      setError(errorMessage);
+    } else {
+      setError(undefined);
+    }
   }, [date, time]);
 
   return (
@@ -54,8 +76,16 @@ function ReceiveDateField() {
         className={layoutSprinkles({ display: 'flex', flex: 'column' })}
         style={{ marginTop: 23, gap: 16 }}
       >
-        <DatePicker value={date} onChange={handleDateChange} />
-        <TimePicker value={time ?? moment(date).format('HH:mm')} onChange={handleTimeChange} />
+        <DatePicker
+          value={date}
+          onChange={handleDateChange}
+          errorMessage={error ? '' : undefined}
+        />
+        <TimePicker
+          value={time ?? moment(date).format('HH:mm')}
+          onChange={handleTimeChange}
+          errorMessage={error}
+        />
       </div>
     </>
   );
