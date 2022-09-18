@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import moment from 'moment';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { useSetRecoilState } from 'recoil';
 
 import { useQuery } from '@tanstack/react-query';
@@ -48,7 +48,11 @@ function Login() {
 
     setUser(data);
     // TODO 인트로 페이지로 넘어갈지 메인 페이지로 넘어갈지 데이터 받아와서 조건 생성
-    navigate('/intro', { replace: true, state: { nickName: data.nickname || data.username } });
+    if (data.tutorialYN){
+      navigate('/intro', { replace: true, state: { nickName: data.nickname || data.username } });
+    } else {
+      navigate('/', { replace: true });
+    }
     setCookie('token', data.token, { path: '/', expires });
   }, [data]);
 
@@ -97,9 +101,9 @@ function Login() {
         개인정보 보호정책에 동의하게 됩니다.
       </span>
       <span className={linkBottomStyle}>
-        <Link to="/loginIntro">이용약관</Link>
+        <a href={`${env.noctionURL}91772865c97d43e68101a5486e229e4d`}>이용약관</a>
         <p>|</p>
-        <Link to="/main">개인정보 처리방침</Link>
+        <a href={`${env.noctionURL}f964912552da433c8ac2e7611549ecdf`}>개인정보 처리방침</a>
       </span>
     </div>
   );

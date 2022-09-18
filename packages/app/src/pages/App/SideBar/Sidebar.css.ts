@@ -11,6 +11,7 @@ export const sideBarStyle = style({
   width: '100%',
   height: '100vh',
   pointerEvents: 'none',
+  zIndex: 50,
 });
 
 export const backdropRecipe = recipe({
