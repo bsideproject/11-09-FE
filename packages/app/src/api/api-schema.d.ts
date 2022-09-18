@@ -41,6 +41,7 @@ declare namespace APISchema {
     gender?: string;
     password?: string;
     phoneNumber?: string;
+    tutorialYN?: boolean;
   }
   
   interface ReminderUpDateType {

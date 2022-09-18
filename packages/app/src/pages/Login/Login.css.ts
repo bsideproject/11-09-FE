@@ -38,4 +38,5 @@ export const linkBottomStyle = style({
   textAlign: 'center',
   color: '#FFFFFF',
   marginTop: '5%',
+  zIndex: 1,
 });

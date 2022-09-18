@@ -49,20 +49,28 @@ function SideBar(props: SideBarProps) {
         <ul className={sideBarMenuListStyle}>
           {sideBarMenuList.main.map((item) => (
             <li key={item.title}>
-              <Link tabIndex={tabIndex} to={item.path} style={{ fontWeight: 700 }}>
-                <Text as="span" size={4} color="white">
-                  {item.title}
-                </Text>
-              </Link>
+              {item.path.indexOf('https') ? (
+                  <Link tabIndex={tabIndex} to={item.path} style={{ fontWeight: 700 }}>
+                    <Text as="span" size={4} color="white">
+                      {item.title}
+                    </Text>
+                  </Link>
+              ) : (
+                  <a href={item.path} style={{ fontWeight: 700 }}>
+                    <Text as="span" size={4} color="white">
+                      {item.title}
+                    </Text>
+                  </a>
+              )}
             </li>
           ))}
           {sideBarMenuList.sub.map((item) => (
             <li key={item.title}>
-              <Link tabIndex={tabIndex} to={item.path} style={{ fontWeight: 700 }}>
+             <a href={item.path} style={{ fontWeight: 700 }}>
                 <Text as="span" size={2} color="white">
                   {item.title}
                 </Text>
-              </Link>
+              </a>
             </li>
           ))}
           <li className={logoutStyle}>
