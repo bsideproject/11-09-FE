@@ -32,7 +32,7 @@ function Reminder() {
 
   const setID = useSetRecoilState(reminderID.reminder);
   const [uuid, setUuid] = useState<string>(''); 
-  const [phoneNumber, setPhoneNumber] = useState<APISchema.ReminderUpDateType>();
+  const [reminderApply, setReminderApply] = useState<APISchema.ReminderUpDateType>();
   const [letter, setLetter] = useState<APISchema.Letter>();
   const [openTime, setOpenTime] = useState<boolean>(false);
 
@@ -56,7 +56,7 @@ function Reminder() {
     if (getCookie('token')) {
       switch (value) {
         case 'reminder':
-          setPhoneNumber({ letterId: letter?.id });
+          setReminderApply({ letterId: letter?.id });
           break;
         case 'goMain':
           navigate('/', { replace: true });
@@ -70,10 +70,10 @@ function Reminder() {
   };
 
   const { data: reminderSet } = useQuery(
-    ['reminderAPI', phoneNumber],
-    () => reminderAPI.reminderUpdate(phoneNumber),
+    ['reminderAPI', reminderApply],
+    () => reminderAPI.reminderUpdate(reminderApply),
     {
-      enabled: !!phoneNumber,
+      enabled: !!reminderApply,
     },
   );
 
@@ -90,10 +90,15 @@ function Reminder() {
 
   useEffect(() => {
     if (!data) {
-      handelOpenEventType('idNull');
       return;
     }
-    setLetter(data);
+    
+    if(data.length < 1 ) {
+      handelOpenEventType('idNull');
+      return
+    }
+
+    setLetter(data[0]);
   }, [data]);
 
   useEffect(() => {

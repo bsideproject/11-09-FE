@@ -44,6 +44,6 @@ declare namespace APISchema {
   
   interface ReminderUpDateType {
     letterId?: string;
-    isSended?: boolean
+    isSended?: boolean;
   }
 }

@@ -15,13 +15,13 @@ import { mainBodyStyle } from './Main.css';
 function Main() {
   const resetUuid = useResetRecoilState(reminderID.reminder);
   const uuid = useRecoilValue(reminderID.reminder);
-  const [phoneNumber, setPhoneNumber] = useState<APISchema.ReminderUpDateType>();
+  const [reminderApply, setReminderApply] = useState<APISchema.ReminderUpDateType>();
 
   const { data: reminderSet } = useQuery(
-    ['reminderAPI', phoneNumber],
-    () => reminderAPI.reminderUpdate(phoneNumber),
+    ['reminderAPI', reminderApply],
+    () => reminderAPI.reminderUpdate(reminderApply),
     {
-      enabled: !!phoneNumber,
+      enabled: !!reminderApply,
     },
   );
 
@@ -35,7 +35,7 @@ function Main() {
     if (!uuid.id) {
       return;
     }
-   setPhoneNumber({ letterId: uuid.id });
+   setReminderApply({ letterId: uuid.id });
   }, [uuid]);
 
   useEffect(() => {
