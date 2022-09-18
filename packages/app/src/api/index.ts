@@ -19,7 +19,9 @@ export const letterAPI = {
 
 export const reminderAPI = {
   reminderLetter: (uuid: string) =>
-    instance.get<void, APISchema.ReminderType>(`/v1/letter/receive/${uuid}`),
+    instance.get<void, APISchema.Letter[]>(`/v1/letter/receive/${uuid}`),
   reminderUpdate: (data?: APISchema.ReminderUpDateType) =>
-    instance.put<void, APISchema.ReminderType>('/v1/letter/updateReceiver', data),
+    instance.post<void, APISchema.ReminderUpDateType>('/v1/reminder', data, {
+      headers: { 'Content-Type': 'multipart/form-data' },
+    }),
 };

@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
-import { useRecoilValue, useSetRecoilState } from 'recoil';
+import { useSetRecoilState } from 'recoil';
 
 import { useQuery } from '@tanstack/react-query';
 import { Button, LetterTemplate } from '@timeletter_fe/components/src';
@@ -8,7 +8,6 @@ import { vars } from '@timeletter_fe/components/src/styles/global.css';
 
 import { reminderAPI } from '~/api';
 import { reminderID } from '~/store';
-import { userState } from '~/store/user.atoms';
 import { getCookie } from '~/utils/cookies';
 import { ReactComponent as ReminderOpen } from '~components/assets/images/reminder_open.svg';
 import ReminerAni from '~components/assets/misc/reminder_ani.gif';
@@ -31,16 +30,15 @@ function Reminder() {
   const navigate = useNavigate();
   const dialogTypeRef = useRef<ReminderDialogProps['dialogType'] | null>(null);
 
-  const user = useRecoilValue(userState);
   const setID = useSetRecoilState(reminderID.reminder);
   const [uuid, setUuid] = useState<string>(''); 
-  const [phoneNumber, setPhoneNumber] = useState<APISchema.ReminderUpDateType>();
+  const [reminderApply, setReminderApply] = useState<APISchema.ReminderUpDateType>();
   const [letter, setLetter] = useState<APISchema.Letter>();
   const [openTime, setOpenTime] = useState<boolean>(false);
 
   const handleCloseEvent = () => {
     if (dialogTypeRef.current && dialogTypeRef.current === 'reminder') {
-      setID({ id: letter?.id, receivedPhoneNumber: letter?.receivedPhoneNumber });
+      setID({ id: letter?.id });
     }
     navigate('/login', { replace: true });
   };
@@ -58,7 +56,7 @@ function Reminder() {
     if (getCookie('token')) {
       switch (value) {
         case 'reminder':
-          setPhoneNumber({ id: letter?.id, receivedPhoneNumber: user.phoneNumber });
+          setReminderApply({ letterId: letter?.id });
           break;
         case 'goMain':
           navigate('/', { replace: true });
@@ -72,10 +70,10 @@ function Reminder() {
   };
 
   const { data: reminderSet } = useQuery(
-    ['reminderAPI', phoneNumber],
-    () => reminderAPI.reminderUpdate(phoneNumber),
+    ['reminderAPI', reminderApply],
+    () => reminderAPI.reminderUpdate(reminderApply),
     {
-      enabled: !!phoneNumber,
+      enabled: !!reminderApply,
     },
   );
 
@@ -91,18 +89,28 @@ function Reminder() {
   }, [id]);
 
   useEffect(() => {
-    if (data?.data.length === 0) {
-      handelOpenEventType('idNull');
+    if (!data) {
       return;
     }
-    setLetter(data?.data[0]);
+    
+    if(data.length < 1 ) {
+      handelOpenEventType('idNull');
+      return
+    }
+
+    setLetter(data[0]);
   }, [data]);
 
   useEffect(() => {
     if (!reminderSet) {
       return;
     }
-    handelOpenEventType('reminderSuccess');
+
+    if (reminderSet.isSended) {
+      handelOpenEventType('reminderSuccess');
+    } else {
+      handelOpenEventType('reminderFail');
+    }
   }, [reminderSet]);
 
   return (

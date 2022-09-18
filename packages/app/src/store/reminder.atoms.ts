@@ -4,14 +4,13 @@ import persistStore from './persistStore';
 
 interface reminderState extends APISchema.Letter {
   id?: string;
-  receivedPhoneNumber?: string;
 }
 
 const getInitialReminder = async (): Promise<reminderState> => {
   try {
     const value = await persistStore.getItem<reminderState>('reminder');
     if (!value) {
-      return {}
+      return {} 
     }
     return {
       ...value
