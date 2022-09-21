@@ -1,6 +1,6 @@
 import env from '~/config';
 
-import instance, { Authorization } from './instance';
+import instance, { getAuth } from './instance';
 
 export const authAPI = {
   authenticate: (token: string) =>
@@ -8,9 +8,9 @@ export const authAPI = {
 };
 
 export const letterAPI = {
-  getLettersByStatus: (params: APISchema.LettersByStatusGetParams) =>
-    instance.get<void, APISchema.LetterByStatusPage>('v1/letter/version2', { params }),
-  getLetters: () => instance.get<void, APISchema.LetterTemplate[]>('v1/letter'), // TODO remove
+  // getLettersByStatus: (params: APISchema.LettersByStatusGetParams) =>
+  //   instance.get<void, APISchema.LetterByStatusPage>('v1/letter/version2', { params }), // TODO 수정 되면 활성화, 안되면 react-intersection-observer 제거
+  getLetters: () => instance.get<void, APISchema.LetterTemplate[]>('v1/letter'),
   addLetter: (letterPostReq: APISchema.Letter) =>
     instance.post<void, APISchema.Letter[]>('/v1/letter', letterPostReq),
   saveDraftLetter: (
@@ -21,7 +21,7 @@ export const letterAPI = {
       method,
       headers: {
         'Content-Type': 'application/json',
-        Authorization,
+        Authorization: getAuth(),
       },
       body: JSON.stringify(data),
       keepalive: true,

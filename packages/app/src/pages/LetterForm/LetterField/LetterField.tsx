@@ -23,7 +23,7 @@ const maxContentLength = '1,000';
 function LetterField() {
   const [letterForm, setLetterForm] = useRecoilState(letterFormState);
 
-  const [content, setContent] = useState<string>(letterForm.content ?? '');
+  const [content, setContent] = useState<string | undefined>(letterForm.content);
 
   const textareaRef = useRef<HTMLTextAreaElement>(null);
   useEffect(() => {
@@ -101,7 +101,7 @@ function LetterField() {
           TO: {letterForm.receiverName}
         </Text>
         <Text as="span" color="gray500" size={2}>
-          {content.length} / {maxContentLength}
+          {(content ?? '').length} / {maxContentLength}
         </Text>
       </div>
 
