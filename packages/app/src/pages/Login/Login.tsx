@@ -101,6 +101,12 @@ function Login() {
         개인정보 보호정책에 동의하게 됩니다.
       </span>
       <span className={linkBottomStyle}>
+        <a
+          href={`${env.noctionURL}98b4fa790e0f4563a08189679fc91d5e#1324a9245b87421a84aff6b8357f72c8`}
+        >
+          사업자 정보확인
+        </a>
+        <p>|</p>
         <a href={`${env.noctionURL}91772865c97d43e68101a5486e229e4d`}>이용약관</a>
         <p>|</p>
         <a href={`${env.noctionURL}f964912552da433c8ac2e7611549ecdf`}>개인정보 처리방침</a>

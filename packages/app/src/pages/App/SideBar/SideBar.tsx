@@ -50,23 +50,28 @@ function SideBar(props: SideBarProps) {
           {sideBarMenuList.main.map((item) => (
             <li key={item.title}>
               {item.path.indexOf('https') ? (
-                  <Link tabIndex={tabIndex} to={item.path} style={{ fontWeight: 700 }}>
-                    <Text as="span" size={4} color="white">
-                      {item.title}
-                    </Text>
-                  </Link>
+                <Link
+                  tabIndex={tabIndex}
+                  to={item.path}
+                  style={{ fontWeight: 700 }}
+                  onClick={onClose}
+                >
+                  <Text as="span" size={4} color="white">
+                    {item.title}
+                  </Text>
+                </Link>
               ) : (
-                  <a href={item.path} style={{ fontWeight: 700 }}>
-                    <Text as="span" size={4} color="white">
-                      {item.title}
-                    </Text>
-                  </a>
+                <a href={item.path} style={{ fontWeight: 700 }}>
+                  <Text as="span" size={4} color="white">
+                    {item.title}
+                  </Text>
+                </a>
               )}
             </li>
           ))}
           {sideBarMenuList.sub.map((item) => (
             <li key={item.title}>
-             <a href={item.path} style={{ fontWeight: 700 }}>
+              <a href={item.path} style={{ fontWeight: 700 }}>
                 <Text as="span" size={2} color="white">
                   {item.title}
                 </Text>
