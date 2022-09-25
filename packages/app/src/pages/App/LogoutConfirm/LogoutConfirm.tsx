@@ -17,7 +17,7 @@ function LogoutConfirm(props: LogoutConfirmProps) {
   return (
     <Dialog isOpen={isOpen} onClose={onClose} dialogSize={{ width: 300 }}>
       <Dialog.Content>
-        <Text as="p">로그아웃 하시겠습니까?</Text>
+        <Text as="p">로그아웃 하시겠어요?</Text>
       </Dialog.Content>
       <Dialog.Actions>
         <Button label="취소" variant="outline" borderColor="gradient" onClick={onClose} />

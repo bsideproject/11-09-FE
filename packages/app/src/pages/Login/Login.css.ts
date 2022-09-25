@@ -19,7 +19,6 @@ export const kakaoLoginStyle = style({
 });
 
 export const txtBottomStyle = style({
-  width: '236px',
   height: '40px',
   lineHeight: '20px',
   textAlign: 'center',
@@ -28,7 +27,6 @@ export const txtBottomStyle = style({
 });
 
 export const linkBottomStyle = style({
-  width: '160px',
   height: '18px',
   fontWeight: '700',
   fontSize: vars.fonts.body.size[1],
