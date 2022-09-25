@@ -25,9 +25,16 @@ export const boxImgStyle = style({
   zIndex: -1,
 });
 
-export const oneTagStyle = style({
+
+export const imageBoxStyle = style({
   flexBasis: '35%',
   paddingLeft: '8%',
+});
+
+export const oneTagStyle = style({
+  background: 'radial-gradient(50% 50% at 50% 50%, rgba(255, 255, 255, 0) 47.92%, rgba(255, 255, 255, 0.405) 100%)',
+  backdropFilter: 'blur(4px)',
+  borderRadius: '34px',
 });
 
 export const menuTextStyle = style({
