@@ -18,11 +18,13 @@ export const useShareWithKakao = () => {
       kakao.init(env.kakaoShareKey);
     }
 
+    const date = new Date(receivedDate);
+
     kakao.Share.sendCustom({
       templateId: 80393,
       templateArgs: {
         name: `\nFrom. ${senderName}`,
-        day: `${receivedDate}\n`,
+        day: `${date.getFullYear()}년 ${date.getMonth() + 1}월 ${date.getDate()}일 `,
         linkUrl: `reminder/${id}`,
       },
       success: () => {

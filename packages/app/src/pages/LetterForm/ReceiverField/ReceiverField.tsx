@@ -21,7 +21,7 @@ function ReceiverField() {
       >
         <Text as="h2" color="white" size={4}>
           <Text as="span" color="secondary" size={4}>
-            누구에게
+            누구에게{' '}
           </Text>
           편지를 보낼까요?
           <br />
