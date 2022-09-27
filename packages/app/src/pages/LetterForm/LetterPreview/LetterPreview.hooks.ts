@@ -10,10 +10,10 @@ export const useShareWithKakao = () => {
   const setStep = useSetRecoilState(letterFormStepState);
 
   return ({
-    id,
     senderName,
     receivedDate,
-  }: Required<Pick<APISchema.Letter, 'id' | 'senderName' | 'receivedDate'>>) => {
+    urlSlug,
+  }: Required<Pick<APISchema.Letter, 'senderName' | 'receivedDate' | 'urlSlug'>>) => {
     if (!kakao.isInitialized()) {
       kakao.init(env.kakaoShareKey);
     }
@@ -25,7 +25,7 @@ export const useShareWithKakao = () => {
       templateArgs: {
         name: `\nFrom. ${senderName}`,
         day: `${date.getFullYear()}년 ${date.getMonth() + 1}월 ${date.getDate()}일 `,
-        linkUrl: `reminder/${id}`,
+        linkUrl: `reminder/${urlSlug}`,
       },
       success: () => {
         setStep(6);
