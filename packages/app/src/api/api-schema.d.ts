@@ -12,7 +12,8 @@ declare namespace APISchema {
     letterStatus?: LetterStatus;
     receivedPhoneNumber?: string;
     title?: string;
-    createdAt?: string; // "yyyy-MM-dd HH:mm:ss"
+    createdAt?: string; // "yyyy-MM-dd HH:mm:ss"\
+    urlSlug?: string;
   }
 
   interface LetterPutReq
@@ -26,6 +27,7 @@ declare namespace APISchema {
         | 'receivedDate'
         | 'content'
         | 'letterStatus'
+        | 'urlSlug'
       >
     > {
     imageId?: Letter['imageId'];
@@ -42,6 +44,7 @@ declare namespace APISchema {
     senderName: NonNullable<Letter['senderName']>;
     letterStatus: NonNullable<Letter['letterStatus']>;
     createdAt: NonNullable<Letter['createAt']>;
+    urlSlug: NonNullable<Letter['urlSlug']>;
     imageId?: string;
     image?: string;
   }

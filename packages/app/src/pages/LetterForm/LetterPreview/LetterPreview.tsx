@@ -13,7 +13,7 @@ import { letterFormState, letterFormStepState, letterImageState } from '../Lette
 
 function LetterPreview() {
   const letterImage = useRecoilValue(letterImageState);
-  const { userID, id, receivedDate, senderName, receiverName, content, imageId } =
+  const { userID, id, receivedDate, senderName, receiverName, content, imageId, urlSlug } =
     useRecoilValue(letterFormState);
   const setStep = useSetRecoilState(letterFormStepState);
 
@@ -36,7 +36,7 @@ function LetterPreview() {
 
   const shareWithKakao = useShareWithKakao();
   const sendLetter = async () => {
-    if (!userID || !id || !receivedDate || !senderName || !receiverName || !content) {
+    if (!userID || !id || !receivedDate || !senderName || !receiverName || !content || !urlSlug) {
       return;
     }
     await saveLetter({
@@ -47,9 +47,10 @@ function LetterPreview() {
       receiverName,
       content,
       imageId,
+      urlSlug,
       letterStatus: 'DONE',
     });
-    shareWithKakao({ id, receivedDate, senderName });
+    shareWithKakao({ receivedDate, senderName, urlSlug });
   };
 
   const isPastDate = useIsPastDate();

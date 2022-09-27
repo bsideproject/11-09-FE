@@ -27,7 +27,7 @@ export const useImageDataURLState = (
 };
 
 export const useGetImageByImageId = (imageId?: string, enabled = false) =>
-  useQuery(['letterImage', imageId], () => letterAPI.getImageByImageId(imageId!), {
+  useQuery(['letterImage', imageId], () => letterAPI.getImageByImageId(imageId || ''), {
     enabled: !!imageId && enabled,
   });
 
