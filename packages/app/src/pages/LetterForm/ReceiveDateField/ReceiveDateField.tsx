@@ -61,10 +61,10 @@ function ReceiveDateField() {
 
   return (
     <>
-      <Text as="h2" color="white" style={{ marginBottom: 12 }}>
+      <Text as="h2" color="white" size={4} style={{ marginBottom: 12 }}>
         {letterForm.receiverName}님이
         <br />
-        <Text as="strong" color="secondary">
+        <Text as="strong" color="secondary" size={4}>
           편지 열 수 있는 날
         </Text>
         을 선택해 주세요.

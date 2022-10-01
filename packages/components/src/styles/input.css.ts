@@ -13,5 +13,7 @@ export const inputStyle = style({
   backgroundColor: vars.colors.gray900,
   color: vars.colors.white,
   fontSize: vars.fonts.body.size[3],
+  caretColor: vars.colors.secondary,
+
   '::placeholder': { opacity: 0.7 },
 });

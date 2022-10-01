@@ -27,6 +27,9 @@ export const useShareWithKakao = () => {
         day: `${date.getFullYear()}년 ${date.getMonth() + 1}월 ${date.getDate()}일 `,
         linkUrl: `reminder/${urlSlug}`,
       },
+      callback: () => {
+        setStep(6);
+      },
       success: () => {
         setStep(6);
       },

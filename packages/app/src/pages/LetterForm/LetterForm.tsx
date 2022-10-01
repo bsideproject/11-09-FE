@@ -1,8 +1,9 @@
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { useRecoilState, useRecoilValue } from 'recoil';
 
 import { LetterStatus } from '~/const';
-import { usePageVisibilityChange } from '~/hooks';
+import { useBlocker, usePageVisibilityChange } from '~/hooks';
 import { userState } from '~/store/user.atoms';
 import { Button, ProgressBar } from '~components/index';
 
@@ -30,12 +31,18 @@ function LetterForm() {
       return;
     }
     setLetterForm({
+      ...letterForm,
       letterStatus: LetterStatus.DRAFT,
       userID: user.id,
-      senderName: user.name,
+      senderName: letterForm.senderName ?? user.name,
     });
     setStep(1);
     setLetterImage({});
+
+    // eslint-disable-next-line consistent-return
+    return () => {
+      setLetterForm({});
+    };
   }, [user.name, user.id]);
 
   const validateLetterForm = useValidateLetterForm(step);
@@ -57,11 +64,29 @@ function LetterForm() {
   };
 
   const saveDraftLetter = useSaveDraftLetter();
+  const saveDraftCondition =
+    step > 1 && letterForm.letterStatus !== LetterStatus.DONE && !!letterForm.receiverName;
   usePageVisibilityChange(() => {
-    if (step > 1 && letterForm.letterStatus !== LetterStatus.DONE) {
+    if (saveDraftCondition) {
       saveDraftLetter({ letter: letterForm, method: letterForm.id ? 'PUT' : 'POST' });
     }
   });
+  const navigate = useNavigate();
+  const blockRef = useRef<boolean>(false);
+  useEffect(() => {
+    blockRef.current = saveDraftCondition;
+  }, [saveDraftCondition]);
+  useBlocker((blocker: any) => {
+    blockRef.current = false;
+    saveDraftLetter(
+      { letter: letterForm, method: letterForm.id ? 'PUT' : 'POST' },
+      {
+        onSuccess: () => {
+          navigate(blocker.location.pathname, { replace: true });
+        },
+      },
+    );
+  }, blockRef.current);
 
   return (
     <div className={letterFormStyle}>

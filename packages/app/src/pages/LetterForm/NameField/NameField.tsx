@@ -1,6 +1,7 @@
 import { ChangeEvent, useEffect, useRef } from 'react';
 import { useRecoilState } from 'recoil';
 
+import { useFocus } from '~/hooks';
 import { InputField, TextInput } from '~components/index';
 
 import { nameFieldState } from './NameField.atoms';
@@ -18,8 +19,9 @@ function NameField(props: NameFieldProps) {
   }, [nameFromParent]);
 
   const inputRef = useRef<HTMLInputElement>(null);
+  const focus = useFocus<HTMLInputElement>(inputRef);
   useEffect(() => {
-    inputRef.current?.focus();
+    focus();
   }, [nameField.errorMessage]);
 
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {

@@ -4,11 +4,13 @@ import moment from 'moment';
 import { TimePicker as BTimePicker } from '@blueprintjs/datetime';
 
 import { ReactComponent as ClockIcon } from '../assets/icons/clock.svg';
+import Button from '../Button/Button';
 import Dialog from '../Dialog/Dialog';
 import { useDialog } from '../Dialog/Dialog.hooks';
 import InputField from '../InputField/InputField';
 import TextInput from '../TextInput/TextInput';
 
+import { timePickerStyle } from './TimePicker.css';
 import {
   TimePickerDialogFnProps,
   TimePickerDialogProps,
@@ -19,7 +21,7 @@ function TimePickerDialog(props: TimePickerDialogProps) {
   const { defaultValue, value: valueFromParent, onChange, onBlur } = props;
   const { isOpen, onClose } = useDialog();
 
-  const [value, setValue] = useState<Date>();
+  const [value, setValue] = useState<Date>(valueFromParent ?? new Date());
 
   useEffect(() => {
     if (!valueFromParent) {
@@ -30,17 +32,22 @@ function TimePickerDialog(props: TimePickerDialogProps) {
 
   const handleChange = (newTime: Date) => {
     setValue(newTime);
-    onChange?.(newTime);
   };
 
   const handleBlur = () => {
     onBlur?.(value);
   };
 
+  const handleOk = () => {
+    onChange?.(value);
+    onClose();
+  };
+
   return (
-    <Dialog isOpen={isOpen} onClose={onClose} dialogSize={{ width: 260 }}>
+    <Dialog isOpen={isOpen} onClose={onClose} dialogSize={{ width: 300 }}>
       <Dialog.Content>
         <BTimePicker
+          className={timePickerStyle}
           defaultValue={defaultValue}
           value={value}
           onChange={handleChange}
@@ -48,6 +55,14 @@ function TimePickerDialog(props: TimePickerDialogProps) {
           showArrowButtons
         />
       </Dialog.Content>
+      <Dialog.Actions>
+        <Button variant="outline" onClick={() => onClose()}>
+          취소
+        </Button>
+        <Button background="gradient" onClick={handleOk}>
+          확인
+        </Button>
+      </Dialog.Actions>
     </Dialog>
   );
 }

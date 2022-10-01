@@ -4,10 +4,10 @@ import { useMutation } from '@tanstack/react-query';
 
 import { letterAPI } from '~/api';
 import { useIsPastDate } from '~/pages/LetterForm/LetterForm.hooks';
+import { letterPreviewActionsStyle } from '~/pages/LetterForm/LetterPreview/LetterPreview.css';
 import { useShareWithKakao } from '~/pages/LetterForm/LetterPreview/LetterPreview.hooks';
 import LetterSendConfirm from '~/pages/LetterForm/LetterSendConfirm/LetterSendConfirm';
 import { Button, LetterTemplate, NotificationToaster, Text } from '~components/index';
-import { layoutSprinkles } from '~components/styles/layout.css';
 
 import { letterFormState, letterFormStepState, letterImageState } from '../LetterForm.atoms';
 
@@ -74,9 +74,9 @@ function LetterPreview() {
           content,
           imageDataURL: letterImage.image,
         }}
-        style={{ marginTop: 20 }}
+        style={{ marginTop: 20, paddingBottom: 32 }}
       />
-      <div className={layoutSprinkles({ display: 'flex' })} style={{ marginTop: 'auto', gap: 12 }}>
+      <div className={letterPreviewActionsStyle}>
         <Button label="돌아가기" variant="outline" onClick={handlePrevClick} />
         <Button label="편지 보내기" background="gradient" onClick={handleSendClick} />
       </div>

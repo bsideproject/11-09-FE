@@ -24,16 +24,13 @@ export const letterPopoverStyle = style({
   height: 'calc(100% - 60px)',
   backgroundColor: vars.colors.white,
   zIndex: letterPopoverStackOrder,
-});
+  overflow: 'auto',
 
-export const letterPopoverCloseStyle = style({
-  position: 'absolute',
-  top: '-40px',
-  right: 20,
-  width: 30,
-  height: 30,
+  '@media': {
+    'screen and (min-width: 768px)': { width: 360, left: '50%', transform: 'translateX(-50%)' },
+  },
 });
 
 export const letterPopoverContentStyle = style({
-  padding: `16px ${spacing(20)} 20px`,
+  padding: `16px ${spacing(20)} 0`,
 });

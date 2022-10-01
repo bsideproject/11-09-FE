@@ -1,5 +1,6 @@
 import { style } from '@vanilla-extract/css';
 
+import { vars } from '~components/styles/global.css';
 import { spacing } from '~components/styles/tools';
 
 const letterFormPaddingX = spacing(20);
@@ -18,15 +19,24 @@ export const letterFormContentStyle = style({
   display: 'flex',
   flexDirection: 'column',
   padding: `40px ${letterFormPaddingX} 32px`,
+  overflow: 'auto',
 });
 
-export const letterFormActionsStyle = style({
+export const letterFormActionsBaseStyle = style({
   position: 'sticky',
   bottom: 20,
   display: 'flex',
-  flexDirection: 'row-reverse',
-  padding: `0 ${letterFormPaddingX}`,
-  marginBottom: 20,
+  padding: '20px 0',
+  backgroundColor: vars.colors.black,
 });
+
+export const letterFormActionsStyle = style([
+  letterFormActionsBaseStyle,
+  {
+    flexDirection: 'row-reverse',
+    paddingLeft: `${letterFormPaddingX}`,
+    paddingRight: `${letterFormPaddingX}`,
+  },
+]);
 
 export const letterFormActionButtonStyle = style({ width: 64 });

@@ -17,9 +17,12 @@ import { LetterBoxContentProps } from './LetterBoxContent.types';
 function LetterBoxContent(props: LetterBoxContentProps) {
   const { letterStatus } = props;
 
-  const { data: letters } = useQuery(['lettersByStatus', letterStatus], () =>
-    letterAPI.getLetters(),
-  );
+  const {
+    data: letters,
+    refetch,
+    isLoading,
+  } = useQuery(['lettersByStatus', letterStatus], () => letterAPI.getLetters(), { cacheTime: 1 });
+
   const doneLetters = useMemo(
     () => letters?.filter((letter) => letter.letterStatus === LetterStatus.DONE),
     [letters],
@@ -31,18 +34,38 @@ function LetterBoxContent(props: LetterBoxContentProps) {
 
   const [letterDraftBox, setLetterDraftBox] = useRecoilState(letterDraftBoxState);
 
+  useEffect(() => {
+    refetch();
+  }, []);
+
   const draftLetterMap = useRef<Map<string, APISchema.LetterTemplate>>(new Map());
   useEffect(() => {
-    if (!draftLetters || letterStatus === LetterStatus.DONE) {
+    if (!draftLetters) {
       return;
     }
     draftLetters.forEach((item) => {
       draftLetterMap.current.set(item.id, item);
     });
     setLetterDraftBox(draftLetters);
-  }, [draftLetters, letterStatus]);
+  }, [draftLetters]);
 
-  if (!draftLetters || !doneLetters) {
+  if (
+    isLoading ||
+    (letterStatus === LetterStatus.DRAFT &&
+      letters?.find((it) => it.letterStatus === LetterStatus.DRAFT) &&
+      draftLetterMap.current.size === 0)
+  ) {
+    return (
+      <div
+        className={layoutSprinkles({ display: 'flex', justify: 'center', items: 'center' })}
+        style={{ height: '100%' }}
+      >
+        <Text color="white">{letterBoxLabelByType[letterStatus]}에 편지를 불러오고 있습니다.</Text>
+      </div>
+    );
+  }
+
+  if (!doneLetters || !draftLetters) {
     return (
       <div
         className={layoutSprinkles({ display: 'flex', justify: 'center', items: 'center' })}

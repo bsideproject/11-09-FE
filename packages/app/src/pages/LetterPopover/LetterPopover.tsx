@@ -1,15 +1,14 @@
+import { MouseEvent, useRef } from 'react';
 import classNames from 'classnames';
 import { useNavigate } from 'react-router-dom';
 import { useSetRecoilState } from 'recoil';
 
 import { LetterStatus } from '~/const';
 import { letterFormState } from '~/pages/LetterForm/LetterForm.atoms';
-import { ReactComponent as CloseIcon } from '~components/assets/icons/cancel.svg';
 import { Button, LetterDate, LetterImage, LetterTemplate } from '~components/index';
 import { layoutSprinkles } from '~components/styles/layout.css';
 
 import {
-  letterPopoverCloseStyle,
   letterPopoverContentStyle,
   letterPopoverOverlayStyle,
   letterPopoverStyle,
@@ -27,22 +26,23 @@ function LetterPopover(props: LetterPopoverProps) {
     navigate('/letter/write', { replace: true });
   };
 
+  const letterPopoverRef = useRef<HTMLDivElement>(null);
+  const handleClose = (event: MouseEvent) => {
+    if (!letterPopoverRef.current?.contains(event.target as HTMLElement)) {
+      onClose();
+    }
+  };
+
   return (
-    <div className={letterPopoverOverlayStyle}>
+    // eslint-disable-next-line jsx-a11y/click-events-have-key-events,jsx-a11y/no-static-element-interactions
+    <div className={letterPopoverOverlayStyle} onClick={handleClose}>
       <div
+        ref={letterPopoverRef}
         className={classNames(
           letterPopoverStyle,
           layoutSprinkles({ display: 'flex', flex: 'column' }),
         )}
       >
-        <Button
-          className={letterPopoverCloseStyle}
-          variant="transparent"
-          onClick={onClose}
-          iconOnly
-        >
-          <CloseIcon />
-        </Button>
         {image && (
           <LetterImage
             image={image}
@@ -74,7 +74,7 @@ function LetterPopover(props: LetterPopoverProps) {
               />
             )}
             {receivedDate && <LetterDate dateType="receive" date={receivedDate} />}
-            <Button background="gradient" style={{ marginTop: 26 }} onClick={handleClick}>
+            <Button background="gradient" style={{ margin: '26px 0 20px' }} onClick={handleClick}>
               이어 쓸래요
             </Button>
           </div>
