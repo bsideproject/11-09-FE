@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useRecoilValue } from 'recoil';
 
+import { authAPI } from '~/api';
 import { state } from '~/store';
 import { Button, Heading, Text } from '~components/index';
 
@@ -69,11 +70,16 @@ function LoginIntro() {
     setIntroStep((prev) => prev + 1);
   };
 
-  // TODO nickName 을 컴포넌트 props 로 전달 받는 방법 or 상태 관리 툴 사용
   const navigate = useNavigate();
+
+  const tutorialUpdate = async () => {
+    await authAPI.tutorial({ tutorialYN: false });
+    navigate('/', { replace: true });
+  };
+
   useEffect(() => {
     if (introStep > 3) {
-      navigate('/', { replace: true });
+      tutorialUpdate();
     }
   }, [introStep]);
 
