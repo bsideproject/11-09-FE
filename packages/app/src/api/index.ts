@@ -5,6 +5,10 @@ import instance, { getAuth } from './instance';
 export const authAPI = {
   authenticate: (token: string) =>
     instance.get<void, APISchema.User>(`/oauth/accessToken?token=${token}`),
+  tutorial: (data: APISchema.UserTutorialUpdate) =>
+    instance.put<void, APISchema.UserTutorialUpdate>('/v1/member/tutorial', data, {
+      headers: { 'Content-Type': 'multipart/form-data' },
+    }),
 };
 
 export const letterAPI = {

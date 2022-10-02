@@ -91,4 +91,9 @@ declare namespace APISchema {
     letterId?: string;
     isSended?: boolean;
   }
+
+  interface UserTutorialUpdate {
+    id?: string;
+    tutorialYN?: boolean;
+  }
 }

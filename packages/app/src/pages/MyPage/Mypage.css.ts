@@ -18,7 +18,6 @@ export const myPageBodyContentStyle = style({
 
 export const myPageUserContent = style({
   fontSize: 16,
-  lineHeight: 18,
   marginTop: 5,
 });
 

@@ -1,9 +1,10 @@
+import moment from 'moment';
 import { Link, useNavigate } from 'react-router-dom';
 
 import persistStore from '~/store/persistStore';
 import { ReactComponent as CancelIcon } from '~components/assets/icons/cancel.svg';
 import { Button, Text } from '~components/index';
-import { removeCookie } from '~utils/cookies';
+import { setCookie } from '~utils/cookies';
 
 import LogoutConfirm from '../LogoutConfirm/LogoutConfirm';
 
@@ -23,9 +24,10 @@ function SideBar(props: SideBarProps) {
 
   const navigate = useNavigate();
 
-  const handleLogOut = () => {
-    removeCookie('token');
-    persistStore.dropInstance({ name: 'persistState' });
+  const handleLogOut = async () => {
+    const expires = moment().add(-1).toDate();
+    setCookie('token', '', { path: '/', expires });
+    await persistStore.dropInstance({ name: 'persistState' });
     navigate('/login', { replace: true });
   };
 

@@ -41,7 +41,7 @@ function LetterPreview() {
     if (!userID || !id || !receivedDate || !senderName || !receiverName || !content || !urlSlug) {
       return;
     }
-    const letterStatus = LetterStatus.DONE;
+    const letterStatus = LetterStatus.DRAFT;
     await saveLetter({
       userID,
       id,
