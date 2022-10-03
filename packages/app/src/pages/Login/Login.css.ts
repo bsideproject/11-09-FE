@@ -4,18 +4,34 @@ import { vars } from '~components/styles/global.css';
 
 export const loginBodyStyle = style({
   position: 'relative',
-  width: '360px',
+  width: '100%',
   height: '100%',
+});
+
+export const loginIconStyle = style({
+  width: '100%',
+  height: '100%',
+  position: 'absolute',
   display: 'flex',
+  justifyContent: 'center',
   flexDirection: 'column',
   alignItems: 'center',
-  margin: 'auto',
-  justifyContent: 'center',
 });
+
+export const loginTextBodyStyle = style({
+  paddingTop: 'calc((240 / 600) * 100%)',
+  display: 'flex',
+  width: '100%',
+  height: '100%',
+  flexDirection: 'column',
+  justifyContent: 'center',
+  alignItems: 'center',
+});
+
 
 export const kakaoLoginStyle = style({
   height: '64px',
-  width: '320px',
+  width: '80%',
 });
 
 export const txtBottomStyle = style({
