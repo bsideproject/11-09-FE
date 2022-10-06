@@ -1,9 +1,9 @@
+import { useState } from 'react';
 import { useRecoilState, useRecoilValue, useSetRecoilState } from 'recoil';
 
 import { useMutation } from '@tanstack/react-query';
 
 import { letterAPI } from '~/api';
-import { LetterStatus } from '~/const';
 import { useIsPastDate } from '~/pages/LetterForm/LetterForm.hooks';
 import { letterPreviewActionsStyle } from '~/pages/LetterForm/LetterPreview/LetterPreview.css';
 import { useShareWithKakao } from '~/pages/LetterForm/LetterPreview/LetterPreview.hooks';
@@ -32,12 +32,15 @@ function LetterPreview() {
     return null;
   }
 
+  const [isShareReady, setIsShareReady] = useState<boolean>(false);
   const handlePrevClick = () => {
     setStep(4);
+    setIsShareReady(false);
   };
 
-  const shareWithKakao = useShareWithKakao();
+  const shareWithKakao = useShareWithKakao(isShareReady, urlSlug);
   const sendLetter = async () => {
+    setIsShareReady(true);
     if (!userID || !id || !receivedDate || !senderName || !receiverName || !content || !urlSlug) {
       return;
     }
@@ -53,7 +56,6 @@ function LetterPreview() {
     });
     setLetterForm({
       ...letterForm,
-      letterStatus: LetterStatus.DONE,
     });
     shareWithKakao({ receivedDate, senderName, urlSlug });
   };

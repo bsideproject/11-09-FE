@@ -9,6 +9,7 @@ import { ReminderDayProps } from './ReminderTime.type';
 function ReminderTime(props: ReminderDayProps) {
   const { endDay, openTime } = props;
   const end = moment(endDay);
+  console.log('end >>> ', end);
   const [runningTime, setCounter] = useState(moment.duration);
   useLayoutEffect(() => {
     const timer = setInterval(() => {
@@ -27,7 +28,7 @@ function ReminderTime(props: ReminderDayProps) {
     <div className={reminderTimer}>
       <Heading
         className={timeBorderStyle}
-        heading={runningTime.days() !== 0 ? runningTime.days() : '0'}
+        heading={runningTime.asDays() !== 0 ? Math.floor(runningTime.asDays()) : '0'}
         size={3}
         color="primary"
       />
