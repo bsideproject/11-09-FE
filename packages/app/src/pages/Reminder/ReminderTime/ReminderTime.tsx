@@ -9,7 +9,6 @@ import { ReminderDayProps } from './ReminderTime.type';
 function ReminderTime(props: ReminderDayProps) {
   const { endDay, openTime } = props;
   const end = moment(endDay);
-  console.log('end >>> ', end);
   const [runningTime, setCounter] = useState(moment.duration);
   useLayoutEffect(() => {
     const timer = setInterval(() => {

@@ -149,7 +149,7 @@ function Reminder() {
             )} 
           </div>
           <div className={reminderBottomStyle}>
-            {/* {!openTime && (
+           {/* {!openTime && (
               <Button
                 className={reminderTwoButtonStyle}
                 label="다시 알림받기"
@@ -158,7 +158,7 @@ function Reminder() {
                 onClick={() => handelOpenEventType('reminder')}
                 borderColor="primary"
               />
-            )} */}
+            )}  */}
             <Button
               label="나도 편지 써보기"
               background="primary"

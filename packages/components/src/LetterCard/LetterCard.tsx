@@ -49,8 +49,8 @@ function LetterCard(props: LetterCardProps) {
         className={layoutSprinkles({ display: 'flex', flex: 'column' })}
         style={{ gap: 5, marginTop: 14 }}
       >
-        {createdAt && (
-          <LetterDate dateType={letterStatus === 'DRAFT' ? 'write' : 'sent'} date={createdAt} />
+        {createdAt && letterStatus === 'DONE' && (
+          <LetterDate dateType='sent' date={createdAt} />
         )}
         {receivedDate && <LetterDate dateType="receive" date={receivedDate} />}
       </div>
