@@ -17,7 +17,7 @@ const icon = {
 };
 
 const label = {
-  sent: '편지 보낸 날',
+  sent: '편지 쓰기 시작한 날',
   receive: '편지 열 수 있는 날',
   write: '마지막 작성일',
 };
