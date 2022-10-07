@@ -28,7 +28,7 @@ function ReminderTime(props: ReminderDayProps) {
     <div className={reminderTimer}>
       <Heading
         className={timeBorderStyle}
-        heading={runningTime.asDays() !== 0 ? Math.floor(runningTime.asDays()) : '0'}
+        heading={ Math.floor(runningTime.asDays()) !== 0 ? Math.floor(runningTime.asDays()) : '0'}
         size={3}
         color="primary"
       />
