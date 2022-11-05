@@ -10,6 +10,7 @@ import { reminderAPI } from '~/api';
 import { reminderID } from '~/store';
 import { getCookie } from '~/utils/cookies';
 import { ReactComponent as ReminderOpen } from '~components/assets/images/reminder_open.svg';
+import EventAni from '~components/assets/misc/event_pepero.gif';
 import ReminerAni from '~components/assets/misc/reminder_ani.gif';
 
 import ReminderContent from './ReminderContent/ReminderContent';
@@ -32,9 +33,11 @@ function Reminder() {
 
   const setID = useSetRecoilState(reminderID.reminder);
   const [uuid, setUuid] = useState<string>(''); 
+  const [uuid2, setUuid2] = useState<string>(''); 
   const [reminderApply, setReminderApply] = useState<APISchema.ReminderUpDateType>();
   const [letter, setLetter] = useState<APISchema.Letter>();
   const [openTime, setOpenTime] = useState<boolean>(false);
+  const [eventTime, setEventTime] = useState<boolean>(false);
 
   const handleCloseEvent = () => {
     if (dialogTypeRef.current && dialogTypeRef.current === 'reminder') {
@@ -76,9 +79,13 @@ function Reminder() {
       enabled: !!reminderApply,
     },
   );
-
+ 
   const { data } = useQuery(['reminderAPI', uuid], () => reminderAPI.reminderLetter(uuid), {
     enabled: !!uuid,
+  });
+
+  const { data:reminderContent } = useQuery(['reminderAPI', uuid2], () => reminderAPI.reminderLetter(uuid2), {
+    enabled: !!uuid2,
   });
 
   useEffect(() => {
@@ -99,7 +106,48 @@ function Reminder() {
     }
 
     setLetter(data[0]);
+    const day = data[0].receivedDate || ''
+    if(day !== '') {
+      const date = day.split('-');
+
+      const evnetDayChk = ''.concat(date[1].toString(), date[2].split(' ')[0].toString());
+
+      if (evnetDayChk === '1111') {
+        setEventTime(true);
+      }
+    }
   }, [data]);
+
+
+  useEffect(() => {
+    if (!openTime) {
+      return;
+    }
+    if (!id) {
+      return;
+    }
+    setUuid2(id);
+  }, [openTime]);
+
+
+  useEffect(() => {
+    if (!reminderContent) {
+      return;
+    }
+
+    setLetter(reminderContent[0]);
+    const day = reminderContent[0].receivedDate || '';
+    if (day !== '') {
+      const date = day.split('-');
+      
+      const evnetDayChk = ''.concat((date[1]).toString(), date[2].split(' ')[0].toString());
+
+      if (evnetDayChk === '1111') {
+        setEventTime(true);
+      }
+    }
+  }, [reminderContent]);
+
 
   useEffect(() => {
     if (!reminderSet) {
@@ -113,6 +161,9 @@ function Reminder() {
     }
   }, [reminderSet]);
 
+
+  
+
   return (
     <div className={reminderBodyStyle}>
       {letter && (
@@ -125,7 +176,7 @@ function Reminder() {
               ) : (
                 <img
                   width="100%"
-                  src={ReminerAni}
+                  src={eventTime ? EventAni : ReminerAni}
                   alt="ani"
                   style={{ background: '#FFFFFF', outline: 'none' }}
                 />
@@ -142,14 +193,14 @@ function Reminder() {
                   senderName: letter.senderName || '',
                   receiverName: letter.receiverName || '',
                   content: letter.content || '',
-                  imageDataURL:undefined,
+                  imageDataURL: undefined,
                 }}
                 style={{ marginTop: 20 }}
               />
-            )} 
+            )}
           </div>
           <div className={reminderBottomStyle}>
-           {/* {!openTime && (
+            {/* {!openTime && (
               <Button
                 className={reminderTwoButtonStyle}
                 label="다시 알림받기"
