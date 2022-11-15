@@ -1,6 +1,6 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "TimeLetter",
+  "name": "TimeLetter",
   "icons": [
     {
       "src": "favicon.ico",
@@ -8,14 +8,44 @@
       "type": "image/x-icon"
     },
     {
-      "src": "logo192.png",
+      "src": "favicon-and-96dp.png",
+      "type": "image/png",
+      "sizes": "96x96"
+    },
+    {
+      "src": "favicon-and-144dp.png",
+      "type": "image/png",
+      "sizes": "144x144"
+    },
+    {
+      "src": "favicon-and-192dp.png",
       "type": "image/png",
       "sizes": "192x192"
     },
     {
-      "src": "logo512.png",
+      "src": "favicon-and-512dp.png",
       "type": "image/png",
       "sizes": "512x512"
+    },
+    {
+      "src": "favicon-ios-120dp.png",
+      "type": "image/png",
+      "sizes": "120x120"
+    },
+    {
+      "src": "favicon-ios-152dp.png",
+      "type": "image/png",
+      "sizes": "152x152"
+    },
+    {
+      "src": "favicon-ios-167dp.png",
+      "type": "image/png",
+      "sizes": "167x167"
+    },
+    {
+      "src": "favicon-and-180dp.png",
+      "type": "image/png",
+      "sizes": "180x180"
     }
   ],
   "start_url": ".",
