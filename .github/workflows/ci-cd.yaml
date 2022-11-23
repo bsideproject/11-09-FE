@@ -44,6 +44,9 @@ jobs:
             sudo docker rm ${{ secrets.DOCKER_IMAGE_NAME }}
             sudo docker run --name ${{ secrets.DOCKER_IMAGE_NAME }} -d -p 9090:9090 ${{ secrets.DOCKER_USERNAME }}/${{ secrets.DOCKER_IMAGE_NAME }}
             sudo docker rmi $(sudo docker images --filter "dangling=true" -q --no-trunc)
+            whoami
+            pwd
+            ls -al
             ./logs.sh
       
       - name: slack-action-success
