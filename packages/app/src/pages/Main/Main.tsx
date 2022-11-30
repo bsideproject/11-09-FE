@@ -15,7 +15,8 @@ import { mainBodyStyle } from './Main.css';
 function Main() {
   const resetUuid = useResetRecoilState(reminderID.reminder);
   const uuid = useRecoilValue(reminderID.reminder);
-  const [reminderApply, setReminderApply] = useState<APISchema.ReminderUpDateType>();
+  const [reminderApply, setReminderApply] = useState<FormData>();
+  const formData = new FormData();
 
   const { data: reminderSet } = useQuery(
     ['reminderAPI', reminderApply],
@@ -35,7 +36,8 @@ function Main() {
     if (!uuid.id) {
       return;
     }
-   setReminderApply({ letterId: uuid.id });
+    formData.append('letterId', uuid.id);
+    setReminderApply(formData);
   }, [uuid]);
 
   useEffect(() => {

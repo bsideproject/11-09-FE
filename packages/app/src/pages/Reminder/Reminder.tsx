@@ -32,12 +32,14 @@ function Reminder() {
   const dialogTypeRef = useRef<ReminderDialogProps['dialogType'] | null>(null);
 
   const setID = useSetRecoilState(reminderID.reminder);
-  const [uuid, setUuid] = useState<string>(''); 
-  const [uuid2, setUuid2] = useState<string>(''); 
-  const [reminderApply, setReminderApply] = useState<APISchema.ReminderUpDateType>();
+  const [uuid, setUuid] = useState<string>('');
+  const [uuid2, setUuid2] = useState<string>('');
+  const [reminderApply, setReminderApply] = useState<FormData>();
+
   const [letter, setLetter] = useState<APISchema.Letter>();
-  const [openTime, setOpenTime] = useState<boolean>(false);
+  const [openTime, setOpenTime] = useState<boolean>(false); 
   const [eventTime, setEventTime] = useState<boolean>(false);
+  const formData = new FormData();
 
   const handleCloseEvent = () => {
     if (dialogTypeRef.current && dialogTypeRef.current === 'reminder') {
@@ -59,7 +61,8 @@ function Reminder() {
     if (getCookie('token')) {
       switch (value) {
         case 'reminder':
-          setReminderApply({ letterId: letter?.id });
+          formData.append('letterId', letter?.id || '');
+          setReminderApply(formData);
           break;
         case 'goMain':
           navigate('/', { replace: true });
@@ -79,14 +82,18 @@ function Reminder() {
       enabled: !!reminderApply,
     },
   );
- 
+
   const { data } = useQuery(['reminderAPI', uuid], () => reminderAPI.reminderLetter(uuid), {
     enabled: !!uuid,
   });
 
-  const { data:reminderContent } = useQuery(['reminderAPI', uuid2], () => reminderAPI.reminderLetter(uuid2), {
-    enabled: !!uuid2,
-  });
+  const { data: reminderContent } = useQuery(
+    ['reminderAPI', uuid2],
+    () => reminderAPI.reminderLetter(uuid2),
+    {
+      enabled: !!uuid2,
+    }
+  );
 
   useEffect(() => {
     if (!id) {
@@ -99,25 +106,22 @@ function Reminder() {
     if (!data) {
       return;
     }
-    
-    if(data.length < 1 ) {
+
+    if (data.length < 1) {
       handelOpenEventType('idNull');
-      return
+      return;
     }
 
     setLetter(data[0]);
-    const day = data[0].receivedDate || ''
-    if(day !== '') {
+    const day = data[0].receivedDate || '';
+    if (day !== '') {
       const date = day.split('-');
-
       const evnetDayChk = ''.concat(date[1].toString(), date[2].split(' ')[0].toString());
-
       if (evnetDayChk === '1111') {
         setEventTime(true);
       }
     }
   }, [data]);
-
 
   useEffect(() => {
     if (!openTime) {
@@ -129,7 +133,6 @@ function Reminder() {
     setUuid2(id);
   }, [openTime]);
 
-
   useEffect(() => {
     if (!reminderContent) {
       return;
@@ -139,17 +142,18 @@ function Reminder() {
     const day = reminderContent[0].receivedDate || '';
     if (day !== '') {
       const date = day.split('-');
-      
-      const evnetDayChk = ''.concat((date[1]).toString(), date[2].split(' ')[0].toString());
+
+      const evnetDayChk = ''.concat(date[1].toString(), date[2].split(' ')[0].toString());
 
       if (evnetDayChk === '1111') {
         setEventTime(true);
       }
+  
     }
   }, [reminderContent]);
 
-
   useEffect(() => {
+    console.log('reminderSet >>> ', reminderSet);
     if (!reminderSet) {
       return;
     }
@@ -160,9 +164,6 @@ function Reminder() {
       handelOpenEventType('reminderFail');
     }
   }, [reminderSet]);
-
-
-  
 
   return (
     <div className={reminderBodyStyle}>
@@ -200,7 +201,7 @@ function Reminder() {
             )}
           </div>
           <div className={reminderBottomStyle}>
-            {/* {!openTime && (
+           {!openTime && (
               <Button
                 className={reminderTwoButtonStyle}
                 label="다시 알림받기"
@@ -209,7 +210,7 @@ function Reminder() {
                 onClick={() => handelOpenEventType('reminder')}
                 borderColor="primary"
               />
-            )}  */}
+            )} 
             <Button
               label="나도 편지 써보기"
               background="primary"

@@ -40,10 +40,12 @@ export const letterAPI = {
     instance.get<void, ArrayBuffer>(`/v1/letter/imageView/${imageId}`),
 };
 
+
+
 export const reminderAPI = {
   reminderLetter: (uuid: string) =>
     instance.get<void, APISchema.Letter[]>(`/v1/letter/urlSlug/${uuid}`),
-  reminderUpdate: (data?: APISchema.ReminderUpDateType) =>
+  reminderUpdate: (data?: FormData) =>
     instance.post<void, APISchema.ReminderUpDateType>('/v1/reminder', data, {
       headers: { 'Content-Type': 'multipart/form-data' },
     }),
