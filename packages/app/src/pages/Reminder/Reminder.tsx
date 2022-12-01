@@ -204,7 +204,7 @@ function Reminder() {
            {!openTime && (
               <Button
                 className={reminderTwoButtonStyle}
-                label="다시 알림받기"
+                label="당일 알림받기"
                 variant="outline"
                 background={undefined}
                 onClick={() => handelOpenEventType('reminder')}
