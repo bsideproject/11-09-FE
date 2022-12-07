@@ -17,7 +17,8 @@ import { LetterPopoverProps } from './LetterPopover.types';
 
 function LetterPopover(props: LetterPopoverProps) {
   const { letter, onClose } = props;
-  const { senderName, receiverName, image, receivedDate, letterStatus } = letter;
+  const { senderName, receiverName, image, receivedDate, createdAt, letterStatus, urlSlug } =
+    letter;
 
   const setLetterFormState = useSetRecoilState(letterFormState);
   const navigate = useNavigate();
@@ -71,13 +72,16 @@ function LetterPopover(props: LetterPopoverProps) {
               marginBottom: isDoneLetter(letterStatus) ? 40 : 0,
             }}
           >
-            {/* {createdAt &&(!isDraftLetter(letterStatus)  && (
+            {createdAt && (
               <LetterDate
-                dateType='sent'
+                dateType={isDraftLetter(letterStatus) ? 'write' : 'sent'}
                 date={createdAt}
               />
-            ))} */}
+            )}
             {receivedDate && <LetterDate dateType="receive" date={receivedDate} />}
+            {!isDraftLetter(letterStatus) && (
+              <LetterDate dateType="link" date={`https://timeletter.net/reminder/${urlSlug}`} />
+            )}
             {isDraftLetter(letterStatus) && (
               <Button background="gradient" style={{ margin: '26px 0 20px' }} onClick={handleClick}>
                 이어 쓸래요
