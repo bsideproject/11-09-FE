@@ -91,7 +91,7 @@ function LetterPreview() {
   return (
     <>
       {/* TODO Make LetterFormHeading component */}
-      <Text as="h2" color="white" size={4}>
+      <Text as="h2" color="white" size={4} style={{marginBottom: 24}}>
         잘못 적은 부분이 없는지 확인해 주세요.
       </Text>
       <LetterTemplate
