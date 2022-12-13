@@ -5,11 +5,12 @@ export const mainBoxRecipe = recipe({
   base: {
     width: '340px',
     height: '228px',
-    filter: 'drop-shadow(0px 4px 14px #2E1168)',
+    filter: 'drop-shadow(0px 4px 14px #1E3026)',
     margin: '10px auto',
     alignContent: 'center',
-    display: 'Flex',
     flexWrap: 'wrap',
+    display: 'flex',
+    justifyContent: 'center',
   },
   variants: {
     value: {
@@ -38,14 +39,15 @@ export const oneTagStyle = style({
 });
 
 export const menuTextStyle = style({
-  paddingLeft: '9%',
-  marginBottom: '5%',
+  paddingLeft: '45%',
+  marginBottom: '15%',
 });
 
 export const arrowLargeStyle = style({
   width: '80px',
   height: '82px',
-  flexBasis: '65%',
-  paddingLeft: '80px',
+  flexBasis: '100%',
+  paddingLeft: '170px',
+  marginBottom: 5,
   transform: 'translateY(25%)',
 });

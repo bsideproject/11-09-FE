@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
+import Snowfall from 'react-snowfall';
 import { useSetRecoilState } from 'recoil';
 
 import { useQuery } from '@tanstack/react-query';
@@ -10,8 +11,8 @@ import { reminderAPI } from '~/api';
 import { reminderID } from '~/store';
 import { getCookie } from '~/utils/cookies';
 import { ReactComponent as ReminderOpen } from '~components/assets/images/reminder_open.svg';
+import ReminerAni from '~components/assets/misc/25_reminder.gif';
 import EventAni from '~components/assets/misc/event_pepero.gif';
-import ReminerAni from '~components/assets/misc/reminder_ani.gif';
 
 import ReminderContent from './ReminderContent/ReminderContent';
 import ReminderDialog from './ReminderDialog/ReminderDialog';
@@ -37,7 +38,7 @@ function Reminder() {
   const [reminderApply, setReminderApply] = useState<FormData>();
 
   const [letter, setLetter] = useState<APISchema.Letter>();
-  const [openTime, setOpenTime] = useState<boolean>(false); 
+  const [openTime, setOpenTime] = useState<boolean>(false);
   const [eventTime, setEventTime] = useState<boolean>(false);
   const formData = new FormData();
 
@@ -92,7 +93,7 @@ function Reminder() {
     () => reminderAPI.reminderLetter(uuid2),
     {
       enabled: !!uuid2,
-    }
+    },
   );
 
   useEffect(() => {
@@ -148,7 +149,6 @@ function Reminder() {
       if (evnetDayChk === '1111') {
         setEventTime(true);
       }
-  
     }
   }, [reminderContent]);
 
@@ -167,6 +167,12 @@ function Reminder() {
 
   return (
     <div className={reminderBodyStyle}>
+      <Snowfall
+        snowflakeCount={30}
+        speed={[0.1, 0.1]}
+        rotationSpeed={[-1.0, 0.2]}
+        style={{ zIndex: 1000 }}
+      />
       {letter && (
         <>
           <ReminderTime endDay={letter.receivedDate} openTime={setOpenTime} />
@@ -201,16 +207,16 @@ function Reminder() {
             )}
           </div>
           <div className={reminderBottomStyle}>
-           {!openTime && (
+            {!openTime && (
               <Button
                 className={reminderTwoButtonStyle}
-                label="당일 알림받기"
+                label="다시 알림받기"
                 variant="outline"
                 background={undefined}
                 onClick={() => handelOpenEventType('reminder')}
                 borderColor="primary"
               />
-            )} 
+            )}
             <Button
               label="나도 편지 써보기"
               background="primary"

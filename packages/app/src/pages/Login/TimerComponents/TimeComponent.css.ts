@@ -13,4 +13,6 @@ export const timeStyle = style({
   textAlign: 'center',
   color: '#FFFFFF',
   padding: '0 15px',
+  top: 210,
+  position: 'absolute',
 });

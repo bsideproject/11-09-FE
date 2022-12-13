@@ -47,7 +47,7 @@ export const useShareWithKakao = (isShareReady: boolean, urlSlug?: string) => {
     const date = receivedDate.split('-');
 
     kakao.Share.sendCustom({
-      templateId: 80393,
+      templateId: 85959,
       templateArgs: {
         name: `\nFrom. ${senderName}`,
         day: `${date[0]}년 ${date[1]}월 ${date[2].split(' ')[0]}일`,

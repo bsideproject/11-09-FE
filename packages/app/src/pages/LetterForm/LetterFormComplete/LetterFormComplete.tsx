@@ -1,7 +1,8 @@
 import { useNavigate } from 'react-router-dom';
 import { useRecoilValue, useSetRecoilState } from 'recoil';
 
-import { ReactComponent as LetterSendImage } from '~components/assets/images/lettersend.svg';
+// import { ReactComponent as LetterSendImage } from '~components/assets/images/lettersend.svg';
+import { ReactComponent as SanTa } from '~components/assets/images/25_send_santa.svg';
 import { Button, Text } from '~components/index';
 import { gradientOutlineRecipe } from '~components/styles/gradient.css';
 
@@ -21,8 +22,12 @@ function LetterFormComplete() {
 
   return (
     <>
-      <div className={letterFormCompleteStyle}>
-        <LetterSendImage style={{ alignSelf: 'center' }} />
+      <div style={{
+          display: 'flex',
+          flexDirection: 'column'
+      }}
+       className={letterFormCompleteStyle}>
+        <SanTa style={{ alignSelf: 'center' }} />
         <Text as="p" color="white" asHeadingFont style={{ marginTop: 20, textAlign: 'center' }}>
           <Text
             className={[receiverNameStyle, gradientOutlineRecipe({ background: 'black' })]}

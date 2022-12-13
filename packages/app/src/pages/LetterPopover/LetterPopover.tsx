@@ -17,8 +17,7 @@ import { LetterPopoverProps } from './LetterPopover.types';
 
 function LetterPopover(props: LetterPopoverProps) {
   const { letter, onClose } = props;
-  const { senderName, receiverName, image, receivedDate, createdAt, letterStatus, urlSlug } =
-    letter;
+  const { senderName, receiverName, image, receivedDate, createdAt, letterStatus, urlSlug } = letter;
 
   const setLetterFormState = useSetRecoilState(letterFormState);
   const navigate = useNavigate();
@@ -26,7 +25,7 @@ function LetterPopover(props: LetterPopoverProps) {
     setLetterFormState(letter);
     navigate('/letter/write', { replace: true });
   };
-
+  
   const letterPopoverRef = useRef<HTMLDivElement>(null);
   const handleClose = (event: MouseEvent) => {
     if (!letterPopoverRef.current?.contains(event.target as HTMLElement)) {

@@ -25,6 +25,7 @@ export const letterPopoverStyle = style({
   backgroundColor: vars.colors.white,
   zIndex: letterPopoverStackOrder,
   overflow: 'auto',
+  borderRadius: '16px 16px 0px 0px',
 
   '@media': {
     'screen and (min-width: 768px)': { width: 360, left: '50%', transform: 'translateX(-50%)' },
