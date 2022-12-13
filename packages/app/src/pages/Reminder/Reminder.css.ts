@@ -13,7 +13,6 @@ export const reminderContentStyle = style({
   flex: '1 1 auto',
   padding: '10px calc((20 / 360) * 100%)',
   display: 'flex',
-  justifyContent: 'center',
   flexDirection: 'column',
 });
 

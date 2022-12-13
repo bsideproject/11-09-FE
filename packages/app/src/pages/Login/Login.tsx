@@ -13,9 +13,6 @@ import { state } from '~/store';
 import { setCookie } from '~/utils/cookies';
 import { ReactComponent as Logo } from '~components/assets/icons/login_logo.svg';
 import { ReactComponent as Bg1 } from '~components/assets/images/bg_rec.svg';
-import { ReactComponent as Img1 } from '~components/assets/images/img_1.svg';
-import { ReactComponent as Img2 } from '~components/assets/images/img-kakao02.svg';
-import { ReactComponent as Img3 } from '~components/assets/images/img-kakao03.svg';
 import rect01 from '~components/assets/images/img-timepicker.svg';
 import KaKaoIcon1 from '~components/assets/images/kakao_icon.svg';
 import LoginBorder from '~components/assets/images/login_bg_one.png';
@@ -24,7 +21,10 @@ import { ReactComponent as Prev } from '~components/assets/images/prev.svg';
 import { ReactComponent as Scroll3 } from '~components/assets/images/rect_04.svg';
 import { ReactComponent as ScrollImg } from '~components/assets/images/scorll_log.svg';
 import LoginBg from '~components/assets/misc/bg_img.png';
-import rect2  from '~components/assets/misc/lende_ani.gif';
+import img1 from '~components/assets/misc/img_1.svg';
+import img2 from '~components/assets/misc/img-kakao02.svg';
+import img3 from '~components/assets/misc/img-kakao03.svg';
+import rect2 from '~components/assets/misc/lende_ani.gif';
 import { Button, Heading, Text } from '~components/index';
 import { colorSystem } from '~components/styles/colors.css';
 import { fontSystem } from '~components/styles/fonts.css';
@@ -63,7 +63,6 @@ function Login() {
     setMore(false);
   };
 
-
   const setUser = useSetRecoilState(state.user);
   const [accessToken, setAccessToken] = useState<string>('');
   const { data } = useQuery(
@@ -100,27 +99,30 @@ function Login() {
   }, []);
 
   const [page, setPage] = useState(1);
-  
+
   // eslint-disable-next-line
-  const items = [ <Img1 />, <Img2 />, <Img3 />];
+  const items = [
+    '매 순간 특별한 연인에게',
+    '직접 전하기엔 부끄러운 부모님께',
+    '가깝고도 먼 친구에게',
+  ];
 
   const options = {
     root: null,
     threshold: 0.01,
   };
 
-
-  const observer = new IntersectionObserver(((entries) => {
+  const observer = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
       if (entry.isIntersecting) {
-          observer.unobserve(entry.target);
-          const cnt1 = page+1;
-          setPage(cnt1);
+        observer.unobserve(entry.target);
+        const cnt1 = page + 1;
+        setPage(cnt1);
       }
     });
-  }), options);
+  }, options);
 
-  let k:any = null;
+  let k: any = null;
   useEffect(() => {
     if (more) return;
     k = document.querySelector(`#sc0${page}`);
@@ -128,33 +130,36 @@ function Login() {
       observer.observe(k);
     }
   }, [more]);
-  
+
   useEffect(() => {
     observer.disconnect();
 
     k = document.querySelector(`#sc0${page}`);
-    if(k != null ){
-       observer.observe(k);
+    if (k != null) {
+      observer.observe(k);
     }
   }, [page]);
 
+  const [currentSlide, setCurrentSlide] = useState(0);
+
   const settings = {
     slide: 'div',
-    infinite: false, 
-    slidesToShow: 1, 
-    slidesToScroll: 1, 
+    infinite: true,
+    slidesToShow: 1,
+    slidesToScroll: 1,
     centerMode: true,
-    speed: 100, 
-    arrows: true, 
-    dots: false, 
+    speed: 100,
+    arrows: true,
+    dots: false,
     autoplay: false,
     pauseOnHover: true,
     vertical: false,
-    prevArrow: <Prev style={{ zIndex: 30 }} />, 
-    nextArrow: <Next style={{ zIndex: 30 }} />, 
+    prevArrow: <Prev style={{ zIndex: 30 }}  />,
+    nextArrow: <Next style={{ zIndex: 30 }}  />,
+    beforeChange: (slide : any, newSlide : any) => setCurrentSlide(newSlide),
     centerPadding: '0px',
     useCSS: true,
-    draggable: true, 
+    draggable: true,
   };
 
   return (
@@ -277,13 +282,13 @@ function Login() {
             style={{
               background: '#F2E5FF',
               position: 'absolute',
-              marginTop: 1100,
+              marginTop: 1000,
               flexDirection: 'column',
               alignItems: 'center',
               justifyContent: 'center',
               display: 'flex',
               zIndex: 10,
-              height: 600,
+              height: 500,
               width: '100%',
               backgroundSize: '100%',
               backgroundRepeat: 'no-repeat',
@@ -315,13 +320,14 @@ function Login() {
             style={{
               background: '#F2E5FF',
               position: 'absolute',
-              marginTop: 1700,
+              marginTop: 1400,
               flexDirection: 'column',
               alignItems: 'center',
               display: 'flex',
               zIndex: 10,
               width: '100%',
-              height: 400,
+              height: 500,
+              justifyContent: 'center',
               backgroundSize: '100%',
               backgroundRepeat: 'no-repeat',
             }}
@@ -334,7 +340,7 @@ function Login() {
           <div
             style={{
               position: 'absolute',
-              marginTop: 2100,
+              marginTop: 1880,
               flexDirection: 'column',
               alignItems: 'center',
               display: 'flex',
@@ -384,13 +390,13 @@ function Login() {
             >
               <Slider {...settings}>
                 <div>
-                  <Img1 />
+                  <img src={img1} alt="img" />
                 </div>
                 <div>
-                  <Img2 />
+                  <img src={img2} alt="img1" />
                 </div>
                 <div>
-                  <Img3 />
+                  <img src={img3} alt="img2" />
                 </div>
               </Slider>
             </div>
@@ -402,7 +408,7 @@ function Login() {
               style={{ position: 'absolute', top: 700, color: '#FFFFFF' }}
               id="sc05"
             >
-              먼 곳에 떨어진 연인에게
+              {items[currentSlide]}
             </Text>
           </div>
         )}
@@ -410,7 +416,7 @@ function Login() {
         {!more && page > 5 && (
           <div
             style={{
-              marginTop: 2880,
+              marginTop: 2670,
               flexDirection: 'column',
               alignItems: 'center',
               position: 'absolute',
@@ -461,7 +467,7 @@ function Login() {
             style={{
               background: '#F2E6FF',
               position: 'absolute',
-              marginTop: 3100,
+              marginTop: 2850,
               flexDirection: 'column',
               alignItems: 'center',
               display: 'flex',

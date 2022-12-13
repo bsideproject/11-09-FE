@@ -157,7 +157,7 @@ globalStyle('.slick-initialized .slick-slide > div > div', {
   justifyContent: 'center',
 });
 
-globalStyle('.slick-initialized .slick-slide > div > div >  svg', {
-      width: '100%',
+globalStyle('.slick-initialized .slick-slide > div > div >  img', {
+    margin: '0 auto',
 });   
 
