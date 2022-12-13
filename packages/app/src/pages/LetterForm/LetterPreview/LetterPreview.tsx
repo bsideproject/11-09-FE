@@ -8,6 +8,7 @@ import { useIsPastDate } from '~/pages/LetterForm/LetterForm.hooks';
 import { letterPreviewActionsStyle } from '~/pages/LetterForm/LetterPreview/LetterPreview.css';
 import { useShareWithKakao } from '~/pages/LetterForm/LetterPreview/LetterPreview.hooks';
 import LetterSendConfirm from '~/pages/LetterForm/LetterSendConfirm/LetterSendConfirm';
+import { ReactComponent as SanTa } from '~components/assets/images/25_santa.svg';
 import { Button, LetterTemplate, NotificationToaster, Text } from '~components/index';
 
 import { letterFormState, letterFormStepState, letterImageState } from '../LetterForm.atoms';
@@ -15,10 +16,18 @@ import { letterFormState, letterFormStepState, letterImageState } from '../Lette
 function LetterPreview() {
   const letterImage = useRecoilValue(letterImageState);
   const [letterForm, setLetterForm] = useRecoilState(letterFormState);
-  const { userID, id, receivedDate, senderName, receiverName, content, imageId, urlSlug } =
-    letterForm;
+  const {
+    userID,
+    id,
+    receivedDate,
+    senderName,
+    receiverName,
+    content,
+    imageId,
+    urlSlug,
+  } = letterForm;
   const setStep = useSetRecoilState(letterFormStepState);
-
+  const letterStatus = 'DRAFT';
   const saveLetter = useMutation(
     (letterPutReq: APISchema.LetterPutReq) => letterAPI.saveLetter(letterPutReq),
     {
@@ -41,7 +50,16 @@ function LetterPreview() {
   const shareWithKakao = useShareWithKakao(isShareReady, urlSlug);
   const sendLetter = async () => {
     setIsShareReady(true);
-    if (!userID || !id || !receivedDate || !senderName || !receiverName || !content || !urlSlug) {
+    if (
+      !userID ||
+      !id ||
+      !receivedDate ||
+      !senderName ||
+      !receiverName ||
+      !content ||
+      !urlSlug ||
+      !letterStatus
+    ) {
       return;
     }
     await saveLetter({
@@ -53,6 +71,7 @@ function LetterPreview() {
       content,
       imageId,
       urlSlug,
+      letterStatus
     });
     setLetterForm({
       ...letterForm,
@@ -84,6 +103,9 @@ function LetterPreview() {
         }}
         style={{ marginTop: 20, paddingBottom: 32 }}
       />
+      <div style={{ margin: '20px 0px' }}>
+        <SanTa />
+      </div>
       <div className={letterPreviewActionsStyle}>
         <Button label="돌아가기" variant="outline" onClick={handlePrevClick} />
         <Button label="편지 보내기" background="gradient" onClick={handleSendClick} />

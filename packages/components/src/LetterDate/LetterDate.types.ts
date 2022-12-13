@@ -1,4 +1,4 @@
-export type DateType = 'sent' | 'receive' | 'write';
+export type DateType = 'sent' | 'receive' | 'write' | 'link' ;
 
 export interface LetterDateProps {
   dateType: DateType;

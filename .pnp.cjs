@@ -62,6 +62,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["lint-staged", "npm:13.0.3"],\
             ["prepush-if-changed", "npm:1.0.8"],\
             ["prettier", "npm:2.7.1"],\
+            ["react-snowfall", "virtual:ab7574857d741564ee9043d1094979127ed0ddbab598e141d93779cfe2fb4a09605fc6c6de5bee998fb68acb82d6cf5200d9200d061cd85f8948a4f06f668960#npm:1.2.1"],\
             ["ts-jest", "virtual:ab7574857d741564ee9043d1094979127ed0ddbab598e141d93779cfe2fb4a09605fc6c6de5bee998fb68acb82d6cf5200d9200d061cd85f8948a4f06f668960#npm:28.0.7"],\
             ["typescript", "patch:typescript@npm%3A4.7.4#~builtin<compat/typescript>::version=4.7.4&hash=7ad353"]\
           ],\
@@ -10321,6 +10322,8 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@types/node", "npm:18.0.5"],\
             ["@types/react", "npm:18.0.15"],\
             ["@types/react-dom", "npm:18.0.6"],\
+            ["@types/react-slick", "npm:0.23.10"],\
+            ["@types/slick-carousel", "npm:1.6.37"],\
             ["@types/source-map-support", "npm:0.5.4"],\
             ["@types/testing-library__jest-dom", "npm:5.14.5"],\
             ["@vanilla-extract/babel-plugin", "npm:1.1.7"],\
@@ -10343,7 +10346,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["react-router", "virtual:6a76ec3121eb9de82dd4e890cf40b05eedeeb0200342c83534875b34309a39ee505770c9a33083c3008153bf65404d15587393000d7508463cf72575bcb28bb1#npm:6.3.0"],\
             ["react-router-dom", "virtual:6a76ec3121eb9de82dd4e890cf40b05eedeeb0200342c83534875b34309a39ee505770c9a33083c3008153bf65404d15587393000d7508463cf72575bcb28bb1#npm:6.3.0"],\
             ["react-scripts", "virtual:d7474fbff71ffdb94b6c248e7215bbc030cd24f64bf47fd1c4986c5e38c67a0e96a83bda3f62761c90d5dd7c8576cee2f1b73d45bd48b9158a3c837ffd2bc4d2#npm:5.0.1"],\
+            ["react-slick", "virtual:6a76ec3121eb9de82dd4e890cf40b05eedeeb0200342c83534875b34309a39ee505770c9a33083c3008153bf65404d15587393000d7508463cf72575bcb28bb1#npm:0.29.0"],\
+            ["react-snowfall", "virtual:6a76ec3121eb9de82dd4e890cf40b05eedeeb0200342c83534875b34309a39ee505770c9a33083c3008153bf65404d15587393000d7508463cf72575bcb28bb1#npm:1.2.1"],\
             ["recoil", "virtual:6a76ec3121eb9de82dd4e890cf40b05eedeeb0200342c83534875b34309a39ee505770c9a33083c3008153bf65404d15587393000d7508463cf72575bcb28bb1#npm:0.7.5"],\
+            ["slick-carousel", "virtual:6a76ec3121eb9de82dd4e890cf40b05eedeeb0200342c83534875b34309a39ee505770c9a33083c3008153bf65404d15587393000d7508463cf72575bcb28bb1#npm:1.8.1"],\
             ["ts-jest", "virtual:d7474fbff71ffdb94b6c248e7215bbc030cd24f64bf47fd1c4986c5e38c67a0e96a83bda3f62761c90d5dd7c8576cee2f1b73d45bd48b9158a3c837ffd2bc4d2#npm:28.0.7"],\
             ["typescript", "patch:typescript@npm%3A4.7.4#~builtin<compat/typescript>::version=4.7.4&hash=7ad353"],\
             ["universal-cookie", "npm:4.0.4"],\
@@ -10779,6 +10785,16 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD"\
         }]\
       ]],\
+      ["@types/jquery", [\
+        ["npm:3.5.14", {\
+          "packageLocation": "./.yarn/cache/@types-jquery-npm-3.5.14-5fafe75fbb-159d6f804e.zip/node_modules/@types/jquery/",\
+          "packageDependencies": [\
+            ["@types/jquery", "npm:3.5.14"],\
+            ["@types/sizzle", "npm:2.3.3"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
       ["@types/json-schema", [\
         ["npm:7.0.11", {\
           "packageLocation": "./.yarn/cache/@types-json-schema-npm-7.0.11-79462ae5ca-527bddfe62.zip/node_modules/@types/json-schema/",\
@@ -10973,6 +10989,16 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD"\
         }]\
       ]],\
+      ["@types/react-slick", [\
+        ["npm:0.23.10", {\
+          "packageLocation": "./.yarn/cache/@types-react-slick-npm-0.23.10-7a4823c988-1e53fe8385.zip/node_modules/@types/react-slick/",\
+          "packageDependencies": [\
+            ["@types/react-slick", "npm:0.23.10"],\
+            ["@types/react", "npm:18.0.15"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
       ["@types/resolve", [\
         ["npm:1.17.1", {\
           "packageLocation": "./.yarn/cache/@types-resolve-npm-1.17.1-9a8396bef2-dc6a6df507.zip/node_modules/@types/resolve/",\
@@ -11018,6 +11044,25 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@types/serve-static", "npm:1.13.10"],\
             ["@types/mime", "npm:1.3.2"],\
             ["@types/node", "npm:18.0.5"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
+      ["@types/sizzle", [\
+        ["npm:2.3.3", {\
+          "packageLocation": "./.yarn/cache/@types-sizzle-npm-2.3.3-9403924950-586a9fb1f6.zip/node_modules/@types/sizzle/",\
+          "packageDependencies": [\
+            ["@types/sizzle", "npm:2.3.3"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
+      ["@types/slick-carousel", [\
+        ["npm:1.6.37", {\
+          "packageLocation": "./.yarn/cache/@types-slick-carousel-npm-1.6.37-9b6da8eacb-0d2de86519.zip/node_modules/@types/slick-carousel/",\
+          "packageDependencies": [\
+            ["@types/slick-carousel", "npm:1.6.37"],\
+            ["@types/jquery", "npm:3.5.14"]\
           ],\
           "linkType": "HARD"\
         }]\
@@ -16683,6 +16728,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD"\
         }]\
       ]],\
+      ["enquire.js", [\
+        ["npm:2.1.6", {\
+          "packageLocation": "./.yarn/cache/enquire.js-npm-2.1.6-fc4ea2e583-bb094054ee.zip/node_modules/enquire.js/",\
+          "packageDependencies": [\
+            ["enquire.js", "npm:2.1.6"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
       ["entities", [\
         ["npm:2.2.0", {\
           "packageLocation": "./.yarn/cache/entities-npm-2.2.0-0fc8d5b2f7-19010dacaf.zip/node_modules/entities/",\
@@ -21816,6 +21870,16 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD"\
         }]\
       ]],\
+      ["json2mq", [\
+        ["npm:0.2.0", {\
+          "packageLocation": "./.yarn/cache/json2mq-npm-0.2.0-aa8a6516b9-5672c3abdd.zip/node_modules/json2mq/",\
+          "packageDependencies": [\
+            ["json2mq", "npm:0.2.0"],\
+            ["string-convert", "npm:0.2.1"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
       ["json5", [\
         ["npm:1.0.1", {\
           "packageLocation": "./.yarn/cache/json5-npm-1.0.1-647fc8794b-e76ea23dbb.zip/node_modules/json5/",\
@@ -26809,6 +26873,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD"\
         }]\
       ]],\
+      ["react-fast-compare", [\
+        ["npm:3.2.0", {\
+          "packageLocation": "./.yarn/cache/react-fast-compare-npm-3.2.0-fbfa6627d9-8ef272c825.zip/node_modules/react-fast-compare/",\
+          "packageDependencies": [\
+            ["react-fast-compare", "npm:3.2.0"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
       ["react-image-file-resizer", [\
         ["npm:0.4.8", {\
           "packageLocation": "./.yarn/cache/react-image-file-resizer-npm-0.4.8-6676df75d7-b8f169bc81.zip/node_modules/react-image-file-resizer/",\
@@ -27083,6 +27156,82 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             "@types/typescript",\
             "react",\
             "typescript"\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
+      ["react-slick", [\
+        ["npm:0.29.0", {\
+          "packageLocation": "./.yarn/cache/react-slick-npm-0.29.0-28db290b04-67ce498191.zip/node_modules/react-slick/",\
+          "packageDependencies": [\
+            ["react-slick", "npm:0.29.0"]\
+          ],\
+          "linkType": "SOFT"\
+        }],\
+        ["virtual:6a76ec3121eb9de82dd4e890cf40b05eedeeb0200342c83534875b34309a39ee505770c9a33083c3008153bf65404d15587393000d7508463cf72575bcb28bb1#npm:0.29.0", {\
+          "packageLocation": "./.yarn/__virtual__/react-slick-virtual-de978998b1/0/cache/react-slick-npm-0.29.0-28db290b04-67ce498191.zip/node_modules/react-slick/",\
+          "packageDependencies": [\
+            ["react-slick", "virtual:6a76ec3121eb9de82dd4e890cf40b05eedeeb0200342c83534875b34309a39ee505770c9a33083c3008153bf65404d15587393000d7508463cf72575bcb28bb1#npm:0.29.0"],\
+            ["@types/react", "npm:18.0.15"],\
+            ["@types/react-dom", "npm:18.0.6"],\
+            ["classnames", "npm:2.3.2"],\
+            ["enquire.js", "npm:2.1.6"],\
+            ["json2mq", "npm:0.2.0"],\
+            ["lodash.debounce", "npm:4.0.8"],\
+            ["react", "npm:18.2.0"],\
+            ["react-dom", "virtual:d7474fbff71ffdb94b6c248e7215bbc030cd24f64bf47fd1c4986c5e38c67a0e96a83bda3f62761c90d5dd7c8576cee2f1b73d45bd48b9158a3c837ffd2bc4d2#npm:18.2.0"],\
+            ["resize-observer-polyfill", "npm:1.5.1"]\
+          ],\
+          "packagePeers": [\
+            "@types/react-dom",\
+            "@types/react",\
+            "react-dom",\
+            "react"\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
+      ["react-snowfall", [\
+        ["npm:1.2.1", {\
+          "packageLocation": "./.yarn/cache/react-snowfall-npm-1.2.1-ffb69bac7b-297ca98466.zip/node_modules/react-snowfall/",\
+          "packageDependencies": [\
+            ["react-snowfall", "npm:1.2.1"]\
+          ],\
+          "linkType": "SOFT"\
+        }],\
+        ["virtual:6a76ec3121eb9de82dd4e890cf40b05eedeeb0200342c83534875b34309a39ee505770c9a33083c3008153bf65404d15587393000d7508463cf72575bcb28bb1#npm:1.2.1", {\
+          "packageLocation": "./.yarn/__virtual__/react-snowfall-virtual-720b030276/0/cache/react-snowfall-npm-1.2.1-ffb69bac7b-297ca98466.zip/node_modules/react-snowfall/",\
+          "packageDependencies": [\
+            ["react-snowfall", "virtual:6a76ec3121eb9de82dd4e890cf40b05eedeeb0200342c83534875b34309a39ee505770c9a33083c3008153bf65404d15587393000d7508463cf72575bcb28bb1#npm:1.2.1"],\
+            ["@types/react", "npm:18.0.15"],\
+            ["@types/react-dom", "npm:18.0.6"],\
+            ["react", "npm:18.2.0"],\
+            ["react-dom", "virtual:d7474fbff71ffdb94b6c248e7215bbc030cd24f64bf47fd1c4986c5e38c67a0e96a83bda3f62761c90d5dd7c8576cee2f1b73d45bd48b9158a3c837ffd2bc4d2#npm:18.2.0"],\
+            ["react-fast-compare", "npm:3.2.0"]\
+          ],\
+          "packagePeers": [\
+            "@types/react-dom",\
+            "@types/react",\
+            "react-dom",\
+            "react"\
+          ],\
+          "linkType": "HARD"\
+        }],\
+        ["virtual:ab7574857d741564ee9043d1094979127ed0ddbab598e141d93779cfe2fb4a09605fc6c6de5bee998fb68acb82d6cf5200d9200d061cd85f8948a4f06f668960#npm:1.2.1", {\
+          "packageLocation": "./.yarn/__virtual__/react-snowfall-virtual-a46fd6b426/0/cache/react-snowfall-npm-1.2.1-ffb69bac7b-297ca98466.zip/node_modules/react-snowfall/",\
+          "packageDependencies": [\
+            ["react-snowfall", "virtual:ab7574857d741564ee9043d1094979127ed0ddbab598e141d93779cfe2fb4a09605fc6c6de5bee998fb68acb82d6cf5200d9200d061cd85f8948a4f06f668960#npm:1.2.1"],\
+            ["@types/react", null],\
+            ["@types/react-dom", null],\
+            ["react", null],\
+            ["react-dom", null],\
+            ["react-fast-compare", "npm:3.2.0"]\
+          ],\
+          "packagePeers": [\
+            "@types/react-dom",\
+            "@types/react",\
+            "react-dom",\
+            "react"\
           ],\
           "linkType": "HARD"\
         }]\
@@ -27591,6 +27740,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/cache/requires-port-npm-1.0.0-fd036b488a-eee0e303ad.zip/node_modules/requires-port/",\
           "packageDependencies": [\
             ["requires-port", "npm:1.0.0"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
+      ["resize-observer-polyfill", [\
+        ["npm:1.5.1", {\
+          "packageLocation": "./.yarn/cache/resize-observer-polyfill-npm-1.5.1-603120e8a0-57e7f79489.zip/node_modules/resize-observer-polyfill/",\
+          "packageDependencies": [\
+            ["resize-observer-polyfill", "npm:1.5.1"]\
           ],\
           "linkType": "HARD"\
         }]\
@@ -28400,6 +28558,28 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD"\
         }]\
       ]],\
+      ["slick-carousel", [\
+        ["npm:1.8.1", {\
+          "packageLocation": "./.yarn/cache/slick-carousel-npm-1.8.1-8382d373c2-acaad391e4.zip/node_modules/slick-carousel/",\
+          "packageDependencies": [\
+            ["slick-carousel", "npm:1.8.1"]\
+          ],\
+          "linkType": "SOFT"\
+        }],\
+        ["virtual:6a76ec3121eb9de82dd4e890cf40b05eedeeb0200342c83534875b34309a39ee505770c9a33083c3008153bf65404d15587393000d7508463cf72575bcb28bb1#npm:1.8.1", {\
+          "packageLocation": "./.yarn/__virtual__/slick-carousel-virtual-076b40d57d/0/cache/slick-carousel-npm-1.8.1-8382d373c2-acaad391e4.zip/node_modules/slick-carousel/",\
+          "packageDependencies": [\
+            ["slick-carousel", "virtual:6a76ec3121eb9de82dd4e890cf40b05eedeeb0200342c83534875b34309a39ee505770c9a33083c3008153bf65404d15587393000d7508463cf72575bcb28bb1#npm:1.8.1"],\
+            ["@types/jquery", null],\
+            ["jquery", null]\
+          ],\
+          "packagePeers": [\
+            "@types/jquery",\
+            "jquery"\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
       ["smart-buffer", [\
         ["npm:4.2.0", {\
           "packageLocation": "./.yarn/cache/smart-buffer-npm-4.2.0-5ac3f668bb-b5167a7142.zip/node_modules/smart-buffer/",\
@@ -28875,6 +29055,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/cache/string-argv-npm-0.3.1-b4f6cd3d7b-efbd0289b5.zip/node_modules/string-argv/",\
           "packageDependencies": [\
             ["string-argv", "npm:0.3.1"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
+      ["string-convert", [\
+        ["npm:0.2.1", {\
+          "packageLocation": "./.yarn/cache/string-convert-npm-0.2.1-f1a42cb9ea-1098b1d8e3.zip/node_modules/string-convert/",\
+          "packageDependencies": [\
+            ["string-convert", "npm:0.2.1"]\
           ],\
           "linkType": "HARD"\
         }]\
@@ -29727,6 +29916,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["lint-staged", "npm:13.0.3"],\
             ["prepush-if-changed", "npm:1.0.8"],\
             ["prettier", "npm:2.7.1"],\
+            ["react-snowfall", "virtual:ab7574857d741564ee9043d1094979127ed0ddbab598e141d93779cfe2fb4a09605fc6c6de5bee998fb68acb82d6cf5200d9200d061cd85f8948a4f06f668960#npm:1.2.1"],\
             ["ts-jest", "virtual:ab7574857d741564ee9043d1094979127ed0ddbab598e141d93779cfe2fb4a09605fc6c6de5bee998fb68acb82d6cf5200d9200d061cd85f8948a4f06f668960#npm:28.0.7"],\
             ["typescript", "patch:typescript@npm%3A4.7.4#~builtin<compat/typescript>::version=4.7.4&hash=7ad353"]\
           ],\

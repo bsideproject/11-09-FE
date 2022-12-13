@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
+import Snowfall from 'react-snowfall';
 import { useSetRecoilState } from 'recoil';
 
 import { useQuery } from '@tanstack/react-query';
@@ -10,8 +11,8 @@ import { reminderAPI } from '~/api';
 import { reminderID } from '~/store';
 import { getCookie } from '~/utils/cookies';
 import { ReactComponent as ReminderOpen } from '~components/assets/images/reminder_open.svg';
+import ReminerAni from '~components/assets/misc/25_reminder.gif';
 import EventAni from '~components/assets/misc/event_pepero.gif';
-import ReminerAni from '~components/assets/misc/reminder_ani.gif';
 
 import ReminderContent from './ReminderContent/ReminderContent';
 import ReminderDialog from './ReminderDialog/ReminderDialog';
@@ -32,12 +33,14 @@ function Reminder() {
   const dialogTypeRef = useRef<ReminderDialogProps['dialogType'] | null>(null);
 
   const setID = useSetRecoilState(reminderID.reminder);
-  const [uuid, setUuid] = useState<string>(''); 
-  const [uuid2, setUuid2] = useState<string>(''); 
-  const [reminderApply, setReminderApply] = useState<APISchema.ReminderUpDateType>();
+  const [uuid, setUuid] = useState<string>('');
+  const [uuid2, setUuid2] = useState<string>('');
+  const [reminderApply, setReminderApply] = useState<FormData>();
+
   const [letter, setLetter] = useState<APISchema.Letter>();
   const [openTime, setOpenTime] = useState<boolean>(false);
   const [eventTime, setEventTime] = useState<boolean>(false);
+  const formData = new FormData();
 
   const handleCloseEvent = () => {
     if (dialogTypeRef.current && dialogTypeRef.current === 'reminder') {
@@ -59,7 +62,8 @@ function Reminder() {
     if (getCookie('token')) {
       switch (value) {
         case 'reminder':
-          setReminderApply({ letterId: letter?.id });
+          formData.append('letterId', letter?.id || '');
+          setReminderApply(formData);
           break;
         case 'goMain':
           navigate('/', { replace: true });
@@ -79,14 +83,18 @@ function Reminder() {
       enabled: !!reminderApply,
     },
   );
- 
+
   const { data } = useQuery(['reminderAPI', uuid], () => reminderAPI.reminderLetter(uuid), {
     enabled: !!uuid,
   });
 
-  const { data:reminderContent } = useQuery(['reminderAPI', uuid2], () => reminderAPI.reminderLetter(uuid2), {
-    enabled: !!uuid2,
-  });
+  const { data: reminderContent } = useQuery(
+    ['reminderAPI', uuid2],
+    () => reminderAPI.reminderLetter(uuid2),
+    {
+      enabled: !!uuid2,
+    },
+  );
 
   useEffect(() => {
     if (!id) {
@@ -99,25 +107,22 @@ function Reminder() {
     if (!data) {
       return;
     }
-    
-    if(data.length < 1 ) {
+
+    if (data.length < 1) {
       handelOpenEventType('idNull');
-      return
+      return;
     }
 
     setLetter(data[0]);
-    const day = data[0].receivedDate || ''
-    if(day !== '') {
+    const day = data[0].receivedDate || '';
+    if (day !== '') {
       const date = day.split('-');
-
       const evnetDayChk = ''.concat(date[1].toString(), date[2].split(' ')[0].toString());
-
       if (evnetDayChk === '1111') {
         setEventTime(true);
       }
     }
   }, [data]);
-
 
   useEffect(() => {
     if (!openTime) {
@@ -129,7 +134,6 @@ function Reminder() {
     setUuid2(id);
   }, [openTime]);
 
-
   useEffect(() => {
     if (!reminderContent) {
       return;
@@ -139,8 +143,8 @@ function Reminder() {
     const day = reminderContent[0].receivedDate || '';
     if (day !== '') {
       const date = day.split('-');
-      
-      const evnetDayChk = ''.concat((date[1]).toString(), date[2].split(' ')[0].toString());
+
+      const evnetDayChk = ''.concat(date[1].toString(), date[2].split(' ')[0].toString());
 
       if (evnetDayChk === '1111') {
         setEventTime(true);
@@ -148,8 +152,8 @@ function Reminder() {
     }
   }, [reminderContent]);
 
-
   useEffect(() => {
+    console.log('reminderSet >>> ', reminderSet);
     if (!reminderSet) {
       return;
     }
@@ -161,11 +165,14 @@ function Reminder() {
     }
   }, [reminderSet]);
 
-
-  
-
   return (
     <div className={reminderBodyStyle}>
+      <Snowfall
+        snowflakeCount={30}
+        speed={[0.1, 0.1]}
+        rotationSpeed={[-1.0, 0.2]}
+        style={{ zIndex: 1000 }}
+      />
       {letter && (
         <>
           <ReminderTime endDay={letter.receivedDate} openTime={setOpenTime} />
@@ -200,7 +207,7 @@ function Reminder() {
             )}
           </div>
           <div className={reminderBottomStyle}>
-            {/* {!openTime && (
+            {!openTime && (
               <Button
                 className={reminderTwoButtonStyle}
                 label="다시 알림받기"
@@ -209,7 +216,7 @@ function Reminder() {
                 onClick={() => handelOpenEventType('reminder')}
                 borderColor="primary"
               />
-            )}  */}
+            )}
             <Button
               label="나도 편지 써보기"
               background="primary"

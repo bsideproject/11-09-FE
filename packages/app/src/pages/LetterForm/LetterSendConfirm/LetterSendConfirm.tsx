@@ -19,7 +19,7 @@ function LetterSendConfirm(props: LetterSendConfirmProps) {
   };
 
   return (
-    <Dialog isOpen={isOpen} onClose={onClose} type="caution">
+    <Dialog isOpen={isOpen} onClose={onClose} type="caution" style={{zIndex: 1002}}>
       <Dialog.Content>
         <Text as="p">
           보낸 편지는 취소하거나 수정할 수 없어요.

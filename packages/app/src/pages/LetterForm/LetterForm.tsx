@@ -1,5 +1,6 @@
 import { useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
+import Snowfall from 'react-snowfall';
 import { useRecoilState, useRecoilValue } from 'recoil';
 
 import { LetterStatus } from '~/const';
@@ -95,6 +96,12 @@ function LetterForm() {
 
   return (
     <div className={letterFormStyle}>
+      <Snowfall
+        snowflakeCount={30}
+        speed={[0.1, 0.1]}
+        rotationSpeed={[-1.0, 0.2]}
+        style={{ zIndex: 18 }}
+      />
       <ProgressBar steps={totalSteps} activeStep={step} />
       <div id="letter-form-wrapper" className={letterFormContentStyle}>
         <LetterFormContent activeStep={step} />

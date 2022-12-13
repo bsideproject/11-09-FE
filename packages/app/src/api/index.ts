@@ -32,8 +32,8 @@ export const letterAPI = {
     }),
   saveLetter: (letterPutReq: APISchema.LetterPutReq) => instance.put('/v1/letter', letterPutReq),
   deleteDraftLetter: (letter: APISchema.Letter) => instance.delete('/v1/letter', { data: letter }),
-  addImage: (letterPostReq: APISchema.LetterImagePostReq) =>
-    instance.post<void, APISchema.Letter[]>(`/v1/letter/imageUpload`, letterPostReq, {
+  addImage: (letterPostReq: FormData) =>
+    instance.post<void, APISchema.Letter>(`/v1/letter/imageUpload`, letterPostReq, {
       headers: { 'Content-Type': 'multipart/form-data' },
     }),
   getImageByImageId: (imageId: string) =>
@@ -43,7 +43,7 @@ export const letterAPI = {
 export const reminderAPI = {
   reminderLetter: (uuid: string) =>
     instance.get<void, APISchema.Letter[]>(`/v1/letter/urlSlug/${uuid}`),
-  reminderUpdate: (data?: APISchema.ReminderUpDateType) =>
+  reminderUpdate: (data?: FormData) =>
     instance.post<void, APISchema.ReminderUpDateType>('/v1/reminder', data, {
       headers: { 'Content-Type': 'multipart/form-data' },
     }),

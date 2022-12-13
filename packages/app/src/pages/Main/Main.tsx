@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import Snowfall from 'react-snowfall';
 import { useRecoilValue, useResetRecoilState } from 'recoil';
 
 import { useQuery } from '@tanstack/react-query';
@@ -15,7 +16,8 @@ import { mainBodyStyle } from './Main.css';
 function Main() {
   const resetUuid = useResetRecoilState(reminderID.reminder);
   const uuid = useRecoilValue(reminderID.reminder);
-  const [reminderApply, setReminderApply] = useState<APISchema.ReminderUpDateType>();
+  const [reminderApply, setReminderApply] = useState<FormData>();
+  const formData = new FormData();
 
   const { data: reminderSet } = useQuery(
     ['reminderAPI', reminderApply],
@@ -35,7 +37,8 @@ function Main() {
     if (!uuid.id) {
       return;
     }
-   setReminderApply({ letterId: uuid.id });
+    formData.append('letterId', uuid.id);
+    setReminderApply(formData);
   }, [uuid]);
 
   useEffect(() => {
@@ -50,11 +53,16 @@ function Main() {
     } else {
       openDialog('fail');
     }
-    
   }, [reminderSet]);
 
   return (
     <div className={mainBodyStyle}>
+      <Snowfall
+        snowflakeCount={30}
+        speed={[0.1, 0.1]}
+        rotationSpeed={[-1.0, 0.2]}
+        style={{ zIndex: 1000 }}
+      />
       <MainBox menuName="편지쓰기" path="/letter/write" />
       <MainBox menuName="보낸편지함" path="/letter/box" />
     </div>

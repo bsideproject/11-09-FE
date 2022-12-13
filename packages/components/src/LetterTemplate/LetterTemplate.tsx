@@ -11,7 +11,7 @@ function LetterTemplate(props: LetterTemplateProps) {
   const { senderName, receiverName, content, imageDataURL } = letterProps;
 
   return (
-    <div {...rest} className={classNames(letterTemplateStyle, rest.className)}>
+    <div {...rest} className={classNames(letterTemplateStyle, rest.className)} style={{zIndex:19}}>
       <div
         className={classNames(letterContentStyle, letterContentRecipe({ border, theme }))}
         style={contentStyle}
